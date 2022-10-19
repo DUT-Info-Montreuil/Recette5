@@ -9,7 +9,7 @@
       public function __construct() {
          $this->vue=new VueConnexion();
          $this->modele=new ModeleConnexion();
-         $this->action=isset($_GET['action']) ?$_GET['action']:"bonjour";
+         $this->action=isset($_GET['action']) ?$_GET['action']:"bienvenue";
       }
 
       public function afficher_form_inscription(){

@@ -8,7 +8,17 @@ $affiche;
 $connexionBd = new Connexion();
 $connexionBd->initConnexion();
 require_once('module/mod_connexion/mod_connexion.php');
-$connexionSite = new ModConnexion();
+
+
+$module = isset($_GET['module']) ? $_GET['module'] : 'rien' ;
+switch ($module) {
+     case "connexion":
+        new ModConnexion();
+      break;
+     case "rien":
+      break;
+}
+
 
 include_once('template.php');
 ?>
