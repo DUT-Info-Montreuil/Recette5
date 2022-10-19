@@ -1,12 +1,14 @@
 <?php
+require_once('composants/menu/comp_menu.php');
 require_once('connexion.php');
-
+$compMenu = new CompMenu();
 session_start();
+$_SESSION['login'] = isset($_SESSION['login']) ? $_SESSION['login'] : null;
 $affiche;
-$connexion = new Connexion();
-$connexion->initConnexion();
+$connexionBd = new Connexion();
+$connexionBd->initConnexion();
 require_once('module/mod_connexion/mod_connexion.php');
-$co = new ModConnexion();
-echo '<a href="index.php?module=connexion&action=AfficherFormulaireInscription">Inscription</a>';
+$connexionSite = new ModConnexion();
+
 include_once('template.php');
 ?>

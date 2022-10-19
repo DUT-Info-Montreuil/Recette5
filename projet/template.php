@@ -9,6 +9,10 @@
 	<body>
         <header>   
             <h1>Recette5</h1>
+            <?php 
+                $compMenu->affichage();
+            
+            ?>
 		</header>	
         <main>	
             <?php
