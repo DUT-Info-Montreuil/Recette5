@@ -1,6 +1,6 @@
 <?php
-    require_once('module/mod_joueurs/connection.php'); 
-    class ModeleConnexion extends connection{ 
+    require_once('connexion.php'); 
+    class ModeleConnexion extends Connexion{ 
         public function __construct() {
          
            
@@ -13,9 +13,9 @@
             if($row["count(login)"]==1)
              echo"changer de nom d'utilisateur il est déja utiliser";
              else{
-                $sth = $bdd->prepare("INSERT INTO utilisateurs (login, motDePasse,email) VALUES (?,?,?)");
+                $sth = $bdd->prepare('INSERT INTO Utilisateurs (login, mdp,email,idRole) VALUES (?,?,?,?)');
                 echo $login;
-                $sth->execute(array($login,password_hash($mdp, PASSWORD_ARGON2I),$email));
+                $sth->execute(array($login,password_hash($mdp, PASSWORD_ARGON2I),$email,NULL));
                 
              }
            
@@ -32,7 +32,7 @@
             if($row["count(login)"]==0)
              echo"changer de nom d'utilisateur inexistant";
              else{
-            $sth = $bdd->prepare("SELECT * FROM utilisateurs where login=? ");
+            $sth = $bdd->prepare("SELECT * FROM Utilisateurs where login=? ");
             $sth->execute(array($login));
             
             $row = $sth->fetch();

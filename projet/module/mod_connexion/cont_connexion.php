@@ -21,8 +21,8 @@
          $this->vue->afficher_form_inscription();
       }
 
-      public function ajouter_dans_inscription($login,$mdp){
-         $this->modele->inscrire_dans_la_BD($login,$mdp);
+      public function ajouter_dans_inscription($login,$mdp,$email){
+         $this->modele->inscrire_dans_la_BD($login,$mdp,$email);
       }
 
       public function afficher_form_connexion(){
