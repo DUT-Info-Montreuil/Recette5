@@ -14,13 +14,13 @@
             echo '</br>inscription';
             
             echo'   <form method="post" action="index.php?module=connexion&action=inscription">
-            Pseudo (a-z0-9) : <input type="text" name="login">
+            login : <input type="text" name="login">
             <br />
-            Email : <input type="text" name="email">
+            Email : <input type="email" name="email">
             <br />
             Mot de passe : <input type="password" name="mdp">
             <br />
-            <input type="submit" value="S">
+            <input type="submit" value="envoyer">
         </form>';
                      
         }
