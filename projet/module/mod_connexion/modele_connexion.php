@@ -38,7 +38,7 @@
             $row = $sth->fetch();
           
             
-                if(password_verify($mdp, $row['motDePasse'])){
+                if(password_verify($mdp, $row['mdp'])){
                     $_SESSION['login']=$row['login'];
                     echo 'connexion réeussi '.$row['login'].'';
                   

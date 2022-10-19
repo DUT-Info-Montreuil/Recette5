@@ -1,7 +1,25 @@
 body{
-	width:1980px;
+	width:1500px;
+	
 	margin: auto;
     background-color:rgb(196, 196, 196);
+	text-align: center;
 }
 
+header{
+	
+}
 
+header,a{
+	margin-left: 20px;
+}
+
+main{
+	height: 500px;
+	font-size: 25px;
+	
+}
+
+footer{
+	
+}

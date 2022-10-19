@@ -7,7 +7,8 @@
         <link rel="stylesheet" href="css.css"/>
 	</head>
 	<body>
-        <header>   
+        <header>  
+             
             <h1>Recette5</h1>
             <?php 
                 $compMenu->affichage();
@@ -21,6 +22,7 @@
             ?>
         </main>
 		<footer>
+            <p>site sae </p>
 		</footer>
 
 	</body>
