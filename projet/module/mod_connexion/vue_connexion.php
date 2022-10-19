@@ -45,7 +45,14 @@
 
 
         public function menu(){
-        
+            $_SESSION['login'] = isset($_SESSION['login']) ? $_SESSION['login'] : null;
+
+            echo '<a href="index.php?action=bienvenue">Acceuil</a></br>';
+            echo '<a href="index.php?module=connexion&action=AfficherFormulaireInscription">Formulaire d\'inscription</a></br>';
+            echo '<a href="index.php?module=connexion&action=AfficherFormulaireConnexion">Formulaire de connexion</a></br>';
+            if($_SESSION['login'] != null){
+                echo '<a href="index.php?module=connexion&action=deconnexion">Deconnexion</a></br>';
+            }
             
         }
     }
