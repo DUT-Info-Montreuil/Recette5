@@ -5,23 +5,50 @@
          
            
         }
-        public  function ajouter_recette_dans_la_BD($login,$mdp,$email){
+        public  function ajouter_recette_dans_la_BD($titre,$tpsPrepa,$description,$annexe,$vegan){
+        
             $bdd=parent::$bdd;
-            $sth = $bdd->prepare("SELECT count(login) from Utilisateurs where login=?");
-            $sth->execute(array($login));
+            $sth = $bdd->prepare("SELECT idUtilisateur from Utilisateurs where login=?");
+            $sth->execute(array($_SESSION['login']));
             $row = $sth->fetch();
-            if($row["count(login)"]==1)
-             echo"changer de nom d'utilisateur il est déja utiliser";
-             else{
-                $sth = $bdd->prepare("INSERT INTO Utilisateurs (login,mdp,email,idRole) VALUES (?,?,?,?)");
-                echo $login;
-                $sth->execute(array($login,password_hash($mdp, PASSWORD_ARGON2I),$email,NULL));
-                echo 'vous ete bien inscrit';
-             }
+            
+             $sthh = $bdd->prepare("INSERT INTO `Recette` (`idRecette`, `titre`, `tpsPreparration`, `datePublication`, `description`, `noteAnnexe`, `vegan`, `idUtilisateur`) VALUES (NULL, ?,?, now(),?, ?, NULL, ?)");
+             $sthh->execute(array($titre,$tpsPrepa,$description,$annexe,$row['idUtilisateur']));
+        
+
+                echo 'c est bon';
+          
            
        
          } 
 
+         public  function afficherMesrecette(){
+        
+            $bdd=parent::$bdd;
+            $sth = $bdd->prepare("SELECT idUtilisateur from Utilisateurs where login=?");
+            $sth->execute(array($_SESSION['login']));
+            $row = $sth->fetch();
+            
+            $sthh = $bdd->prepare('SELECT * from Recette where idUtilisateur=?') ;
+            $sthh->execute(array($row['idUtilisateur']));
+            $rows= $sthh->fetchAll();
+
+           
+            return $rows;
+          
+          
+           
+       
+         } 
+
+
+         public function recupererListeIngredient(){
+            $bdd=parent::$bdd;
+            $sth = $bdd->prepare("SELECT * from Ingredient");
+            $sth->execute();
+            $rows = $sth->fetchAll();
+            return $rows;
+        }
         
     }
 ?>
