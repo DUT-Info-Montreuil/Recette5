@@ -30,32 +30,34 @@
             echo '</br>Ajouter une nouvelle Recette';
        
             echo'  <form method="post" action="index.php?module=recette&action=ajouterRecetteDansLaBD">
-            nom Recette : <input type="text" name="titre">
-            <br />
-            temps de préparation : <input type="text" name="tpsPreparration">
-            <br />
-            Description: <input type="textArea" name="description">
-            <br />
+                nom Recette : <input type="text" name="titre">
+                <br />
+                temps de préparation : <input type="text" name="tpsPreparration">
+                <br />
+                Description: <input type="textArea" name="description">
+                <br />
 
-            note annexe: <input type="textArea" name="annexe">
-            <br />
-            vegan: <input type="checkbox" name="vegan">
-            <br />
-';for ($i=0; $i<$nbIngr; $i++) {
-    echo'<br>';
-    echo' Ingredient '.($i+1).'  <select> name="ingredient'.$i.'"';
-   
-    foreach( $tabIngr as $value ){
-      echo'   <option value="'.$value['nomIngredient'].' ">'.$value['nomIngredient'].'</option>';
-    
-    }
-   
-   
-   echo' </select>';
-  
-   echo' quantite <input type="texte" name"quantite"<br>';
-echo' unite <input type="texte" name"unite"';   
-echo'<br>';
+                note annexe: <input type="textArea" name="annexe">
+                <br />
+                vegan: <input type="checkbox" name="vegan">
+                <br />'
+            ;
+            for ($i=0; $i<$nbIngr; $i++) {
+                echo'<br>';
+                echo' Ingredient '.($i+1).'  <select> name="ingredient'.$i.'"';
+            
+                foreach( $tabIngr as $value ){
+                echo'   <option value="'.$value['idIngredient'].' ">'.$value['nomIngredient'].'</option>';
+                
+                }
+            
+        
+        echo' </select>';
+        
+        echo' quantite <input type="texte" name"quantite"<br>';
+        echo' unite <input type="texte" name"unite"';   
+        echo'<br>';
+        
 }
 
           

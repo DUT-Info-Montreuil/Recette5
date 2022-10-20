@@ -5,20 +5,36 @@
          
            
         }
-        public  function ajouter_recette_dans_la_BD($titre,$tpsPrepa,$description,$annexe,$vegan){
-        
+        public  function ajouter_recette_dans_la_BD($titre,$tpsPrepa,$description,$annexe,$vegan,$nbingr){
             $bdd=parent::$bdd;
+      
+            
             $sth = $bdd->prepare("SELECT idUtilisateur from Utilisateurs where login=?");
             $sth->execute(array($_SESSION['login']));
             $row = $sth->fetch();
             
-             $sthh = $bdd->prepare("INSERT INTO `Recette` (`idRecette`, `titre`, `tpsPreparration`, `datePublication`, `description`, `noteAnnexe`, `vegan`, `idUtilisateur`) VALUES (NULL, ?,?, now(),?, ?, NULL, ?)");
-             $sthh->execute(array($titre,$tpsPrepa,$description,$annexe,$row['idUtilisateur']));
+            $sth = $bdd->prepare("INSERT INTO `Recette` (`idRecette`, `titre`, `tpsPreparration`, `datePublication`, `description`, `noteAnnexe`, `vegan`, `idUtilisateur`) VALUES (NULL, ?,?, now(),?, ?, NULL, ?)");
+            $sth->execute(array($titre,$tpsPrepa,$description,$annexe,$row['idUtilisateur']));
         
+            $sth = $bdd->prepare("SELECT idRecette FROM tatable  WHERE idRecette = MAX(idRecette) )");
+            $sth->execute();
+            $row = $sth->fetch();
 
-                echo 'c est bon';
-          
-           
+            $sthh = $bdd->prepare(" INSERT INTO Utiliser (idRecette, idIngredient, Quantite, unite) VALUES (?, ?, ?, ?");
+            $sthh->execute(array(44,5,NULL,NULL));
+         
+           /* for ($i=0; $i<$nbingr; $i++) {
+                
+                $sth = $bdd->prepare("SELECT idRecette FROM tatable  WHERE idRecette = MAX(idRecette) )");
+                
+               $sth->execute();
+                $row = $sth->fetch();
+                $sth = $bdd->prepare("INSERT INTO `Utiliser` (`idRecette`, `idIngredient`, `Quantite`, `unite`) VALUES (?, ?, ?, ?);");
+                $sth->execute(array($row['idRecette'],$tpsPrepa,$_POST['ingredient'.$i.''],$_POST['quantite'],$_POST['unite']));
+               
+                
+            }
+           */
        
          } 
 
