@@ -14,7 +14,7 @@
 
 
    public function afficher_form_Recette(){
-      $this->vue-> afficher_form_Recette($this->modele->recupererListeIngredient());
+      $this->vue-> afficher_form_Recette($this->modele->recupererListeIngredient(),$_POST['nbIngr']);
    }
 
        
@@ -29,9 +29,11 @@
       $this->modele->ajouter_recette_dans_la_BD($titre,$tpsPrepa,$description,$annexe,$vegan);
    }
 
+   public function choisirNbIngredient(){
+      $this->vue->afficherChoixNbIngredient();
+   }
+
    public function afficherMesRecettes(){
-
-
       $this->vue->afficherMesRecette($this->modele->afficherMesRecette());
    }
       public function exec(){     
@@ -43,6 +45,9 @@
             case "AfficherFormAjoutRecette":
               $this->afficher_form_Recette();
             break;
+            case "choisirNbIngredient":
+                  $this->choisirNbIngredient();
+               break;
             case "ajouterRecetteDansLaBD":
                echo'test';
                $this->ajouterRecetteDansLaBD();

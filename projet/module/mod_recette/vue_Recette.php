@@ -15,7 +15,18 @@
             
             }
          }
-        public function afficher_form_Recette($tabIngr){
+
+         public function afficherChoixNbIngredient(){
+            echo '</br>Ajouter une nouvelle Recette
+       
+             <form method="post" action="index.php?module=recette&action=AfficherFormAjoutRecette">
+             Entrez le nombre d ingredient: <input type="text" name="nbIngr">
+            <input type="submit" value="envoyer"> </form>';
+                     
+             
+         }
+
+        public function afficher_form_Recette($tabIngr,$nbIngr){
             echo '</br>Ajouter une nouvelle Recette';
        
             echo'  <form method="post" action="index.php?module=recette&action=ajouterRecetteDansLaBD">
@@ -30,7 +41,7 @@
             <br />
             vegan: <input type="checkbox" name="vegan">
             <br />
-';for ($i=0; $i<10; $i++) {
+';for ($i=0; $i<$nbIngr; $i++) {
     echo'<br>';
     echo' Ingredient '.($i+1).'  <select> name="ingredient'.$i.'"';
    
