@@ -4,25 +4,20 @@
     class VueConnexion extends VueGenerique{
       
         public   function __construct() {
-            parent::__construct();
-             
+            parent::__construct();         
          }
        
-  
-       
         public function afficher_form_inscription(){
-            echo '</br>INSCRIPTION';
-            
-            echo'   <form method="post" action="index.php?module=connexion&action=inscription">
+            echo '</br>INSCRIPTION';   
+            echo'  </br> </br><form method="post" action="index.php?module=connexion&action=inscription">
             Login : <input type="text" name="login">
-            <br />
+            </br>
             Adresse mail : <input type="email" name="email">
-            <br />
+            </br>
             Mot de passe : <input type="password" name="mdp">
-            <br />
+            </br></br>
             <input type="submit" value="envoyer">
-        </form>';
-                     
+            </form>';           
         }
 
 
@@ -43,7 +38,6 @@
 
 
         public function menu(){
-    
         }
     }
 ?>

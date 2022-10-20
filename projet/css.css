@@ -4,13 +4,7 @@ body{
     background-color:rgb(196, 196, 196);
 }
 
-header{
-	
-}
 
-header,a{
-	margin-left: 20px;
-}
 
 main{
 	height: 600px;
@@ -19,4 +13,6 @@ main{
 }
 
 footer{
+	text-align : center;
 }
+

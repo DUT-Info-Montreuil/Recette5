@@ -16,29 +16,21 @@
              $sthh->execute(array($titre,$tpsPrepa,$description,$annexe,$row['idUtilisateur']));
         
 
-                echo 'c est bon';
+                echo 'La recette est bien ajouté';
           
            
        
          } 
 
          public  function afficherMesrecette(){
-        
             $bdd=parent::$bdd;
             $sth = $bdd->prepare("SELECT idUtilisateur from Utilisateurs where login=?");
             $sth->execute(array($_SESSION['login']));
             $row = $sth->fetch();
-            
             $sthh = $bdd->prepare('SELECT * from Recette where idUtilisateur=?') ;
             $sthh->execute(array($row['idUtilisateur']));
             $rows= $sthh->fetchAll();
-
-           
             return $rows;
-          
-          
-           
-       
          } 
 
 
