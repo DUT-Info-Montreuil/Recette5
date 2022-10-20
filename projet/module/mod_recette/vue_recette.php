@@ -40,11 +40,17 @@
     }
    
    
-   echo' </select>';
-  
-   echo' quantite <input type="texte" name"quantite"<br>';
-echo' unite <input type="texte" name"unite"';   
-echo'<br>';
+    echo' </select>';
+    echo' quantite <input type="texte" name"quantite"<br>';
+    echo'Unite :  <select> name="" ';   
+    echo'   <option value="kg">kg</option>';
+    echo'   <option value="g">g</option>';
+    echo'   <option value="mg">mg</option>';
+    echo'   <option value="nb">nb</option>';
+    echo'   <option value="l">l</option>';
+    echo'   <option value="ml">ml</option>';
+    echo' </select>';
+    echo'<br>';
 }
 
           

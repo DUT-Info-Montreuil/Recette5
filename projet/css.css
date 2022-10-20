@@ -1,9 +1,7 @@
 body{
 	width:1500px;
-	
-	margin: auto;
+	margin : auto;
     background-color:rgb(196, 196, 196);
-	text-align: center;
 }
 
 header{
@@ -21,5 +19,4 @@ main{
 }
 
 footer{
-	
 }

@@ -6,45 +6,43 @@
            
         }
         public  function inscrire_dans_la_BD($login,$mdp,$email){
-            $bdd=parent::$bdd;
-            $sth = $bdd->prepare("SELECT count(login) from Utilisateurs where login=?");
-            $sth->execute(array($login));
-            $row = $sth->fetch();
-            if($row["count(login)"]==1)
-             echo"changer de nom d'utilisateur il est déja utiliser";
-             else{
-                $sth = $bdd->prepare("INSERT INTO Utilisateurs (login,mdp,email,idRole) VALUES (?,?,?,?)");
-                echo $login;
-                $sth->execute(array($login,password_hash($mdp, PASSWORD_ARGON2I),$email,NULL));
-                echo 'vous ete bien inscrit';
-             }
-           
-       
-         } 
+            $tro = parent::$bdd->prepare("SELECT count(login) FROM Utilisateurs WHERE login = ?");
+            $tro->execute(array($login));
+            $row = $tro->fetch();
+            if($row["count(login)"] == "0"){
+                $che = parent::$bdd->prepare("SELECT count(email) FROM Utilisateurs WHERE email=?");
+                $che->execute(array($email));
+                $row2 = $che->fetch();
+                if($row2["count(email)"] == "0"){
+                    $sth = parent::$bdd->prepare("INSERT INTO Utilisateurs (login,mdp,email,idRole) VALUES (?,?,?,?)");
+                    $sth->execute(array($login,password_hash($mdp,PASSWORD_ARGON2I),$email,NULL));
+                    echo 'Bienvenue sur notre site : '.$login;
+                }else{
+                    echo 'Adresse mail déjà utilisé';
+                }
+            }else{
+                echo 'Login déjà utilisé</br>';
+            }
+        } 
 
 
          public  function connexion_dans_la_BD($login,$mdp){
-        
             $bdd=parent::$bdd;
-            $sth = $bdd->prepare("SELECT count(login) from Utilisateurs where login=?");
-            $sth->execute(array($login));
+            $sth = $bdd->prepare("SELECT count(login) FROM Utilisateurs WHERE login=? OR email=?");
+            $sth->execute(array($login,$login));
             $row = $sth->fetch();
             if($row["count(login)"]==0)
-             echo"changer de nom d'utilisateur inexistant";
-             else{
-            $sth = $bdd->prepare("SELECT * FROM Utilisateurs where login=? ");
-            $sth->execute(array($login));
-            
+                echo" nom d'utilisateur ou email inexistant ";
+            else{
+            $sth = $bdd->prepare("SELECT * FROM Utilisateurs WHERE login=? OR email=?");
+            $sth->execute(array($login,$login));
             $row = $sth->fetch();
-          
-            
                 if(password_verify($mdp, $row['mdp'])){
                     $_SESSION['login']=$row['login'];
                     echo 'connexion réeussi '.$row['login'].'';
                   
                 }else{
-                
-                    echo"mdp incorretc";
+                    echo"mot de passe incorrecte";
                 }         
             }
         }
