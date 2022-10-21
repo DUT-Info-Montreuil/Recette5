@@ -59,6 +59,15 @@
        }
 
 
+       public function  afficherIngredientDeMaRecette($idRecette){
+        $bdd=parent::$bdd;
+        $sth=$bdd->prepare("SELECT nomIngredient,unite,Quantite FROM Utiliser NATURAL JOIN Ingredient WHERE idRecette=?");
+        $sth->execute(array($idRecette));
+        $rows= $sth->fetchAll();
+        return $rows;
+       }
+
+
          public function recupererListeIngredient(){
             $bdd=parent::$bdd;
             $sth = $bdd->prepare("SELECT * from Ingredient");

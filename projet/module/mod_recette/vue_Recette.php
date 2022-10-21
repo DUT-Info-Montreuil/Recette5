@@ -26,6 +26,16 @@
             
          }
 
+         public function afficherIngredientDeMaRecette($Ingredient){
+       
+            echo 'voici la liste des ingrédients';
+            foreach( $Ingredient as $value ){
+               echo '<br> '.$value['nomIngredient'].' : '.$value['Quantite'].''.$value['unite'].'';
+                
+            }
+             
+          }
+
          public function afficherChoixNbIngredient(){
             echo '</br>Ajouter une nouvelle Recette
        

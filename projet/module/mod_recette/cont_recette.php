@@ -50,6 +50,7 @@
    }
    public function afficherMaRecette(){
       $this->vue->afficherMaRecette($this->modele->afficherMaRecette($_GET['idRecette']));
+      $this->vue->afficherIngredientDeMaRecette($this->modele->afficherIngredientDeMaRecette($_GET['idRecette']));
    }
 
 
