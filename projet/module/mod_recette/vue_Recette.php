@@ -29,7 +29,7 @@
         public function afficher_form_Recette($tabIngr,$nbIngr){
             echo '</br>Ajouter une nouvelle Recette';
        
-            echo'  <form method="post" action="index.php?module=recette&action=ajouterRecetteDansLaBD">
+            echo'  <form method="post" action="index.php?module=recette&action=ajouterRecetteDansLaBD&nbIngr='.$nbIngr.'">
                 nom Recette : <input type="text" name="titre">
                 <br />
                 temps de préparation : <input type="text" name="tpsPreparration">
@@ -44,7 +44,7 @@
             ;
             for ($i=0; $i<$nbIngr; $i++) {
                 echo'<br>';
-                echo' Ingredient '.($i+1).'  <select> name="ingredient'.$i.'"';
+                echo' Ingredient '.($i+1).'  <select name="ingredient'.$i.'">';
             
                 foreach( $tabIngr as $value ){
                 echo'   <option value="'.$value['idIngredient'].' ">'.$value['nomIngredient'].'</option>';
@@ -53,9 +53,9 @@
             
         
         echo' </select>';
-        
-        echo' quantite <input type="texte" name"quantite"<br>';
-        echo' unite <input type="texte" name"unite"';   
+    
+         echo'  quantite : <input type="text" name="quantite'.$i.'">';   
+        echo'  unite : <input type="text" name="unite'.$i.'">';   
         echo'<br>';
         
 }

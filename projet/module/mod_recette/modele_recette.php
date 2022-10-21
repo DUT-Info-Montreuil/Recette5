@@ -16,29 +16,25 @@
             $sth = $bdd->prepare("INSERT INTO `Recette` (`idRecette`, `titre`, `tpsPreparration`, `datePublication`, `description`, `noteAnnexe`, `vegan`, `idUtilisateur`) VALUES (NULL, ?,?, now(),?, ?, NULL, ?)");
             $sth->execute(array($titre,$tpsPrepa,$description,$annexe,$row['idUtilisateur']));
         
-            $sth = $bdd->prepare("SELECT idRecette FROM tatable  WHERE idRecette = MAX(idRecette) )");
-            $sth->execute();
-            $row = $sth->fetch();
-
-            $sthh = $bdd->prepare(" INSERT INTO Utiliser (idRecette, idIngredient, Quantite, unite) VALUES (?, ?, ?, ?");
-            $sthh->execute(array(44,5,NULL,NULL));
          
-           /* for ($i=0; $i<$nbingr; $i++) {
-                
-                $sth = $bdd->prepare("SELECT idRecette FROM tatable  WHERE idRecette = MAX(idRecette) )");
-                
-               $sth->execute();
-                $row = $sth->fetch();
-                $sth = $bdd->prepare("INSERT INTO `Utiliser` (`idRecette`, `idIngredient`, `Quantite`, `unite`) VALUES (?, ?, ?, ?);");
-                $sth->execute(array($row['idRecette'],$tpsPrepa,$_POST['ingredient'.$i.''],$_POST['quantite'],$_POST['unite']));
-               
-                
-            }
-           */
+         
        
          } 
 
+         public function ajouter_Ingredient_dans_recette($ingr,$quantite,$unite){
+            $bdd=parent::$bdd;
+            $sth = $bdd->prepare("SELECT MAX(idRecette) FROM Recette ");
+            $sth->execute();
+            $row = $sth->fetch();
+        
+             $sthh=$bdd->prepare("INSERT INTO `Utiliser` (`idRecette`, `idIngredient`, `Quantite`, `unite`) VALUES (?, ?, ?, ?)");
+             $sthh->execute(array($row['MAX(idRecette)'],$ingr,$quantite,$unite));
+        }
+
+
+
          public  function afficherMesrecette(){
+            
         
             $bdd=parent::$bdd;
             $sth = $bdd->prepare("SELECT idUtilisateur from Utilisateurs where login=?");
