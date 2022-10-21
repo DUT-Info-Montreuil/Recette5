@@ -44,7 +44,7 @@
                   
                 }else{
                 
-                    echo"mdp incorretc";
+                    echo"mdp incorrect";
                 }         
             }
         }
