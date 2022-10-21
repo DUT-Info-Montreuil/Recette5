@@ -48,10 +48,15 @@
            
             return $rows;
           
-          
-           
-       
          } 
+
+       public function  afficherMaRecette($idRecette){
+        $bdd=parent::$bdd;
+        $sthh = $bdd->prepare('SELECT * from Recette where idRecette=?') ;
+            $sthh->execute(array($idRecette));
+            $rows= $sthh->fetch();
+            return $rows;
+       }
 
 
          public function recupererListeIngredient(){

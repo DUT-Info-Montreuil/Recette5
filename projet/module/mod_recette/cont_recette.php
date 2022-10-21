@@ -48,6 +48,11 @@
    public function afficherMesRecettes(){
       $this->vue->afficherMesRecette($this->modele->afficherMesRecette());
    }
+   public function afficherMaRecette(){
+      $this->vue->afficherMaRecette($this->modele->afficherMaRecette($_GET['idRecette']));
+   }
+
+
       public function exec(){     
          switch ($this->action) {
          
@@ -68,6 +73,11 @@
             case "afficherMesRecette":
        
                $this->afficherMesRecettes();
+            
+            break;
+            case "afficherMaRecette":
+       
+               $this->afficherMaRecette();
             
             break;
          }      
