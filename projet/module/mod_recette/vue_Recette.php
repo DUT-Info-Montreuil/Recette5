@@ -30,7 +30,7 @@
        
             echo 'voici la liste des ingrédients';
             foreach( $Ingredient as $value ){
-               echo '<br> '.$value['nomIngredient'].' : '.$value['Quantite'].''.$value['unite'].'';
+               echo '<br> '.$value['nomIngredient'].' : '.$value['Quantite'].' '.$value['unite'].'';
                 
             }
              
