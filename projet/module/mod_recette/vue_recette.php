@@ -53,11 +53,5 @@
             echo '<input type="submit" value="ajouter" name="button1"></form>' ;      
             echo $_POST['button1'];
         }
-
-
-
-        public function menu(){
-    
-        }
     }
 ?>

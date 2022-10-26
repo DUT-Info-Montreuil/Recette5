@@ -1,3 +1,5 @@
+/*---------------SITE PRINCIPAL---------------------*/
+
 body{
 	width:1500px;
 	margin : auto;
@@ -34,6 +36,8 @@ body header{
 
 }
 
+
+/*---------------FORMULAIRE CONNEXION/INSCRIPTION---------------------*/
 
 form{
 	width: 500px;
@@ -84,3 +88,4 @@ form .corps-formulaire .saisie input {
   }
   
   
+/*---------------NAVIGATION---------------------*/
