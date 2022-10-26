@@ -35,8 +35,12 @@
          }
 
          public function afficherPhoto($photo){
-           
+           if(!isset($photo['photo'])){
+            echo '<img src="image/index.jpeg" width="200" height="200">';
+           }else{
             echo '<img src="image_recette/'.$photo['photo'].'" width="200" height="200">';
+           }
+            
          }
 
          public function afficherIngredientDeMaRecette($Ingredient){
