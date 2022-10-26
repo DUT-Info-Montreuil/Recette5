@@ -12,11 +12,7 @@
             <h1 id="titre">Recette5</h1>
             <?php  
             $compLogo->affichage();
-            ?> 
-            
-
-            <?php 
-                $compMenu->affichage();
+            $compMenu->affichage();
             ?>
 		</header>	
         <main>	

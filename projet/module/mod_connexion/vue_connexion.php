@@ -9,7 +9,7 @@
        
         public function afficher_form_inscription(){ 
             echo
-            '  </br> </br><form method="post" action="index.php?module=connexion&action=inscription" >
+            '<form method="post" action="index.php?module=connexion&action=inscription" >
             <h1>Inscrivez-vous</h1>
                 <div class="separation"></div>
                 <div class="corps-formulaire">
@@ -38,7 +38,7 @@
                 echo"Vous êtes déjà connecté";
             }else{  
                 echo
-                '</br></br><form method="post" action="index.php?module=connexion&action=connexion" >
+                '<form method="post" action="index.php?module=connexion&action=connexion" >
                 <h1>Connectez-vous</h1>
                 <div class="separation"></div>
                 <div class="corps-formulaire">
@@ -59,7 +59,5 @@
         }
 
 
-        public function menu(){
-        }
     }
 ?>

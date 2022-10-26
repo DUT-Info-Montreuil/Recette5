@@ -96,11 +96,5 @@
         echo ' <input type="submit" value="envoyer"> </form>';
          
         }
-
-
-
-        public function menu(){
-    
-        }
     }
 ?>

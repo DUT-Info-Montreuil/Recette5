@@ -1,22 +1,27 @@
+/*---------------SITE PRINCIPAL---------------------*/
+
 body{
 	width:1500px;
 	margin : auto;
     background-color:rgb(148, 148, 148);
+
 }
 
 main{
-	margin-top: 50px;
-	
-
+	margin-top: 20px;
 	font-size: 25px;
 	background-color:rgb(172, 76, 76);
+	padding: 50px;
 }
 h1#titre{
 	text-align : center;
 	margin : 0px;	
 }
 header{
-	font-size: 25px
+	font-size: 25px;
+	padding: 20px;
+	padding-bottom: 50px;;
+	
 }
 
 img#logo{
@@ -34,6 +39,8 @@ body header{
 
 }
 
+
+/*---------------FORMULAIRE CONNEXION/INSCRIPTION---------------------*/
 
 form{
 	width: 500px;
@@ -84,3 +91,77 @@ form .corps-formulaire .saisie input {
   }
   
   
+/*---------------RECETTE---------------------*/
+
+#recette {
+	width: 300px;
+	height: 300px;
+	margin: 15px;
+	display: inline-block;
+	background-color: rgb(204, 132, 127);
+	border: 3px solid #000000;
+	border-radius:15px;
+}
+
+#recette .photo{
+	height: 150px;
+	background-color: aqua;
+	border-top-left-radius:15px;
+	border-top-right-radius:15px;
+	border-bottom: 3px solid #000000;
+}
+
+#recette h1{
+	font-size: 30px;
+	text-align: center;
+	text-decoration: underline;
+	margin:0px;
+	margin-top: 5px;
+}
+
+#recette p{
+		font-size: 15px;
+		margin: 0px;
+}
+
+#recette #pho{
+	max-width: 300px;
+	min-width: 300px;
+	min-height: 150px;
+	max-height: 150px;
+	border-top-left-radius:15px;
+	border-top-right-radius:15px;
+	
+}
+
+/*---------------MENU---------------------*/
+
+nav .nav{
+	background-color: #000000;
+	border-radius:10px;
+}
+
+
+nav .nav #lien{
+	display: inline-block;
+	padding: 20px;
+}
+
+
+nav .profil {
+	float:right ;
+	
+	text-align: center;
+}
+
+nav  a{
+	color : white;
+	font-style: normal;
+	text-decoration: none;
+	font-size: 20px;
+	padding: 4px;
+	border-radius:20px;
+	border: 2px solid #ffffff;
+	margin: 15px;
+
+}

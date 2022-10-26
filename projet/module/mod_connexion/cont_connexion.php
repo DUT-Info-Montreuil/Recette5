@@ -54,7 +54,6 @@
                echo 'bienvenue';
                break;  
          }      
-         $this->vue->menu();
          global $affiche; 
          $affiche=$this->vue->getAffichage();   
    } 
