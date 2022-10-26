@@ -11,8 +11,7 @@
          public function afficherMesRecette($recette){
        
             foreach( $recette as $value ){
-            //    echo'id recette:'.$value['idRecette'].'  titre '.$value['titre'].' description '.$value['description'].' <br>';
-            echo '<br><a href="index.php?module=recette&action=afficherMaRecette&idRecette='.$value['idRecette'].'"> '.$value['titre'].'</a>';
+           echo '<br><a href="index.php?module=recette&action=afficherMaRecette&idRecette='.$value['idRecette'].'"> '.$value['titre'].'</a>';
  
             }
          }
@@ -20,9 +19,9 @@
 
          public function afficherMaRecette($recette){
        
-            echo '<h1> '.$recette['titre'].'</h1>';
-           echo' description  : <br>'.$recette['description'].' <br>';
-          
+            echo '<h1> '.$recette['titre'].'</h1>';   
+            echo' description  : <br>'.$recette['description'].' <br>';
+            
             
          }
 
@@ -32,13 +31,16 @@
          }
 
          public function afficherIngredientDeMaRecette($Ingredient){
-       
             echo '<h2>voici la liste des ingrédients</h2>';
             foreach( $Ingredient as $value ){
                echo '<br> '.$value['nomIngredient'].' : '.$value['Quantite'].' '.$value['unite'].'';
-                
             }
-             
+          }
+
+          public function afficherNbLikes($nbLike){
+            echo "nb de likes : ".$nbLike['count(aime)']; 
+
+            
           }
 
          public function afficherChoixNbIngredient(){
@@ -56,11 +58,13 @@
             echo '</br>Ajouter une nouvelle Recette<br>';
           
             echo'  <form method="post" action="index.php?module=recette&action=ajouterRecetteDansLaBD&nbIngr='.$nbIngr.'" enctype="multipart/form-data">
-             <label for="file">Fichier</label>
-              <input type="file" name="file">
-            nom Recette : <input type="text" name="titre">
+               <label for="file">Fichier</label>
+               <input type="file" name="file"><br />
+               <label for="titre"> nom Recette :</label>
+               <input type="text" name="titre">
                 <br />
-                temps de préparation : <input type="text" name="tpsPreparration">
+                <label for="tpsPreparrration">temps de préparation : </label>
+                <input type="text" name="tpsPreparration">
                 <br />
                 Description: <input type="textArea" name="description">
                 <br />
@@ -76,23 +80,20 @@
                 foreach( $tabIngr as $value ){
                 echo'   <option value="'.$value['idIngredient'].' ">'.$value['nomIngredient'].'</option>';
                 }     
-            echo' </select>';
-            echo'  quantite : <input type="text" name="quantite'.$i.'">';   
-            echo'<select name="unite'.$i.'">';   
-            echo'<option value="kg">kg</option>';
-            echo'<option value="g">g</option>';
-            echo'<option value="mg">mg</option>';
-            echo'<option value="nb">nb</option>';
-            echo'<option value="l">l</option>';
-            echo'<option value="ml">ml</option>';
-            echo'</select><br><br>';
-            echo'<br>';
-            
+               echo' </select>';
+               echo'  quantite : <input type="text" name="quantite'.$i.'">';   
+               echo'<select name="unite'.$i.'">';   
+               echo'<option value="kg">kg</option>';
+               echo'<option value="g">g</option>';
+               echo'<option value="mg">mg</option>';
+               echo'<option value="nb">nb</option>';
+               echo'<option value="l">l</option>';
+               echo'<option value="ml">ml</option>';
+               echo'</select><br><br>';
+               echo'<br>';
+               
           }
-    
 
-
-          
         echo ' <input type="submit" value="envoyer"> </form>';
          
         }
