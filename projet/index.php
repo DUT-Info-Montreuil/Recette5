@@ -2,8 +2,10 @@
 require_once('module/mod_connexion/mod_connexion.php');
 require_once('module/mod_recette/mod_recette.php');
 require_once('composants/menu/comp_menu.php');
+require_once('composants/logo/comp_logo.php');
 require_once('connexion.php');
 $compMenu = new CompMenu();
+$compLogo = new CompLogo();
 session_start();
 $_SESSION['login'] = isset($_SESSION['login']) ? $_SESSION['login'] : null;
 $affiche;
