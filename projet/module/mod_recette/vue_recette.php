@@ -11,8 +11,17 @@
          public function afficherMesRecette($recette){
        
             foreach( $recette as $value ){
-           echo '<br><a href="index.php?module=recette&action=afficherMaRecette&idRecette='.$value['idRecette'].'"> '.$value['titre'].'</a>';
- 
+               echo '<a href="index.php?module=recette&action=afficherMaRecette&idRecette='.$value['idRecette'].'">
+
+               <div id="recette">
+                   <div class="photo">
+                       <img id=pho alt="photo de la recette" src="image/index.jpeg" >
+                   </div>
+                   <div class="info">
+                       <h1>'.$value['titre'].'</h1>
+                       <p>'.$value['description'].'</p>
+                   </div>
+               </div> </a>';
             }
          }
 
@@ -27,7 +36,7 @@
 
          public function afficherPhoto($photo){
            
-            echo '<img src="image_recette/'.$photo['photo'].'" alt="Girl in a jacket" width="200" height="200">';
+            echo '<img src="image_recette/'.$photo['photo'].'" width="200" height="200">';
          }
 
          public function afficherIngredientDeMaRecette($Ingredient){

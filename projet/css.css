@@ -117,11 +117,15 @@ form .corps-formulaire .saisie input {
 	text-decoration: underline;
 	margin:0px;
 	margin-top: 5px;
+	color: #000000;
+	text-decoration: none;
 }
 
 #recette p{
-		font-size: 15px;
-		margin: 0px;
+	font-size: 15px;
+	margin: 0px;
+	color: #000000;
+	text-decoration: none;
 }
 
 #recette #pho{
