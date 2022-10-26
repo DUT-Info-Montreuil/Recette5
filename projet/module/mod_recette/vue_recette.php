@@ -40,7 +40,6 @@
           public function afficherNbLikes($nbLike){
             echo "nb de likes : ".$nbLike['count(aime)']; 
 
-            
           }
 
          public function afficherChoixNbIngredient(){
