@@ -13,11 +13,10 @@
             $compLogo->affichage();
             ?> 
             
-            <div id="menu">
+
             <?php 
                 $compMenu->affichage();
             ?>
-            </div>
 		</header>	
         <main>	
             <?php

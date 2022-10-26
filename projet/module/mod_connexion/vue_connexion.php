@@ -7,16 +7,28 @@
             parent::__construct();         
          }
        
-        public function afficher_form_inscription(){
-            echo '</br>INSCRIPTION';   
-            echo'  </br> </br><form method="post" action="index.php?module=connexion&action=inscription">
-            Login : <input type="text" name="login">
-            </br>
-            Adresse mail : <input type="email" name="email">
-            </br>
-            Mot de passe : <input type="password" name="mdp">
-            </br></br>
-            <input type="submit" value="envoyer">
+        public function afficher_form_inscription(){ 
+            echo
+            '  </br> </br><form method="post" action="index.php?module=connexion&action=inscription" >
+            <h1>Inscrivez-vous</h1>
+                <div class="separation"></div>
+                <div class="corps-formulaire">
+                    <div class="saisie">
+                        <label>Login</label>
+                        <input type="text" name="login">
+                    </div>
+                    <div class="saisie">
+                        <label>Adresse mail</label>
+                        <input type="email" name="email">
+                    </div>   
+                    <div class="saisie">
+                        <label>Mot de passe</label>
+                        <input type="password" name="mdp">
+                    </div>    
+                </div>
+                <div class="button" align="center">
+                    <button>Envoyer</button>
+                </div>
             </form>';           
         }
 
@@ -25,13 +37,23 @@
             if($_SESSION['login']!=null){
                 echo"Vous êtes déjà connecté";
             }else{  
-                echo '</br>CONNEXION';
-                echo'</br></br><form method="post" action="index.php?module=connexion&action=connexion">
-                Login / Adresse mail <input type="text" name="login">
-                </br>
-                Mot de passe : <input type="password" name="mdp">
-                </br></br>
-                <input type="submit" value="submit">
+                echo
+                '</br></br><form method="post" action="index.php?module=connexion&action=connexion" >
+                <h1>Connectez-vous</h1>
+                <div class="separation"></div>
+                <div class="corps-formulaire">
+                    <div class="saisie">
+                        <label>Votre Login</label>
+                        <input type="text" name="login">
+                    </div>
+                    <div class="saisie">
+                        <label>Mot de passe</label>
+                        <input type="password" name="mdp">
+                    </div>    
+                </div>
+                <div class="button" align="center">
+                    <button>Envoyer</button>
+                </div>
                 </form>';
             }          
         }
