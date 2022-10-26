@@ -12,7 +12,7 @@
        
             foreach( $recette as $value ){
             //    echo'id recette:'.$value['idRecette'].'  titre '.$value['titre'].' description '.$value['description'].' <br>';
-            echo '<br><a href="index.php?module=recette&action=afficherMaRecette&idRecette='.$value['idRecette'].'">id recette:'.$value['idRecette'].' '.$value['titre'].'</a>';
+            echo '<br><a href="index.php?module=recette&action=afficherMaRecette&idRecette='.$value['idRecette'].'"> '.$value['titre'].'</a>';
 
             }
          }
@@ -20,15 +20,15 @@
 
          public function afficherMaRecette($recette){
        
-            
-           echo'id recette:'.$recette['idRecette'].'  titre '.$recette['titre'].' description '.$recette['description'].' <br>';
+            echo '<h1> '.$recette['titre'].'</h1>';
+           echo' description  : <br>'.$recette['description'].' <br>';
           
             
          }
 
          public function afficherIngredientDeMaRecette($Ingredient){
        
-            echo 'voici la liste des ingrédients';
+            echo '<h2>voici la liste des ingrédients</h2>';
             foreach( $Ingredient as $value ){
                echo '<br> '.$value['nomIngredient'].' : '.$value['Quantite'].' '.$value['unite'].'';
                 
