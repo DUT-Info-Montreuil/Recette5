@@ -26,6 +26,11 @@
             
          }
 
+         public function afficherPhoto($photo){
+           
+            echo '<img src="image_recette/'.$photo['photo'].'" alt="Girl in a jacket" width="200" height="200">';
+         }
+
          public function afficherIngredientDeMaRecette($Ingredient){
        
             echo '<h2>voici la liste des ingrédients</h2>';
@@ -47,11 +52,13 @@
          }
 
         public function afficher_form_Recette($tabIngr,$nbIngr){
-            echo '</br>Ajouter une nouvelle Recette';
-            echo'<label for="file">Fichier</label>';
-            echo'<input type="file" name="file">';
-            echo'  <form method="post" action="index.php?module=recette&action=ajouterRecetteDansLaBD&nbIngr='.$nbIngr.'" enctype="multipart/form-data>
-                nom Recette : <input type="text" name="titre">
+            
+            echo '</br>Ajouter une nouvelle Recette<br>';
+          
+            echo'  <form method="post" action="index.php?module=recette&action=ajouterRecetteDansLaBD&nbIngr='.$nbIngr.'" enctype="multipart/form-data">
+             <label for="file">Fichier</label>
+              <input type="file" name="file">
+            nom Recette : <input type="text" name="titre">
                 <br />
                 temps de préparation : <input type="text" name="tpsPreparration">
                 <br />
@@ -88,12 +95,13 @@
         echo'</select><br><br>';
         echo'<br>';
         
-}
+    }
+    
 
 
           
        echo ' <input type="submit" value="envoyer"> </form>';
-                     
+         
         }
 
 

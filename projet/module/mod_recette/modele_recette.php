@@ -23,6 +23,30 @@
        
          } 
 
+
+         public function ajouterPhotoDansLaRecette($photo){
+            $bdd=parent::$bdd;
+            $sth = $bdd->prepare("SELECT MAX(idRecette) FROM Recette ");
+            $sth->execute();
+            $row = $sth->fetch();
+
+
+            $sthh=$bdd->prepare("INSERT INTO `photo` (`idRecette`, `photo`) VALUES (?, ?)");
+            $sthh->execute(array($row['MAX(idRecette)'],$photo));
+
+
+         }
+
+
+         public function afficherPhoto($recette){
+            $bdd=parent::$bdd;
+            $sth = $bdd->prepare("SELECT photo FROM photo where idRecette=? ");
+            $sth->execute(array($recette));
+            $row = $sth->fetch();
+            return $row;
+
+         }
+
          public function ajouter_Ingredient_dans_recette($ingr,$quantite,$unite){
             $bdd=parent::$bdd;
             $sth = $bdd->prepare("SELECT MAX(idRecette) FROM Recette ");
