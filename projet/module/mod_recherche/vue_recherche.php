@@ -14,7 +14,7 @@ class VueRecherche extends VueGenerique{
 
                 '<div id="recette">
                     <div class="photo">
-
+                        <img id=pho alt="photo de la recette" src="image/index.jpeg" >
                     </div>
                     <div class="info">
                         <h1>'.$value['titre'].'</h1>

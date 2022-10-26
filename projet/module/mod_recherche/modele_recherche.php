@@ -13,5 +13,13 @@
             $rows= $sthh->fetchAll();
             return $rows;
         }
+
+        public function trouverPhoto($idR){
+            $bdd=parent::$bdd;
+            $sth = $bdd->prepare('SELECT photo from photo where idRecette = ?');
+            $sth->execute(array($idR));
+            $row = $sth->fetch();
+            return $row;
+        }
     }
 ?>

@@ -4,20 +4,24 @@ body{
 	width:1500px;
 	margin : auto;
     background-color:rgb(148, 148, 148);
+
 }
 
 main{
-	margin-top: 50px;
-
+	margin-top: 20px;
 	font-size: 25px;
 	background-color:rgb(172, 76, 76);
+	padding: 50px;
 }
 h1#titre{
 	text-align : center;
 	margin : 0px;	
 }
 header{
-	font-size: 25px
+	font-size: 25px;
+	padding: 20px;
+	padding-bottom: 50px;;
+	
 }
 
 img#logo{
@@ -95,7 +99,7 @@ form .corps-formulaire .saisie input {
 	margin: 15px;
 	display: inline-block;
 	background-color: rgb(204, 132, 127);
-	border: 1px solid #000000;
+	border: 3px solid #000000;
 	border-radius:15px;
 }
 
@@ -104,6 +108,7 @@ form .corps-formulaire .saisie input {
 	background-color: aqua;
 	border-top-left-radius:15px;
 	border-top-right-radius:15px;
+	border-bottom: 3px solid #000000;
 }
 
 #recette h1{
@@ -119,3 +124,44 @@ form .corps-formulaire .saisie input {
 		margin: 0px;
 }
 
+#recette #pho{
+	max-width: 300px;
+	min-width: 300px;
+	min-height: 150px;
+	max-height: 150px;
+	border-top-left-radius:15px;
+	border-top-right-radius:15px;
+	
+}
+
+/*---------------MENU---------------------*/
+
+nav .nav{
+	background-color: #000000;
+	border-radius:10px;
+}
+
+
+nav .nav #lien{
+	display: inline-block;
+	padding: 20px;
+}
+
+
+nav .profil {
+	float:right ;
+	
+	text-align: center;
+}
+
+nav  a{
+	color : white;
+	font-style: normal;
+	text-decoration: none;
+	font-size: 20px;
+	padding: 4px;
+	border-radius:20px;
+	border: 2px solid #ffffff;
+	margin: 15px;
+
+}

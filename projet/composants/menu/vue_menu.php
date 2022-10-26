@@ -9,23 +9,35 @@ class VueMenu{
     public function menu(){
             if($_SESSION['login'] != null){
             
-            $this->menu= $this->menu."\n". '<a href="index.php?module=connexion&action=bienvenue">Acceuil</a>';
-            $this->menu= $this->menu."\n". '<a href="index.php?module=recette&action=AfficherFormAjoutRecette">Ajouter Recette</a>';
-            $this->menu= $this->menu."\n". '<a href="index.php?module=recette&action=afficherMesRecette"> afficher Mes Recette</a>';
-            $this->menu= $this->menu."\n". '<a href="index.php?module=connexion&action=deconnexion">Deconnexion</a>';
+            $this->menu=
+            '<nav>
+                <div class="nav">
+                    <div id="lien" class="onglets">
+                        <a href="index.php?module=connexion&action=bienvenue">Acceuil</a>
+                        <a href="index.php?module=recherche&action=toute">Recette</a>
+                        <a href="index.php?module=recette&action=AfficherFormAjoutRecette">Ajouter Recette</a>
+                        <a href="index.php?module=recette&action=afficherMesRecette">Mes Recette</a>
+                    </div>
+                    <div id="lien" class="profil">
+                        <a href="index.php?module=connexion&action=deconnexion">Deconnexion</a>
+                    </div>
+                </div>
+            </nav>';
 
            
             }else{
 
              $this->menu=  
              '<nav>
-                <div class="onglets">
-                    <a href="index.php?module=connexion&action=bienvenue">Acceuil</a>
-                    <a href="index.php?module=recherche&action=toute">Recette</a>
-                </div>
-                <div class="profil">
-                <a href="index.php?module=connexion&action=AfficherFormulaireConnexion">Se connexion</a>
-                <a href="index.php?module=connexion&action=AfficherFormulaireInscription">S\'inscrire</a>
+                <div class="nav">
+                    <div id="lien" class="onglets">
+                        <a href="index.php?module=connexion&action=bienvenue">Acceuil</a>
+                        <a href="index.php?module=recherche&action=toute">Recette</a>
+                    </div>
+                    <div id="lien" class="profil">
+                        <a href="index.php?module=connexion&action=AfficherFormulaireConnexion">Connexion</a>
+                        <a href="index.php?module=connexion&action=AfficherFormulaireInscription">Inscription</a>
+                    </div>
                 </div>
              </nav>';
       

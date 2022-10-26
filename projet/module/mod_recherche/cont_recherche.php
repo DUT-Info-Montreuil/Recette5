@@ -21,17 +21,19 @@
         
            case "bienvenue":
               echo 'bienvenue';
-           break;  
+             break;  
            case "toute":
              $this->afficherRecette();
-           break;
+             break;
         }      
         global $affiche; 
         $affiche=$this->vue->getAffichage();   
     } 
 
     public function afficherRecette(){
-        $this->vue->afficherRecette($this->modele->touteRecette());
+      $recette = $this->modele->touteRecette();
+      
+      $this->vue->afficherRecette($recette);
     }
 }
 ?>
