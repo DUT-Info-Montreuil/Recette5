@@ -8,7 +8,7 @@
 
         public function touteRecette(){
             $bdd=parent::$bdd;
-            $sthh = $bdd->prepare('SELECT * from Recette') ;
+            $sthh = $bdd->prepare('SELECT * from Recette natural join photo') ;
             $sthh->execute(array());
             $rows= $sthh->fetchAll();
             return $rows;

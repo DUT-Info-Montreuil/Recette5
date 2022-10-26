@@ -10,18 +10,21 @@ class VueRecherche extends VueGenerique{
             echo 'Aucune recette ';
         }else{
             foreach($tabR as $value){
+               
                 echo 
 
                 '<div id="recette">
                     <div class="photo">
-                        <img id=pho alt="photo de la recette" src="image/index.jpeg" >
+                        <img id=pho alt="photo de la recette" src="image_recette/'.$value['photo'].'" >
                     </div>
                     <div class="info">
                         <h1>'.$value['titre'].'</h1>
                         <p>'.$value['description'].'</p>
                     </div>
                 </div>';
+             
             }
+            
         }
     }
 }

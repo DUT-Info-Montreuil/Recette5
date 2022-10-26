@@ -15,7 +15,7 @@ class VueMenu{
                     <div id="lien" class="onglets">
                         <a href="index.php?module=connexion&action=bienvenue">Acceuil</a>
                         <a href="index.php?module=recherche&action=toute">Recette</a>
-                        <a href="index.php?module=recette&action=AfficherFormAjoutRecette">Ajouter Recette</a>
+                        <a href="index.php?module=recette&action=choisirNbIngredient">Ajouter Recette</a>
                         <a href="index.php?module=recette&action=afficherMesRecette">Mes Recette</a>
                     </div>
                     <div id="lien" class="profil">
