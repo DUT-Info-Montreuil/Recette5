@@ -8,7 +8,6 @@ body{
 
 main{
 	margin-top: 50px;
-	height: 600px;
 
 	font-size: 25px;
 	background-color:rgb(172, 76, 76);
@@ -88,4 +87,35 @@ form .corps-formulaire .saisie input {
   }
   
   
-/*---------------NAVIGATION---------------------*/
+/*---------------RECETTE---------------------*/
+
+#recette {
+	width: 300px;
+	height: 300px;
+	margin: 15px;
+	display: inline-block;
+	background-color: rgb(204, 132, 127);
+	border: 1px solid #000000;
+	border-radius:15px;
+}
+
+#recette .photo{
+	height: 150px;
+	background-color: aqua;
+	border-top-left-radius:15px;
+	border-top-right-radius:15px;
+}
+
+#recette h1{
+	font-size: 30px;
+	text-align: center;
+	text-decoration: underline;
+	margin:0px;
+	margin-top: 5px;
+}
+
+#recette p{
+		font-size: 15px;
+		margin: 0px;
+}
+
