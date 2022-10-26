@@ -75,10 +75,20 @@
         echo' </select>';
     
          echo'  quantite : <input type="text" name="quantite'.$i.'">';   
-        echo'  unite : <input type="text" name="unite'.$i.'">';   
+     
+
+        echo'<select name="unite'.$i.'">';   
+        echo'<option value="kg">kg</option>';
+        echo'<option value="g">g</option>';
+        echo'<option value="mg">mg</option>';
+        echo'<option value="nb">nb</option>';
+        echo'<option value="l">l</option>';
+        echo'<option value="ml">ml</option>';
+        echo'</select><br><br>';
         echo'<br>';
         
 }
+
 
           
        echo ' <input type="submit" value="envoyer"> </form>';

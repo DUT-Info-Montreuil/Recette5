@@ -33,9 +33,7 @@
      $this->modele->ajouter_recette_dans_la_BD($titre,$tpsPrepa,$description,$annexe,$vegan,$this->nbingr);
 
       for ($i=0; $i<$_GET['nbIngr']; $i++) {
-         echo 'quantite :'.$_POST['quantite'.$i.''];
-       echo 'unite :'.$_POST['unite'.$i.''];
-       echo 'ingredient : '.$_POST['ingredient'.$i.'']; 
+
 
        $this->modele->ajouter_Ingredient_dans_recette($_POST['ingredient'.$i.''],$_POST['quantite'.$i.''],$_POST['unite'.$i.'']);
       }
