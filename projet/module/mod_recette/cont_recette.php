@@ -12,6 +12,8 @@
          $this->modele=new ModeleRecette();
          $this->action=isset($_GET['action']) ?$_GET['action']:"bienvenue";
         
+
+         
       }
 
 

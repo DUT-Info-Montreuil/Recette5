@@ -1,25 +1,38 @@
 body{
 	width:1500px;
-	
-	margin: auto;
-    background-color:rgb(196, 196, 196);
-	text-align: center;
+	margin : auto;
+    
 }
 
-header{
-	
-}
 
-header,a{
-	margin-left: 20px;
-}
 
 main{
+	margin-top: 50px;
 	height: 600px;
+
 	font-size: 25px;
-	
+	background-color:rgb(196, 196, 196);
+}
+h1#titre{
+	text-align : center;
+	margin : 0px;	
+}
+header{
+	font-size: 25px
+}
+
+img#logo{
+	height: 80px;
+	margin-right: 20px;;
 }
 
 footer{
-	
+	text-align : center;
+	background-color:rgb(172, 76, 76);
 }
+
+body header{
+	background-color:rgb(172, 76, 76);
+
+}
+

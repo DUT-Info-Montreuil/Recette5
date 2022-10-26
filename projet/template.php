@@ -7,13 +7,17 @@
         <link rel="stylesheet" href="css.css"/>
 	</head>
 	<body>
-        <header>  
-             
-            <h1>Recette5</h1>
+        <header>
+            <h1 id="titre">Recette5</h1>
+            <?php  
+            $compLogo->affichage();
+            ?> 
+            
+            <div id="menu">
             <?php 
                 $compMenu->affichage();
-            
             ?>
+            </div>
 		</header>	
         <main>	
             <?php
