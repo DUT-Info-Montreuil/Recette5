@@ -48,8 +48,9 @@
 
         public function afficher_form_Recette($tabIngr,$nbIngr){
             echo '</br>Ajouter une nouvelle Recette';
-       
-            echo'  <form method="post" action="index.php?module=recette&action=ajouterRecetteDansLaBD&nbIngr='.$nbIngr.'">
+            echo'<label for="file">Fichier</label>';
+            echo'<input type="file" name="file">';
+            echo'  <form method="post" action="index.php?module=recette&action=ajouterRecetteDansLaBD&nbIngr='.$nbIngr.'" enctype="multipart/form-data>
                 nom Recette : <input type="text" name="titre">
                 <br />
                 temps de préparation : <input type="text" name="tpsPreparration">

@@ -29,14 +29,12 @@
       $tpsPrepa=$_POST['tpsPreparration'];
       $description=$_POST['description'];
       $annexe=$_POST['annexe'];
-     $vegan=$_POST['vegan'];
+      $vegan=$_POST['vegan'];
 
 
      $this->modele->ajouter_recette_dans_la_BD($titre,$tpsPrepa,$description,$annexe,$vegan,$this->nbingr);
 
       for ($i=0; $i<$_GET['nbIngr']; $i++) {
-
-
        $this->modele->ajouter_Ingredient_dans_recette($_POST['ingredient'.$i.''],$_POST['quantite'.$i.''],$_POST['unite'.$i.'']);
       }
    }
