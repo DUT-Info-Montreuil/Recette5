@@ -52,14 +52,18 @@
 
             if(!in_array($extension, $extensions)){
                echo'mauvaise extension';
+            }else if($size <= $maxSize){
+               echo "fichier trop grand";
             }else{
                echo "Une erreur est survenue";
+            }
+               
             }
             
          }
         
      }
-   }
+   
     
    
 
