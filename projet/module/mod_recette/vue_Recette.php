@@ -13,7 +13,7 @@
             foreach( $recette as $value ){
             //    echo'id recette:'.$value['idRecette'].'  titre '.$value['titre'].' description '.$value['description'].' <br>';
             echo '<br><a href="index.php?module=recette&action=afficherMaRecette&idRecette='.$value['idRecette'].'"> '.$value['titre'].'</a>';
-
+ 
             }
          }
 
