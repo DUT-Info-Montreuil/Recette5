@@ -15,8 +15,8 @@ class VueMenu{
 
            
             }else{
-             $this->menu = $this->menu."\n".'<a href="index.php?module=connexion&action=AfficherFormulaireConnexion">Se connecter</a>';
-             $this->menu = $this->menu."\n".'<a href="index.php?module=connexion&action=AfficherFormulaireInscription">S inscrire</a>';
+             $this->menu = $this->menu."\n".'<a href="index.php?module=connexion&action=AfficherFormulaireConnexion">Connexion</a>';
+             $this->menu = $this->menu."\n".'<a href="index.php?module=connexion&action=AfficherFormulaireInscription">Inscription</a>';
       
             }
             

@@ -26,11 +26,11 @@
                 echo"Vous êtes déjà connecté";
             }else{  
                 echo '</br>CONNEXION';
-                echo'  </br></br>  <form method="post" action="index.php?module=connexion&action=connexion">
-                Login ou Adresse mail <input type="text" name="login">
-                <br />
+                echo'</br></br><form method="post" action="index.php?module=connexion&action=connexion">
+                Login / Adresse mail <input type="text" name="login">
+                </br>
                 Mot de passe : <input type="password" name="mdp">
-                <br />
+                </br></br>
                 <input type="submit" value="submit">
                 </form>';
             }          

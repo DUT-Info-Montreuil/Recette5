@@ -1,7 +1,7 @@
 body{
 	width:1500px;
 	margin : auto;
-    background-color:rgb(196, 196, 196);
+    
 }
 
 
@@ -9,10 +9,16 @@ body{
 main{
 	height: 600px;
 	font-size: 25px;
-	
+	background-color:rgb(196, 196, 196);
 }
 
 footer{
 	text-align : center;
+	background-color:rgb(172, 76, 76);
+}
+
+body header{
+	background-color:rgb(172, 76, 76);
+
 }
 

@@ -10,6 +10,9 @@
          $this->vue=new VueRecette();
          $this->modele=new ModeleRecette();
          $this->action=isset($_GET['action']) ?$_GET['action']:"bienvenue";
+        
+
+         
       }
 
 

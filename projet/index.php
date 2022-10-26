@@ -23,11 +23,6 @@ switch ($module) {
       break;
 }
 $_SESSION['login'] = isset($_SESSION['login']) ? $_SESSION['login'] : null;
-if($_SESSION['login'] != null){
-    echo 'Compte : '.$_SESSION['login']."</br>";
-}else{
-    echo 'Connectez vous</br>';
-}
 
 
 include_once('template.php');
