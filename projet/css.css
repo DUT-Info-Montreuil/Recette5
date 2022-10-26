@@ -105,7 +105,7 @@ form .corps-formulaire .saisie input {
 
 #recette .photo{
 	height: 150px;
-	background-color: aqua;
+	background-color: black;
 	border-top-left-radius:15px;
 	border-top-right-radius:15px;
 	border-bottom: 3px solid #000000;
