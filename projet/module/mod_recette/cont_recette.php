@@ -31,10 +31,8 @@
          $name = $photo['file']['name'];
          $size = $photo['file']['size'];
          $error = $photo['file']['error'];
-     
          $tabExtension = explode('.', $name);
          $extension = strtolower(end($tabExtension));
-     
          $extensions = ['jpg', 'png', 'jpeg', 'gif'];
          $maxSize = 4000000000;
     
@@ -69,25 +67,18 @@
 
        
    public function ajouterRecetteDansLaBD(){
-     
-
       $titre=$_POST['titre'];
       $tpsPrepa=$_POST['tpsPreparration'];
       $description=$_POST['description'];
       $annexe=$_POST['annexe'];
       $vegan=$_POST['vegan'];
-
-
-     $this->modele->ajouter_recette_dans_la_BD($titre,$tpsPrepa,$description,$annexe,$vegan,$this->nbingr);
-
+      $this->modele->ajouter_recette_dans_la_BD($titre,$tpsPrepa,$description,$annexe,$vegan,$this->nbingr);
       for ($i=0; $i<$_GET['nbIngr']; $i++) {
-       $this->modele->ajouter_Ingredient_dans_recette($_POST['ingredient'.$i.''],$_POST['quantite'.$i.''],$_POST['unite'.$i.'']);
-      }
-
-
-      
-     $this->gerer_ajout_photo(($_FILES));
+         $this->modele->ajouter_Ingredient_dans_recette($_POST['ingredient'.$i.''],$_POST['quantite'.$i.''],$_POST['unite'.$i.'']);
+      }   
+      $this->gerer_ajout_photo(($_FILES));
    }
+
 
    public function choisirNbIngredient(){
       $this->vue->afficherChoixNbIngredient();
@@ -97,7 +88,6 @@
       $this->vue->afficherMesRecette($this->modele->afficherMesRecette());
    }
    public function afficherMaRecette(){
-      
       $this->vue->afficherPhoto($this->modele->afficherPhoto($_GET['idRecette']));
       $this->vue->afficherMaRecette($this->modele->afficherMaRecette($_GET['idRecette']));
       $this->vue->afficherIngredientDeMaRecette($this->modele->afficherIngredientDeMaRecette($_GET['idRecette']));
@@ -108,31 +98,28 @@
 
       public function exec(){     
          switch ($this->action) {
-         
             case "bienvenue":
                echo 'bienvenue';
-            break;  
+               break;  
+
             case "AfficherFormAjoutRecette":
-              $this->afficher_form_Recette();
-            break;
+               $this->afficher_form_Recette();
+               break;
+
             case "choisirNbIngredient":
                   $this->choisirNbIngredient();
-               break;
+                  break;
+
             case "ajouterRecetteDansLaBD":
-             
                $this->ajouterRecetteDansLaBD();
-            
-            break;
+               break;
+               
             case "afficherMesRecette":
-       
                $this->afficherMesRecettes();
-            
-            break;
+               break;
             case "afficherMaRecette":
-       
                $this->afficherMaRecette();
-            
-            break;
+               break;
          }      
          global $affiche; 
          $affiche=$this->vue->getAffichage();   

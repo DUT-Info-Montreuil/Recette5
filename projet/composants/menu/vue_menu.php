@@ -19,6 +19,7 @@ class VueMenu{
                         <a href="index.php?module=recette&action=afficherMesRecette">Mes Recette</a>
                     </div>
                     <div id="lien" class="profil">
+                        <a href="index.php?module=profil&action=AfficherMonProfil">Profil</a>
                         <a href="index.php?module=connexion&action=deconnexion">Deconnexion</a>
                     </div>
                 </div>
@@ -35,6 +36,7 @@ class VueMenu{
                         <a href="index.php?module=recherche&action=toute">Recette</a>
                     </div>
                     <div id="lien" class="profil">
+                        
                         <a href="index.php?module=connexion&action=AfficherFormulaireConnexion">Connexion</a>
                         <a href="index.php?module=connexion&action=AfficherFormulaireInscription">Inscription</a>
                     </div>

@@ -13,14 +13,8 @@
             foreach( $recette as $value ){
                echo 
 
-<<<<<<< HEAD
-               <div id="recette">
-                   <div class="photo">
-                     <img id="pho" alt="photo de la recette" src="image_recette/'.$value['photo'].'" >
-=======
                '<a href="index.php?module=recette&action=afficherMaRecette&idRecette='.$value['idRecette'].'"><div id="recette"><div class="photo">
                <img id="pho" alt="photo de la recette" src="image_recette/'.$value['photo'].'" >
->>>>>>> 1cf4b39cf11b56244d971265d99c9fe14fd8ba0f
                    </div>
                    <div class="info">
                        <h1>'.$value['titre'].'</h1>
@@ -61,7 +55,7 @@
           }
 
          public function afficherChoixNbIngredient(){
-            echo '</br>Ajouter une nouvelle Recette
+            echo '
        
              <form method="post" action="index.php?module=recette&action=AfficherFormAjoutRecette">
              Entrez le nombre d ingredient: <input type="text" name="nbIngr">
@@ -71,25 +65,23 @@
          }
 
         public function afficher_form_Recette($tabIngr,$nbIngr){
-            
-            echo '</br>Ajouter une nouvelle Recette<br>';
           
-            echo'  <form method="post" action="index.php?module=recette&action=ajouterRecetteDansLaBD&nbIngr='.$nbIngr.'" enctype="multipart/form-data">
+            echo'  
+            <form method="post" action="index.php?module=recette&action=ajouterRecetteDansLaBD&nbIngr='.$nbIngr.'" enctype="multipart/form-data">
                <label for="file">Fichier</label>
-               <input type="file" name="file"><br />
+                  <input type="file" name="file"><br />
                <label for="titre"> nom Recette :</label>
                <input type="text" name="titre">
-                <br />
-                <label for="tpsPreparrration">temps de préparation : </label>
-                <input type="text" name="tpsPreparration">
-                <br />
-                Description: <input type="textArea" name="description">
-                <br />
-
-                note annexe: <input type="textArea" name="annexe">
-                <br />
-                vegan: <input type="checkbox" name="vegan">
-                <br />'
+               <br />
+               <label for="tpsPreparrration">temps de préparation : </label>
+               <input type="text" name="tpsPreparration">
+               <br />
+               Description: <input type="textArea" name="description">
+               <br />
+               note annexe: <input type="textArea" name="annexe">
+               <br />
+               vegan: <input type="checkbox" name="vegan">
+               <br />'
             ;
             for ($i=0; $i<$nbIngr; $i++) {
                 echo'<br>';

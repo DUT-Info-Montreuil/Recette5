@@ -15,9 +15,6 @@
             
             $sth = $bdd->prepare("INSERT INTO `Recette` (`idRecette`, `titre`, `tpsPreparration`, `datePublication`, `description`, `noteAnnexe`, `vegan`, `idUtilisateur`) VALUES (NULL, ?,?, now(),?, ?, NULL, ?)");
             $sth->execute(array($titre,$tpsPrepa,$description,$annexe,$row['idUtilisateur']));
-        
-
-                echo 'La recette est bien ajouté';
           
            
        
@@ -76,11 +73,7 @@
             $sth = $bdd->prepare("SELECT idUtilisateur from Utilisateurs where login=?");
             $sth->execute(array($_SESSION['login']));
             $row = $sth->fetch();
-<<<<<<< HEAD
             $sthh = $bdd->prepare('SELECT * from Recette natural join photo where idUtilisateur=?') ;
-=======
-            $sthh = $bdd->prepare('SELECT * from Recette natural join photo') ;
->>>>>>> 1cf4b39cf11b56244d971265d99c9fe14fd8ba0f
             $sthh->execute(array($row['idUtilisateur']));
             $rows= $sthh->fetchAll();
             return $rows;
