@@ -15,7 +15,9 @@ main{
 }
 h1#titre{
 	text-align : center;
-	margin : 0px;	
+	margin : 0px;
+	color :rgb(153, 37, 37)	;
+	text-decoration: none;
 }
 header{
 	font-size: 25px;
@@ -38,6 +40,7 @@ body header{
 	background-color:rgb(172, 76, 76);
 
 }
+
 
 
 /*---------------FORMULAIRE CONNEXION/INSCRIPTION---------------------*/

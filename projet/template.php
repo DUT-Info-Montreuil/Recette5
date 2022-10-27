@@ -9,7 +9,7 @@
 	</head>
 	<body>
         <header>
-            <h1 id="titre">Recette5</h1>
+            <a href="index.php?module=connexion&action=bienvenue"><h1 id="titre">Recette5</h1></a>
             <?php  
             $compLogo->affichage();
             $compMenu->affichage();

@@ -76,7 +76,7 @@
             $sth = $bdd->prepare("SELECT idUtilisateur from Utilisateurs where login=?");
             $sth->execute(array($_SESSION['login']));
             $row = $sth->fetch();
-            $sthh = $bdd->prepare('SELECT * from Recette where idUtilisateur=?') ;
+            $sthh = $bdd->prepare('SELECT * from Recette natural join photo where idUtilisateur=?') ;
             $sthh->execute(array($row['idUtilisateur']));
             $rows= $sthh->fetchAll();
             return $rows;
