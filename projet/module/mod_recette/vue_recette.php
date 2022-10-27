@@ -11,17 +11,22 @@
          public function afficherMesRecette($recette){
        
             foreach( $recette as $value ){
-               echo '<a href="index.php?module=recette&action=afficherMaRecette&idRecette='.$value['idRecette'].'">
+               echo 
 
+<<<<<<< HEAD
                <div id="recette">
                    <div class="photo">
                      <img id="pho" alt="photo de la recette" src="image_recette/'.$value['photo'].'" >
+=======
+               '<a href="index.php?module=recette&action=afficherMaRecette&idRecette='.$value['idRecette'].'"><div id="recette"><div class="photo">
+               <img id="pho" alt="photo de la recette" src="image_recette/'.$value['photo'].'" >
+>>>>>>> 1cf4b39cf11b56244d971265d99c9fe14fd8ba0f
                    </div>
                    <div class="info">
                        <h1>'.$value['titre'].'</h1>
                        <p>'.$value['description'].'</p>
                    </div>
-               </div> </a>';
+               </div></a>';
             }
          }
 
