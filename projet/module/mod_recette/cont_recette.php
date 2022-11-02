@@ -25,7 +25,7 @@
 
 
    public function gerer_ajout_photo($photo){
-     
+
       if(isset($photo['file'])){
          $tmpName = $photo['file']['tmp_name'];
          $name = $photo['file']['name'];
@@ -49,6 +49,8 @@
              echo "Image enregistrée";
          }
          else{
+            
+            echo "<br>";
 
             if(!in_array($extension, $extensions)){
                echo'mauvaise extension';
@@ -57,11 +59,23 @@
             }else{
                echo "Une erreur est survenue";
             }
-               
+            echo "<br>";
+            echo "une image de base a été ajouter vous pourrez la modifier plus tard";
+
+
+             $uniqueName = uniqid('', true);
+             $file = $uniqueName.".png";
+             $source = './image_recette/vide.png';
+             $destination = './image_recette/'.$file.'';
+             copy($source, $destination);
+            $this->modele->ajouterPhotoDansLaRecette($file);
+                echo "Image enregistrée remp";
+
+
             }
             
          }
-        
+   
      }
    
     
@@ -69,23 +83,22 @@
 
        
    public function ajouterRecetteDansLaBD(){
-     
-
       $titre=$_POST['titre'];
       $tpsPrepa=$_POST['tpsPreparration'];
       $description=$_POST['description'];
       $annexe=$_POST['annexe'];
-      $vegan=$_POST['vegan'];
-
-
+      
+      if(isset($_POST['vegan'])){
+         $vegan='1';
+      }else{
+         $vegan='0';
+      }
      $this->modele->ajouter_recette_dans_la_BD($titre,$tpsPrepa,$description,$annexe,$vegan,$this->nbingr);
-
+  
       for ($i=0; $i<$_GET['nbIngr']; $i++) {
        $this->modele->ajouter_Ingredient_dans_recette($_POST['ingredient'.$i.''],$_POST['quantite'.$i.''],$_POST['unite'.$i.'']);
       }
 
-
-      
      $this->gerer_ajout_photo(($_FILES));
    }
 

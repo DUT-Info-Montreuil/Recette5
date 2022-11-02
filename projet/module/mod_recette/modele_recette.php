@@ -13,8 +13,8 @@
             $sth->execute(array($_SESSION['login']));
             $row = $sth->fetch();
             
-            $sth = $bdd->prepare("INSERT INTO `Recette` (`idRecette`, `titre`, `tpsPreparration`, `datePublication`, `description`, `noteAnnexe`, `vegan`, `idUtilisateur`) VALUES (NULL, ?,?, now(),?, ?, NULL, ?)");
-            $sth->execute(array($titre,$tpsPrepa,$description,$annexe,$row['idUtilisateur']));
+            $sth = $bdd->prepare("INSERT INTO `Recette` (`idRecette`, `titre`, `tpsPreparration`, `datePublication`, `description`, `noteAnnexe`, `vegan`, `idUtilisateur`) VALUES (NULL, ?,?, now(),?, ?, ?, ?)");
+            $sth->execute(array($titre,$tpsPrepa,$description,$annexe,$vegan,$row['idUtilisateur']));
         
 
                 echo 'La recette est bien ajouté';
