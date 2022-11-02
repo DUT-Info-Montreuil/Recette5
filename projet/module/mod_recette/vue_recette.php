@@ -26,14 +26,15 @@
          public function afficherMaRecette($recette){
             echo '<h1> '.$recette['titre'].'</h1>';   
             echo' description  : <br>'.$recette['description'].' <br>';     
+            echo '<a href="index.php?module=recette&action=AffichermodifierMaRecette&idRecette='.$recette['idRecette'].'">modifier recette </a>';
          }
 
          public function afficherPhoto($photo){
-         if(!isset($photo['photo']))
-            echo '<img src="image/index.jpeg" width="200" height="200">';
-         else
-            echo '<img src="image_recette/'.$photo['photo'].'" width="200" height="200">';          
-         }
+            if(!isset($photo['photo']))
+               echo '<img src="image/index.jpeg" width="200" height="200">';
+            else
+               echo '<img src="image_recette/'.$photo['photo'].'" width="200" height="200">';          
+            }
 
          public function afficherIngredientDeMaRecette($Ingredient){
             echo '<h2>voici la liste des ingrédients</h2>';
@@ -44,17 +45,16 @@
 
          public function afficherNbLikes($nbLike){
             echo "nb de likes : ".$nbLike['count(aime)']; 
-         }
+            }
 
          public function afficherChoixNbIngredient(){
             echo '
             <form method="post" action="index.php?module=recette&action=AfficherFormAjoutRecette">
                Entrez le nombre d\'ingredient: <input type="text" name="nbIngr">
                <input type="submit" value="envoyer">
-            </form>';   
-         }
+            </form>';   }
 
-        public function afficher_form_Recette($tabIngr,$nbIngr){   
+         public function afficher_form_Recette($tabIngr,$nbIngr){   
             echo'
             <form method="post" action="index.php?module=recette&action=ajouterRecetteDansLaBD&nbIngr='.$nbIngr.'" enctype="multipart/form-data">
                <label for="file">Fichier</label>
@@ -90,6 +90,36 @@
                   echo'<br>';  
                }
             echo'<input type="submit" value="envoyer"> </form>';
+        }
+
+        public function afficherFormModifRecette($recette){
+    
+    
+         echo'
+         <form method="post" action="index.php?module=recette&action=modifierMaRecette&idRecette='.$recette['idRecette'].'" enctype="multipart/form-data">
+            <label for="file">photo</label>
+            <input type="file" name="file"><br />
+            <label for="titre"> nom Recette :</label>
+            <input type="text" name="titre" value="'.$recette['titre'].'">
+            <br />
+            <label for="tpsPreparrration">temps de préparation : </label>
+            <input type="text" name="tpsPreparration" value="'.$recette['tpsPreparration'].'">
+            <br />
+            Description: <input type="textArea" name="description" value="'.$recette['description'].'">
+            <br />
+            note annexe: <input type="textArea" name="annexe" value="'.$recette['noteAnnexe'].'">
+            <br />' ;
+
+            if($recette['vegan']==1){
+               echo '  vegan: <input type="checkbox" name="vegan" checked="checked">
+               <br />';
+            }else{
+               echo '  vegan: <input type="checkbox" name="vegan" >
+               <br />';
+            }
+          
+           
+         echo'<input type="submit" value="envoyer"> </form>';
         }
         
     }

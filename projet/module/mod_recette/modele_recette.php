@@ -108,6 +108,22 @@
             $rows = $sth->fetchAll();
             return $rows;
         }
-        
+    
+        public function modifierMaRecette($idRecette,$titre,$tpsPrepa,$description,$annexe,$vegan){
+         $bdd=parent::$bdd;
+      
+         
+         $sth = $bdd->prepare("UPDATE `Recette` SET `titre` = ?, `tpsPreparration` = ?, `description` = ?, `noteAnnexe` = ?,`vegan` = ?  WHERE `Recette`.`idRecette` = ?;
+         ");
+         
+         $sth->execute(array($titre,$tpsPrepa,$description,$annexe,$vegan,$idRecette));
+     
+
+             echo 'La recette a bien été modifier';
+        }
+
+
     }
+
+
 ?>
