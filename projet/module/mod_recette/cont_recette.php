@@ -36,14 +36,14 @@
          $extension = strtolower(end($tabExtension));
      
          $extensions = ['jpg', 'png', 'jpeg', 'gif'];
-         $maxSize = 4000000000;
+         $maxSize = 9000000000000000;
     
    
          if(in_array($extension, $extensions) && $size <= $maxSize && $error == 0){
      
              $uniqueName = uniqid('', true);
              $file = $uniqueName.".".$extension;
-             move_uploaded_file($tmpName, './image_recette/'.$file);
+             move_uploaded_file($tmpName, './image/image_recette/'.$file);
      
             $this->modele->ajouterPhotoDansLaRecette($file);
              echo "Image enregistrée";

@@ -12,7 +12,7 @@
             foreach( $recette as $value ){
                echo 
                '<a href="index.php?module=recette&action=afficherMaRecette&idRecette='.$value['idRecette'].'"><div id="recette"><div class="photo">
-               <img id="pho" alt="photo de la recette" src="image_recette/'.$value['photo'].'" >
+               <img id="pho" alt="photo de la recette" src="image/image_recette/'.$value['photo'].'" >
                    </div>
                    <div class="info">
                        <h1>'.$value['titre'].'</h1>
@@ -32,7 +32,7 @@
          if(!isset($photo['photo']))
             echo '<img src="image/index.jpeg" width="200" height="200">';
          else
-            echo '<img src="image_recette/'.$photo['photo'].'" width="200" height="200">';          
+            echo '<img src="image/image_recette/'.$photo['photo'].'" width="200" height="200">';          
          }
 
          public function afficherIngredientDeMaRecette($Ingredient){
@@ -57,7 +57,7 @@
         public function afficher_form_Recette($tabIngr,$nbIngr){   
             echo'
             <form method="post" action="index.php?module=recette&action=ajouterRecetteDansLaBD&nbIngr='.$nbIngr.'" enctype="multipart/form-data">
-               <label for="file">Fichier</label>
+               <label for="file">Photo de la recette</label>
                <input type="file" name="file"><br />
                <label for="titre"> nom Recette :</label>
                <input type="text" name="titre">
