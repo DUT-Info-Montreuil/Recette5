@@ -37,11 +37,19 @@
 
          }
 
-
+         
          public function afficherPhoto($recette){
             $bdd=parent::$bdd;
             $sth = $bdd->prepare("SELECT photo FROM photo where idRecette=? ");
             $sth->execute(array($recette));
+            $row = $sth->fetch();
+            return $row;
+
+         }
+         public function modifierPhotoDansLaRecette($photo,$anciennePhoto){
+            $bdd=parent::$bdd;
+            $sth = $bdd->prepare("UPDATE photo SET photo=?  where photo=? ");
+            $sth->execute(array($photo,$anciennePhoto));
             $row = $sth->fetch();
             return $row;
 

@@ -27,10 +27,11 @@
    public function gerer_ajout_photo($photo,$modif){
 
       if($modif==1){
-       echo  $photo=$this->modele->afficherPhoto($_GET['idRecette']);
-        
-       /*
+         
+     $anciennePhoto=$this->modele->afficherPhoto($_GET['idRecette']);
+     
        if(isset($photo['file'])){
+        
             $tmpName = $photo['file']['tmp_name'];
             $name = $photo['file']['name'];
             $size = $photo['file']['size'];
@@ -48,8 +49,9 @@
                 $file = $uniqueName.".".$extension;
                 move_uploaded_file($tmpName, './image_recette/'.$file);
         
-               $this->modele->modifierPhotoDansLaRecette($file);
-                echo "Image enregistrée";
+               $this->modele->modifierPhotoDansLaRecette($file,$anciennePhoto['photo']);
+               unlink('./image_recette/'.$anciennePhoto['photo']);
+                echo "<br> Image enregistrée";
             }
             else{ 
                echo "<br>";
@@ -64,8 +66,7 @@
                }
                
             }
-      
-      */
+    
       }
    else{
       if(isset($photo['file'])){
@@ -173,8 +174,8 @@
       $tpsPrepa=$_POST['tpsPreparration'];
       $description=$_POST['description'];
       $annexe=$_POST['annexe'];
-      
-      var_dump($_FILES);
+     
+     
       if(isset($_POST['vegan'])){
          $vegan='1';
       }else{
