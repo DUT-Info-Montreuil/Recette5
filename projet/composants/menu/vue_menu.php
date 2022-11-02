@@ -19,6 +19,7 @@ class VueMenu{
                         <a href="index.php?module=recette&action=afficherMesRecette">Mes Recette</a>
                     </div>
                     <div id="lien" class="profil">
+                        <a href="index.php?module=profil&action=afficherProfil">Profil</a>
                         <a href="index.php?module=connexion&action=deconnexion">Deconnexion</a>
                     </div>
                 </div>
