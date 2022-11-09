@@ -221,12 +221,11 @@
                break;
             case "afficherMaRecette":
 
-              
-               if($_SESSION['id']==$this->modele->recupererIdDuPropietaireDeLaRecette($_GET['idRecette'])){
+              if($this->modele->verifierSiRecetteExiste($_GET['idRecette'])==1)
                   $this->afficherMaRecette();
-               }else{
-                  echo"cette recette ne vous appartient pas";
-               }
+               else
+                  echo"recette inexistante";
+               
             break;
 
           case "AffichermodifierMaRecette":

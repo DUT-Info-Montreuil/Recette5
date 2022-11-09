@@ -133,6 +133,19 @@
          return $row['idUtilisateur'];
         }
 
+        public function verifierSiRecetteExiste($idRecette){
+         $bdd=parent::$bdd;
+         $sth = $bdd->prepare("SELECT * from Recette  where idRecette=?");
+         $sth->execute(array($idRecette));
+         $row=$sth->fetch();
+         if($row==null){
+            return 0;
+         }else{
+            return 1;
+         }
+        
+        }
+
         public function verifierSiUnAvisExiste($idRecette){
          $bdd=parent::$bdd;
    
