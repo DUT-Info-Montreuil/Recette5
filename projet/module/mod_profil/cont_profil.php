@@ -93,10 +93,7 @@ public function exec(){
         case "validerProfil" :
             $this->validerModification();
             break;
-        case "blabla" :
-            $_SESSION['login'] = 'psolanki';
-            $this->modele->mdp(azer);
-            break;
+    
         case "bienvenue" : 
             echo 'bienvenue';
             

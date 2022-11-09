@@ -67,11 +67,6 @@
         }
 
 
-        public function mdp($mdp){
-            $bdd = parent::$bdd;
-            $sth = $bdd->prepare("UPDATE Utilisateurs SET mdp=? where login=?");
-            $sth->execute(array(password_hash($mdp,PASSWORD_ARGON2I) , $_SESSION['login']));
-        }
-       
+ 
     }
 ?>

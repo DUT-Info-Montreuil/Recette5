@@ -38,7 +38,7 @@ class VueMenu{
                     <div id="lien" class="profil">
                         <a href="index.php?module=connexion&action=AfficherFormulaireConnexion">Connexion</a>
                         <a href="index.php?module=connexion&action=AfficherFormulaireInscription">Inscription</a>
-                        <a href="index.php?module=profil&action=blabla">ok</a>
+                      
                     </div>
                 </div>
              </nav>';
