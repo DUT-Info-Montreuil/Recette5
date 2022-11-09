@@ -38,13 +38,13 @@
                }else{
                   echo '<div class="boutonlike">
                   <form action= "index.php?module=recette&action=RetirerLikeRecette&idRecette='.htmlspecialchars($recette['idRecette']).'" method="POST">
-                  <input type = "submit" value = "retirerLike" name="like"/>
+                  <input type = "submit" value = "retirerLike"/>
                   </form>
                   
                   </div>';
                }
-              
-              
+         
+               
                if($_SESSION['id']==$recette['idUtilisateur'])
                echo '<a href="index.php?module=recette&action=AffichermodifierMaRecette&idRecette='.htmlspecialchars($recette['idRecette']).'">modifier recette </a>';
             }

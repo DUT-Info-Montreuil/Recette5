@@ -124,53 +124,62 @@
          echo 'La recette a bien été modifier';
         }
 
-
+        public function verifierSiUnAvisExiste($idRecette){
+         $bdd=parent::$bdd;
+   
+         $sth=$bdd->prepare("SELECT * FROM DonnerAvis WHERE idUtilisateur=?AND idRecette=?");
+         $sth->execute(array($_SESSION['id'],$idRecette));
+         $row = $sth->fetch();
+         return $row;
+      }
     
 
-    public function likerLaRecette($idRecette){
-      $bdd=parent::$bdd;
+      public function likerLaRecette($idRecette){
+         $bdd=parent::$bdd;
+         $row=$this->verifierSiUnAvisExiste($idRecette);
+         if($row==null){
+            $sth=$bdd->prepare("INSERT INTO `DonnerAvis` (`idUtilisateur`, `aime`, `idRecette`) VALUES (?,1,?);");
+            $sth->execute(array($_SESSION['id'],$idRecette));
+         }
+         
+         else{
 
-      $sth=$bdd->prepare("SELECT * FROM DonnerAvis WHERE idUtilisateur=?AND idRecette=?");
-      $sth->execute(array($_SESSION['id'],$idRecette));
-      $row = $sth->fetch();
-      if($row==null){
-         $sth=$bdd->prepare("INSERT INTO `DonnerAvis` (`idUtilisateur`, `aime`, `idRecette`) VALUES (?,1,?);");
-         $sth->execute(array($_SESSION['id'],$idRecette));
+            $sth=$bdd->prepare("UPDATE `DonnerAvis` SET `aime` = '1' WHERE `DonnerAvis`.`idUtilisateur` = ? AND `DonnerAvis`.`idRecette` = ?;");
+            $sth->execute(array($_SESSION['id'],$idRecette));
+         }
+         header('location:index.php?module=recette&action=afficherMaRecette&idRecette='.$idRecette.'');
       }
-      
-      else{
 
-         $sth=$bdd->prepare("UPDATE `DonnerAvis` SET `aime` = '1' WHERE `DonnerAvis`.`idUtilisateur` = ? AND `DonnerAvis`.`idRecette` = ?;");
+      public function RetirerLikeRecette($idRecette){
+         $bdd=parent::$bdd;
+         $sth=$bdd->prepare("UPDATE `DonnerAvis` SET `aime` = '0' WHERE `DonnerAvis`.`idUtilisateur` = ? AND `DonnerAvis`.`idRecette` = ?;");
          $sth->execute(array($_SESSION['id'],$idRecette));
+         header('location:index.php?module=recette&action=afficherMaRecette&idRecette='.$idRecette.''); 
       }
-      header('location:index.php?module=recette&action=afficherMaRecette&idRecette='.$idRecette.'');
-    }
 
-    public function RetirerLikeRecette($idRecette){
-      $bdd=parent::$bdd;
-      $sth=$bdd->prepare("UPDATE `DonnerAvis` SET `aime` = '0' WHERE `DonnerAvis`.`idUtilisateur` = ? AND `DonnerAvis`.`idRecette` = ?;");
-      $sth->execute(array($_SESSION['id'],$idRecette));
-      header('location:index.php?module=recette&action=afficherMaRecette&idRecette='.$idRecette.''); 
-   }
+   
 
-   public function verifierLike($idRecette){
-      $bdd=parent::$bdd;
+      public function verifierLike($idRecette){
+         
+         $row=$this->verifierSiUnAvisExiste($idRecette);
 
-      $sth=$bdd->prepare("SELECT * FROM DonnerAvis WHERE idUtilisateur=?AND idRecette=?");
-      $sth->execute(array($_SESSION['id'],$idRecette));
-      $row = $sth->fetch();
-
-      if($row==null){
-         return 0;
-      }else{
-         if($row['aime']==1){
-            return 1;
-         }else{
+         if($row==null){
             return 0;
-          }
+         }else{
+            if($row['aime']==1){
+               return 1;
+            }else{
+               return 0;
+            }
+         }
       }
 
-   }
+
+      public function CommenterRecette($idRecette){
+         $bdd=parent::$bdd;
+         $row=$this->verifierSiUnAvisExiste($idRecette);
+       
+      }
    }
 
 ?>
