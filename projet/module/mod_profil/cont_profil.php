@@ -13,8 +13,22 @@ public function __construct(){
 }  
 
 public function afficherProfil(){
-    $this->vue->afficherProfil($this->modele->profil());
+    $this->vue->afficherProfil($this->modele->profil() );
+    
+}
+
+public function afficherFormModifierProfil(){
+    $this->vue->modifierProfil($this->modele->profil());
+    
+    
+}
+
+public function validerModification(){
+    $this->vue->validationModification();
     $this->modifierPhoto($_FILES);
+    $this->modifierDescriptionProfil();
+    $this->modifierNomProfil();
+    $this->modifierMotDePasse();
 }
 
 public function modifierPhoto($photo){
@@ -51,13 +65,48 @@ public function modifierPhoto($photo){
     }
 }
 
+public function modifierDescriptionProfil(){
+    $newDes = $_POST['description'];
+    if($newDes != NULL)
+        $this->modele->modifierDescription($newDes);
+}
+
+public function modifierNomProfil(){
+    $newNom = $_POST['nom'];
+    if($newNom!=NULL){
+        $this->modele->modifierNomProfil($newNom);
+    }
+}
+
+public function modifierMotDePasse(){
+    $oldMDP = $_POST['oldmdp'];
+    $newMDP = $_POST['newmdp'];
+    $newMDPC = $_POST['newmdpc'];
+    if($oldMDP!=NULL && $newMDP!=NULL && $newMDPC!=NULL){
+        $this->modele->modifierMotDePasse($oldMDP , $newMDP , $newMDPC);
+    }
+}
+
+
 public function exec(){
     switch ($this->action){
         case "afficherProfil" :
             $this->afficherProfil();
+            
+            break;
+        case "modifierProfil" :
+            $this->afficherFormModifierProfil();
+            break;
+        case "validerProfil" :
+            $this->validerModification();
+            break;
+        case "blabla" :
+            $_SESSION['login'] = 'psolanki';
+            $this->modele->mdp('azer');
             break;
         case "bienvenue" : 
             echo 'bienvenue';
+            
             break;
     }
     global $affiche; 
