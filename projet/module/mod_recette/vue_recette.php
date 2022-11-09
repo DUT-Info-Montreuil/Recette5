@@ -23,12 +23,34 @@
          }
 
 
-         public function afficherMaRecette($recette){
+         public function afficherMaRecette($recette,$recetteLiker){
             echo '<h1> '.htmlspecialchars($recette['titre']).'</h1>';   
-            echo' description  : <br>'.htmlspecialchars($recette['description']).' <br>';     
-            if($_SESSION['id']==$recette['idUtilisateur'])
-            echo '<a href="index.php?module=recette&action=AffichermodifierMaRecette&idRecette='.htmlspecialchars($recette['idRecette']).'">modifier recette </a>';
-         }
+            echo' description  : <br>'.htmlspecialchars($recette['description']).' <br>';  
+            
+            if(isset($_SESSION['login'])){
+               if($recetteLiker==0){
+                  echo '<div class="boutonlike">
+                  <form action= "index.php?module=recette&action=likerLaRecette&idRecette='.htmlspecialchars($recette['idRecette']).'" method="POST">
+                  <input type = "submit" value = "like" name="like"/>
+                  </form>
+                  
+                  </div>';
+               }else{
+                  echo '<div class="boutonlike">
+                  <form action= "index.php?module=recette&action=RetirerLikeRecette&idRecette='.htmlspecialchars($recette['idRecette']).'" method="POST">
+                  <input type = "submit" value = "retirerLike" name="like"/>
+                  </form>
+                  
+                  </div>';
+               }
+              
+              
+               if($_SESSION['id']==$recette['idUtilisateur'])
+               echo '<a href="index.php?module=recette&action=AffichermodifierMaRecette&idRecette='.htmlspecialchars($recette['idRecette']).'">modifier recette </a>';
+            }
+          }
+
+          
 
          public function afficherPhoto($photo){
             if(!isset($photo['photo']))

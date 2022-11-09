@@ -155,7 +155,7 @@
    }
    public function afficherMaRecette(){
       $this->vue->afficherPhoto($this->modele->afficherPhoto($_GET['idRecette']));
-      $this->vue->afficherMaRecette($this->modele->afficherMaRecette($_GET['idRecette']));
+      $this->vue->afficherMaRecette($this->modele->afficherMaRecette($_GET['idRecette']),$this->modele->verifierLike($_GET['idRecette']));
       $this->vue->afficherIngredientDeMaRecette($this->modele->afficherIngredientDeMaRecette($_GET['idRecette']));
       $this->vue->afficherNbLikes($this->modele->reccupererNbLike($_GET['idRecette']));
    
@@ -184,6 +184,15 @@
 
      $this->gerer_ajout_photo(($_FILES),1);
 
+   }
+
+
+   public function likerLaRecette($idRecette){
+      $this->modele->likerLaRecette($idRecette);
+   }
+
+   public function RetirerLikeRecette($idRecette){
+      $this->modele->RetirerLikeRecette($idRecette);
    }
 
       public function exec(){     
@@ -218,7 +227,17 @@
          case "modifierMaRecette":
             $this->modifierMaRecette();
             break;
-          }  
+         
+
+         case "likerLaRecette":
+            $this->likerLaRecette($_GET['idRecette']);
+         break;
+
+         case "RetirerLikeRecette":
+            $this->RetirerLikeRecette($_GET['idRecette']);
+            break;
+
+      }
          global $affiche; 
          $affiche=$this->vue->getAffichage();   
    } 
