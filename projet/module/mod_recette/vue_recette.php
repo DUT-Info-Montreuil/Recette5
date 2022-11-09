@@ -11,8 +11,8 @@
          public function afficherMesRecette($recette){    
             foreach( $recette as $value ){
                echo 
-               '<a href="index.php?module=recette&action=afficherMaRecette&idRecette='.htmlspecialchars($value['idRecette']).'"><div id="recette"><div class="photo">
-               <img id="pho" alt="photo de la recette" src="image_recette/'.htmlspecialchars($value['photo']).'" >
+               '<a href="index.php?module=recette&action=afficherMaRecette&idRecette='.$value['idRecette'].'"><div id="recette"><div class="photo">
+               <img id="pho" alt="photo de la recette" src="image/image_recette/'.$value['photo'].'" >
                    </div>
                    <div class="info">
                        <h1>'.htmlspecialchars($value['titre']).'</h1>
@@ -53,11 +53,11 @@
           
 
          public function afficherPhoto($photo){
-            if(!isset($photo['photo']))
-               echo '<img src="image/index.jpeg" width="200" height="200">';
-            else
-               echo '<img src="image_recette/'.htmlspecialchars($photo['photo']).'" width="200" height="200">';          
-            }
+         if(!isset($photo['photo']))
+            echo '<img src="image/index.jpeg" width="200" height="200">';
+         else
+            echo '<img src="image/image_recette/'.$photo['photo'].'" width="200" height="200">';          
+         }
 
          public function afficherIngredientDeMaRecette($Ingredient){
             echo '<h2>voici la liste des ingrédients</h2>';
@@ -81,9 +81,9 @@
 
          public function afficher_form_Recette($tabIngr,$nbIngr){   
             echo'
-            <form method="post" action="index.php?module=recette&action=ajouterRecetteDansLaBD&nbIngr='.htmlspecialchars($nbIngr).'" enctype="multipart/form-data">
-               <label for="file">Fichier</label>
-                  <input type="file" name="file"><br />
+            <form method="post" action="index.php?module=recette&action=ajouterRecetteDansLaBD&nbIngr='.$nbIngr.'" enctype="multipart/form-data">
+               <label for="file">Photo de la recette</label>
+               <input type="file" name="file"><br />
                <label for="titre"> nom Recette :</label>
                <input type="text" name="titre">
                <br />

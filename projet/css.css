@@ -138,8 +138,9 @@ form .corps-formulaire .saisie input {
 }
 
 #recette #pho{
-	max-width: 300px;
+
 	min-width: 300px;
+	max-width: 300px;
 	min-height: 150px;
 	max-height: 150px;
 	border-top-left-radius:15px;
@@ -176,5 +177,15 @@ nav  a{
 	border-radius:20px;
 	border: 2px solid #ffffff;
 	margin: 15px;
+
+}
+
+/*---------------PROFIL---------------------*/
+.rond img{
+	min-width: 300px;
+	max-width: 300px;
+	min-height: 200px;
+	max-height: 200px;
+	clip-path:ellipse(33% 50%);	
 
 }

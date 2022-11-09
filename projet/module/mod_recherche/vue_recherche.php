@@ -14,7 +14,7 @@ class VueRecherche extends VueGenerique{
                 echo 
 
                 '<a href="index.php?module=recette&action=afficherMaRecette&idRecette='.$value['idRecette'].'"><div id="recette"><div class="photo">
-                <img id="pho" alt="photo de la recette" src="image_recette/'.$value['photo'].'" >
+                <img id="pho" alt="photo de la recette" src="image/image_recette/'.$value['photo'].'" >
                     </div>
                     <div class="info">
                         <h1>'.$value['titre'].'</h1>
