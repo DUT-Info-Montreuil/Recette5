@@ -42,7 +42,7 @@
                 $sth2 = $bdd->prepare("UPDATE Utilisateurs SET login=? where login=?");
                 $sth2->execute(array($nom,$_SESSION['login']));
                 $_SESSION['login'] = $nom;
-            }else{
+            }else if($_SESSION['login'] != $nom){
                 echo'nom d\'utilisateur déjà utiliser';
                 header('index.php?module=profil&action=modiferProfil');
             }

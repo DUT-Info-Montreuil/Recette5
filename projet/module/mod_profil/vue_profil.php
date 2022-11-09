@@ -48,22 +48,21 @@ class VueProfil extends VueGenerique{
                 <label for="file">modifier photo : </label>
                 <input type="file" name="file">
 
-                modifier profil : '.$profil['login'].'</br>
-                <input type="text" name="nom"><br />
+                <label for="nom">modifier login : </label></br>
+                <input type="text" name="nom" value="'.htmlspecialchars($profil['login']).'"><br />
 
-                Adresse mail : '.$profil['email'].'</br>
+                Adresse mail : '.htmlspecialchars($profil['email']).'</br>
 
-                modifier description : '.$profil['description'].'</br>
-                <input type="text" name="description"><br />
-
-                modifier votre mot de passe : 
-                    ancien mot de passe :
+                <label for="description"> modifier description : </label></br>
+                <input type="text" name="description" value='.htmlspecialchars($profil['description']).' ><br />
+ 
+                    <label for="oldmdp">ancien mot de passe :</label><br />
                     <input type="text" name="oldmdp"><br />
 
-                    nouveau mot de passe : 
+                    <label for="newmdp">nouveau mot de passe :</label> <br />
                     <input type="text" name="newmdp"><br />
 
-                    confirmation du nouveau mot de passe : 
+                    <label for="newmdpc">confirmation du nouveau mot de passe :</label> <br />
                     <input type="text" name="newmdpc"><br />
 
                 <input type="submit" value="valider"><br />

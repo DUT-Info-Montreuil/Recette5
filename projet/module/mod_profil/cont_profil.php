@@ -54,13 +54,6 @@ public function modifierPhoto($photo){
             $this->modele->modifierPhoto($file);
         }
         else{
-           if(!in_array($extension, $extensions)){
-              echo'mauvaise extension';
-           }else if($size <= $maxSize){
-              echo "fichier trop grand";
-           }else{
-              echo "Une erreur est survenue";
-           }  
         }
     }
 }
@@ -102,7 +95,7 @@ public function exec(){
             break;
         case "blabla" :
             $_SESSION['login'] = 'psolanki';
-            $this->modele->mdp('azer');
+            $this->modele->mdp(azer);
             break;
         case "bienvenue" : 
             echo 'bienvenue';
