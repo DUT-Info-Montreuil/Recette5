@@ -220,7 +220,13 @@
                $this->afficherMesRecettes();
                break;
             case "afficherMaRecette":
-               $this->afficherMaRecette();
+
+              
+               if($_SESSION['id']==$this->modele->recupererIdDuPropietaireDeLaRecette($_GET['idRecette'])){
+                  $this->afficherMaRecette();
+               }else{
+                  echo"cette recette ne vous appartient pas";
+               }
             break;
 
           case "AffichermodifierMaRecette":
