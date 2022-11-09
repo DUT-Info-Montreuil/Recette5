@@ -107,8 +107,8 @@
 
             $uniqueName = uniqid('', true);
             $file = $uniqueName.".png";
-            $source = './image_recette/vide.png';
-            $destination = './image_recette/'.$file.'';
+            $source = './image/image_recette/vide.png';
+            $destination = './image/image_recette/'.$file.'';
             copy($source, $destination);
             $this->modele->ajouterPhotoDansLaRecette($file);
                echo "Image enregistrée remp";
