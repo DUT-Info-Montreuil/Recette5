@@ -70,6 +70,7 @@
                note annexe: <input type="textArea" name="annexe">
                <br />
                vegan: <input type="checkbox" name="vegan">
+<<<<<<< HEAD
                <br />'
             ;
             for ($i=0; $i<$nbIngr; $i++) {
@@ -94,6 +95,28 @@
 
         echo ' <input type="submit" value="envoyer"> </form>';
          
+=======
+               <br />' ;
+               for ($i=0; $i<$nbIngr; $i++) {
+                  echo'<br>';
+                  echo' Ingredient '.($i+1).'  <select name="ingredient'.$i.'">';
+                  foreach( $tabIngr as $value ){
+                      echo'   <option value="'.$value['idIngredient'].' ">'.$value['nomIngredient'].'</option>';
+                  }     
+                  echo'</select>';
+                  echo'quantite : <input type="text" name="quantite'.$i.'">';   
+                  echo'<select name="unite'.$i.'">';   
+                  echo'<option value="kg">kg</option>';
+                  echo'<option value="g">g</option>';
+                  echo'<option value="mg">mg</option>';
+                  echo'<option value="nb">nb</option>';
+                  echo'<option value="l">l</option>';
+                  echo'<option value="ml">ml</option>';
+                  echo'</select><br><br>';
+                  echo'<br>';  
+               }
+            echo'<input type="submit" value="envoyer"> </form>';
+>>>>>>> 6c431eacabd7e3473c2d3032e5892a74914a666b
         }
         
     }
