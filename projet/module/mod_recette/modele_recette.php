@@ -13,8 +13,11 @@
             $sth->execute(array($_SESSION['login']));
             $row = $sth->fetch();
             
-            $sth = $bdd->prepare("INSERT INTO `Recette` (`idRecette`, `titre`, `tpsPreparration`, `datePublication`, `description`, `noteAnnexe`, `vegan`, `idUtilisateur`) VALUES (NULL, ?,?, now(),?, ?, NULL, ?)");
-            $sth->execute(array($titre,$tpsPrepa,$description,$annexe,$row['idUtilisateur']));
+            $sth = $bdd->prepare("INSERT INTO `Recette` (`idRecette`, `titre`, `tpsPreparration`, `datePublication`, `description`, `noteAnnexe`, `vegan`, `idUtilisateur`) VALUES (NULL, ?,?, now(),?, ?, ?, ?)");
+            $sth->execute(array($titre,$tpsPrepa,$description,$annexe,$vegan,$row['idUtilisateur']));
+        
+
+                echo 'La recette est bien ajouté';
           
            
        
@@ -34,11 +37,19 @@
 
          }
 
-
+         
          public function afficherPhoto($recette){
             $bdd=parent::$bdd;
             $sth = $bdd->prepare("SELECT photo FROM photo where idRecette=? ");
             $sth->execute(array($recette));
+            $row = $sth->fetch();
+            return $row;
+
+         }
+         public function modifierPhotoDansLaRecette($photo,$anciennePhoto){
+            $bdd=parent::$bdd;
+            $sth = $bdd->prepare("UPDATE photo SET photo=?  where photo=? ");
+            $sth->execute(array($photo,$anciennePhoto));
             $row = $sth->fetch();
             return $row;
 
@@ -105,6 +116,22 @@
             $rows = $sth->fetchAll();
             return $rows;
         }
-        
+    
+        public function modifierMaRecette($idRecette,$titre,$tpsPrepa,$description,$annexe,$vegan){
+         $bdd=parent::$bdd;
+      
+         
+         $sth = $bdd->prepare("UPDATE `Recette` SET `titre` = ?, `tpsPreparration` = ?, `description` = ?, `noteAnnexe` = ?,`vegan` = ?  WHERE `Recette`.`idRecette` = ?;
+         ");
+         
+         $sth->execute(array($titre,$tpsPrepa,$description,$annexe,$vegan,$idRecette));
+     
+
+             echo 'La recette a bien été modifier';
+        }
+
+
     }
+
+
 ?>
