@@ -8,11 +8,9 @@
              
          }
        
-         public function afficherMesRecette($recette){
-       
+         public function afficherMesRecette($recette){    
             foreach( $recette as $value ){
                echo 
-
                '<a href="index.php?module=recette&action=afficherMaRecette&idRecette='.$value['idRecette'].'"><div id="recette"><div class="photo">
                <img id="pho" alt="photo de la recette" src="image_recette/'.$value['photo'].'" >
                    </div>
@@ -26,20 +24,15 @@
 
 
          public function afficherMaRecette($recette){
-       
             echo '<h1> '.$recette['titre'].'</h1>';   
-            echo' description  : <br>'.$recette['description'].' <br>';
-            
-            
+            echo' description  : <br>'.$recette['description'].' <br>';     
          }
 
          public function afficherPhoto($photo){
-           if(!isset($photo['photo'])){
+         if(!isset($photo['photo']))
             echo '<img src="image/index.jpeg" width="200" height="200">';
-           }else{
-            echo '<img src="image_recette/'.$photo['photo'].'" width="200" height="200">';
-           }
-            
+         else
+            echo '<img src="image_recette/'.$photo['photo'].'" width="200" height="200">';          
          }
 
          public function afficherIngredientDeMaRecette($Ingredient){
@@ -49,24 +42,20 @@
             }
           }
 
-          public function afficherNbLikes($nbLike){
+         public function afficherNbLikes($nbLike){
             echo "nb de likes : ".$nbLike['count(aime)']; 
-
-          }
+         }
 
          public function afficherChoixNbIngredient(){
             echo '
-       
-             <form method="post" action="index.php?module=recette&action=AfficherFormAjoutRecette">
-             Entrez le nombre d ingredient: <input type="text" name="nbIngr">
-            <input type="submit" value="envoyer"> </form>';
-                     
-             
+            <form method="post" action="index.php?module=recette&action=AfficherFormAjoutRecette">
+               Entrez le nombre d\'ingredient: <input type="text" name="nbIngr">
+               <input type="submit" value="envoyer">
+            </form>';   
          }
 
-        public function afficher_form_Recette($tabIngr,$nbIngr){
-          
-            echo'  
+        public function afficher_form_Recette($tabIngr,$nbIngr){   
+            echo'
             <form method="post" action="index.php?module=recette&action=ajouterRecetteDansLaBD&nbIngr='.$nbIngr.'" enctype="multipart/form-data">
                <label for="file">Fichier</label>
                   <input type="file" name="file"><br />
@@ -106,5 +95,6 @@
         echo ' <input type="submit" value="envoyer"> </form>';
          
         }
+        
     }
 ?>

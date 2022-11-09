@@ -13,12 +13,7 @@ main{
 	background-color:rgb(172, 76, 76);
 	padding: 50px;
 }
-h1#titre{
-	text-align : center;
-	margin : 0px;
-	color :rgb(153, 37, 37)	;
-	text-decoration: none;
-}
+
 header{
 	font-size: 25px;
 	padding: 20px;
@@ -27,8 +22,8 @@ header{
 }
 
 img#logo{
+	margin-left: 680px;
 	height: 80px;
-	margin-right: 20px;
 }
 
 footer{

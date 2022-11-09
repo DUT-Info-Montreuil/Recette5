@@ -9,7 +9,6 @@
 	</head>
 	<body>
         <header>
-            <a href="index.php?module=connexion&action=bienvenue"><h1 id="titre">Recette5</h1></a>
             <?php  
             $compLogo->affichage();
             $compMenu->affichage();
@@ -22,7 +21,7 @@
             ?>
         </main>
 		<footer>
-            <p>site sae </p>
+            <p>réalisé par Priyank SOLANKI et Emilio CYRIAQUE en 2ème année de BUT Informatique</p>
 		</footer>
 
 	</body>
