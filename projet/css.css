@@ -40,6 +40,18 @@ body header{
 
 /*---------------FORMULAIRE CONNEXION/INSCRIPTION---------------------*/
 
+.boutonlike form{
+	
+	width: unset;
+	margin: unset;
+	background-color:unset;
+	border:unset;
+;
+	border-radius:unset;
+	padding: unset;
+}
+
+
 form{
 	width: 500px;
 	margin: auto;
