@@ -46,14 +46,16 @@
 
          public function afficherNbLikes($nbLike){
             echo "nb de likes : ".htmlspecialchars($nbLike['count(aime)']); 
-            }
+         }
 
          public function afficherChoixNbIngredient(){
             echo '
-            <form method="post" action="index.php?module=recette&action=AfficherFormAjoutRecette">
-               Entrez le nombre d\'ingredient: <input type="text" name="nbIngr">
-               <input type="submit" value="envoyer">
-            </form>';   }
+               <form method="post" action="index.php?module=recette&action=AfficherFormAjoutRecette">
+                  Entrez le nombre d\'ingredient: <input type="text" name="nbIngr">
+                  <input type="submit" value="envoyer">
+               </form>
+               ';  
+          }
 
          public function afficher_form_Recette($tabIngr,$nbIngr){   
             echo'
