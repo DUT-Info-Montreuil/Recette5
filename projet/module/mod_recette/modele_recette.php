@@ -124,6 +124,15 @@
          echo 'La recette a bien été modifier';
         }
 
+
+        public function recupererIdDuPropietaireDeLaRecette($idRecette){
+         $bdd=parent::$bdd;
+         $sth = $bdd->prepare("SELECT idUtilisateur from Recette  where idRecette=?");
+         $sth->execute(array($idRecette));
+         $row=$sth->fetch();
+         return $row['idUtilisateur'];
+        }
+
         public function verifierSiUnAvisExiste($idRecette){
          $bdd=parent::$bdd;
    

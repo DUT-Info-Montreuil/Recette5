@@ -225,11 +225,21 @@
 
           case "AffichermodifierMaRecette":
                
-              $this->AffichermodifierMaRecette();
+             
+              if($_SESSION['id']==$this->modele->recupererIdDuPropietaireDeLaRecette($_GET['idRecette'])){
+               $this->AffichermodifierMaRecette();
+            }else{
+               echo"cette recette ne vous appartient pas";
+            }
             break;
 
          case "modifierMaRecette":
-            $this->modifierMaRecette();
+            if($_SESSION['id']==$this->modele->recupererIdDuPropietaireDeLaRecette($_GET['idRecette'])){
+               $this->modifierMaRecette();
+            }else{
+               echo"cette recette ne vous appartient pas";
+            }
+              
             break;
          
 
