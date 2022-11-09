@@ -179,6 +179,7 @@
       }else{
          $vegan='0';
       }
+
       
      $this->modele->modifierMaRecette($_GET['idRecette'],$titre,$tpsPrepa,$description,$annexe,$vegan,$this->nbingr);
       
@@ -222,6 +223,7 @@
             break;
 
           case "AffichermodifierMaRecette":
+               
               $this->AffichermodifierMaRecette();
             break;
 
