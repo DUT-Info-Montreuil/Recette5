@@ -26,6 +26,7 @@
          public function afficherMaRecette($recette){
             echo '<h1> '.$recette['titre'].'</h1>';   
             echo' description  : <br>'.$recette['description'].' <br>';     
+            if($_SESSION['id']==$recette['idUtilisateur'])
             echo '<a href="index.php?module=recette&action=AffichermodifierMaRecette&idRecette='.$recette['idRecette'].'">modifier recette </a>';
          }
 
