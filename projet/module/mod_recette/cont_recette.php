@@ -230,8 +230,10 @@
 
           case "AffichermodifierMaRecette":
                
-             
-              if($_SESSION['id']==$this->modele->recupererIdDuPropietaireDeLaRecette($_GET['idRecette'])){
+            if($this->modele->verifierSiRecetteExiste($_GET['idRecette'])!=1){
+               echo"recette inexistante";
+            }
+            elseif($_SESSION['id']==$this->modele->recupererIdDuPropietaireDeLaRecette($_GET['idRecette'])){
                $this->AffichermodifierMaRecette();
             }else{
                echo"cette recette ne vous appartient pas";
@@ -239,6 +241,7 @@
             break;
 
          case "modifierMaRecette":
+            
             if($_SESSION['id']==$this->modele->recupererIdDuPropietaireDeLaRecette($_GET['idRecette'])){
                $this->modifierMaRecette();
             }else{
