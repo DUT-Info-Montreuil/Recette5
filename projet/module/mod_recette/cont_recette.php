@@ -156,7 +156,7 @@
    }
    public function afficherMaRecette(){
       $this->vue->afficherPhoto($this->modele->afficherPhoto($_GET['idRecette']));
-      if(isset($_SESSION['id'])){
+      if(!isset($_SESSION['id'])){
          $this->vue->afficherRecetteNonConnecter($this->modele->afficherMaRecette($_GET['idRecette']));
       }
       $this->vue->afficherMaRecette($this->modele->afficherMaRecette($_GET['idRecette']),$this->modele->verifierLike($_GET['idRecette']));
