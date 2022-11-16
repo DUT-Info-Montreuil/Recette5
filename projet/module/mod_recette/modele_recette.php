@@ -180,6 +180,20 @@
          $row=$this->verifierSiUnAvisExiste($idRecette);
        
       }
+
+      public function recetteLiker(){
+         $bdd = parent::$bdd;
+         $sth = $bdd->prepare("select idUtilisateur from Utilisateur where login = ?");
+         $sth->execute(array($_SESSION['login']));
+         $row = $sth->fetch();
+
+         $sth2 = $bdd->prepare("select Recette.idRecette ,titre,description,photo from DonnerAvis inner join Recette on DonnerAvis.idRecette = Recette.idRecette inner join photo on DonnerAvis.idRecette = photo.idRecette where aime = 0 and DonnerAvis.idUtilisateur = ?");
+         $sth2->execute(array($row['idUtilisateur']));
+         $rows = $sth2->fetchAll();
+
+         return $rows;
+
+      }
    }
 
 ?>
