@@ -8,9 +8,18 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
 		<title>Recette5</title>
         <link rel="stylesheet" href="css.css"/>
+        <script > 
+         setInterval('load_nblikes()',500);
+         function load_nblikes(){
+            
+            $('#nbLike').load('module/mod_recette/ajax/Nblike.php?id=<?php echo$_GET['idRecette'];?>');
+
+         }
+   </script>
 	</head>
 	<body>
         <header>
+           
             <?php  
             $compLogo->affichage();
             $compMenu->affichage();

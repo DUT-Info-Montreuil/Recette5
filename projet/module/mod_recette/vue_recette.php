@@ -67,7 +67,11 @@
           }
 
          public function afficherNbLikes($nbLike){
-            echo "nb de likes : ".htmlspecialchars($nbLike['count(aime)']); 
+            echo"<div id='nbLike'>";
+            echo'nblike <br>'.$nbLike['count(aime)'];
+            echo"</div>";
+            
+  
          }
 
          public function afficherChoixNbIngredient(){
