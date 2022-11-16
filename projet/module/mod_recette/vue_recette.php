@@ -49,7 +49,13 @@
                echo '<a href="index.php?module=recette&action=AffichermodifierMaRecette&idRecette='.htmlspecialchars($recette['idRecette']).'">modifier recette </a>';
             }
           }
+          public function afficherRecetteNonConnecter($recette){
+            echo '<h1> '.htmlspecialchars($recette['titre']).'</h1>';   
+            echo' description  : <br>'.htmlspecialchars($recette['description']).' <br>';  
 
+               
+           
+          }
           
 
          public function afficherPhoto($photo){
