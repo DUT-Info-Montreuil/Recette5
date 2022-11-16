@@ -147,6 +147,9 @@
         }
 
         public function verifierSiUnAvisExiste($idRecette){
+         if(isset($_SESSION['id'])){
+
+         }
          $bdd=parent::$bdd;
    
          $sth=$bdd->prepare("SELECT * FROM DonnerAvis WHERE idUtilisateur=?AND idRecette=?");
