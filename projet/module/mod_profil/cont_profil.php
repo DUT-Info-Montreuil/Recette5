@@ -80,6 +80,17 @@ public function modifierMotDePasse(){
     }
 }
 
+public function afficherProfilUtilisateur($pro){
+    $this->vue->afficherProfil($this->modele->profilId($pro));
+}
+
+public function ajouterAmis($idAmis){
+    $this->modele->ajouterAmi($idAmis);
+}
+
+public function voirAmis(){
+    $this->vue->voirAmis($this->modele->voirAmis());
+}
 
 public function exec(){
     switch ($this->action){
@@ -93,7 +104,16 @@ public function exec(){
         case "validerProfil" :
             $this->validerModification();
             break;
-    
+        case "afficherProfilUtilisateur" :
+            $this->afficherProfilUtilisateur($_GET['idUtilisateur']);
+            break;
+        case "ajouterAmis" :
+            $this->ajouterAmis($_GET['id']);
+            echo 'Cette utilisateur est desormais votre ami';
+            break;
+        case "listeAmis" :
+            $this->voirAmis();
+            break;
         case "bienvenue" : 
             echo 'bienvenue';
             
