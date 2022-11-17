@@ -58,9 +58,9 @@
             }
           }
 
-         public function afficherNbLikes($nbLike){
+         public function afficherNbLikes(){
             echo"<div id='nbLike'>";
-            echo'nblike <br>'.$nbLike['count(aime)'];
+           
             echo"</div>";
             
   

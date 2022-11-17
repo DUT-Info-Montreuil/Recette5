@@ -163,7 +163,7 @@
       }
     
       $this->vue->afficherIngredientDeMaRecette($this->modele->afficherIngredientDeMaRecette($_GET['idRecette']));
-      $this->vue->afficherNbLikes($this->modele->reccupererNbLike($_GET['idRecette']));
+      $this->vue->afficherNbLikes();
    
    }
 
