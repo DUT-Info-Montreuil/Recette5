@@ -127,23 +127,29 @@
 
        
    public function ajouterRecetteDansLaBD(){
-      $titre=$_POST['titre'];
-      $tpsPrepa=$_POST['tpsPreparration'];
-      $description=$_POST['description'];
-      $annexe=$_POST['annexe'];
-      
-      if(isset($_POST['vegan'])){
-         $vegan='1';
-      }else{
-         $vegan='0';
-      }
-     $this->modele->ajouter_recette_dans_la_BD($titre,$tpsPrepa,$description,$annexe,$vegan,$this->nbingr);
-  
-      for ($i=0; $i<$_GET['nbIngr']; $i++) {
-       $this->modele->ajouter_Ingredient_dans_recette($_POST['ingredient'.$i.''],$_POST['quantite'.$i.''],$_POST['unite'.$i.'']);
-      }
 
-     $this->gerer_ajout_photo(($_FILES),0);
+      if(isset($_POST['titre'])){
+
+      }else{
+         $titre=$_POST['titre'];
+         $tpsPrepa=$_POST['tpsPreparration'];
+         $description=$_POST['description'];
+         $annexe=$_POST['annexe'];
+         
+         if(isset($_POST['vegan'])){
+            $vegan='1';
+         }else{
+            $vegan='0';
+         }
+        $this->modele->ajouter_recette_dans_la_BD($titre,$tpsPrepa,$description,$annexe,$vegan,$this->nbingr);
+     
+         for ($i=0; $i<$_GET['nbIngr']; $i++) {
+          $this->modele->ajouter_Ingredient_dans_recette($_POST['ingredient'.$i.''],$_POST['quantite'.$i.''],$_POST['unite'.$i.'']);
+         }
+   
+        $this->gerer_ajout_photo(($_FILES),0);
+      }
+ 
    }
 
 
