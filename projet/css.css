@@ -39,6 +39,16 @@ body header{
 
 
 /*---------------FORMULAIRE CONNEXION/INSCRIPTION---------------------*/
+.boutonDeDisLike form{
+	
+	width: unset;
+	margin: unset;
+	background-color:unset;
+	border:unset;
+;
+	border-radius:unset;
+	padding: unset;
+}
 
 .boutonlike form{
 	
