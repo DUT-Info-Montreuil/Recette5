@@ -47,10 +47,10 @@
              
                 $uniqueName = uniqid('', true);
                 $file = $uniqueName.".".$extension;
-                move_uploaded_file($tmpName, './image_recette/'.$file);
+                move_uploaded_file($tmpName, './image/image_recette/'.$file);
         
                $this->modele->modifierPhotoDansLaRecette($file,$anciennePhoto['photo']);
-               unlink('./image_recette/'.$anciennePhoto['photo']);
+               unlink('./image/image_recette/'.$anciennePhoto['photo']);
                 echo "<br> Image enregistrée";
             }
             else{ 
@@ -209,6 +209,10 @@
       $this->modele->RetirerLikeRecette($idRecette);
    }
 
+   public function afficherRecetteLiker(){
+      $this->vue->afficherMesRecette($this->modele->recetteLiker());
+   }
+
       public function exec(){     
          switch ($this->action) {
             case "bienvenue":
@@ -268,6 +272,10 @@
 
          case "RetirerLikeRecette":
             $this->RetirerLikeRecette($_GET['idRecette']);
+            break;
+
+         case "afficherLiker":
+            $this->afficherRecetteLiker();
             break;
 
       }

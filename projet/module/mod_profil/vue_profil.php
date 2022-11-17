@@ -14,11 +14,19 @@ class VueProfil extends VueGenerique{
             $photo = 'image/image_utilisateur/'.$profil['photo'];
         
 
-        echo'
-        <div class="rond" > 
-            <form method="post" action="index.php?module=profil&action=modifierProfil" enctype="multipart/form-data">
-                <input type="submit" value="modifier profil" >
-                <div align="center">
+        $pro = '
+        <div class="rond" > ';
+            
+            if($profil['idUtilisateur'] == $_SESSION['id'])
+                $pro = $pro.'<form method="post" action="index.php?module=profil&action=modifierProfil" enctype="multipart/form-data">
+                <input type="submit" value="modifier profil" >';
+            else{
+                $pro = $pro.'<form method="post" action="index.php?module=profil&action=ajouterAmis&id='.$profil['idUtilisateur'].'" >
+                <input type="submit" value="ajouter amis" >';
+            }
+
+            $pro = $pro.
+                '<div align="center">
                     <img align="center" alt="pp par defaut" src="'.$photo.'"></br>   
                 </div>           
                 Profil : '.$profil['login'].'</br>
@@ -26,6 +34,8 @@ class VueProfil extends VueGenerique{
                 Description : '.$profil['description'].'</br>
             </form>
         </div>';
+
+        echo $pro;
         
         
 
@@ -78,6 +88,18 @@ class VueProfil extends VueGenerique{
                 <input type="submit" value="retourner au profil">
             </div>
         </form>';
+    }
+
+    public function voirAmis($amis){
+        foreach($amis as $values){
+            echo '
+            
+            <a href="index.php?module=profil&action=afficherProfilUtilisateur&idUtilisateur='.$values['idUtilisateur_1'].'">
+            <div class="rond">
+                <img alt="pp par defaut" src="image/image_utilisateur/'.$values['photo'].'"></br>   
+            </div></a>';
+           
+        }
     }
 
 }

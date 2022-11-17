@@ -13,6 +13,14 @@
             return $row;
         }
 
+        public function profilId($pro){
+            $bdd = parent::$bdd;
+            $sth = $bdd->prepare("SELECT * from Utilisateurs where idUtilisateur = ?");
+            $sth->execute(array($pro));
+            $row = $sth->fetch();
+            return $row;
+        }
+
         public function modifierPhoto($photo){
             $bdd = parent::$bdd;
             $sth = $bdd->prepare("UPDATE Utilisateurs SET photo=? where login=?");
@@ -67,6 +75,19 @@
         }
 
 
+        public function ajouterAmi ($idAmis){
+            $bdd = parent::$bdd;
+            $sth = $bdd->prepare("INSERT INTO EtreAmis values ( ? , ?)");
+            $sth->execute(array($_SESSION['id'] , $idAmis));
+        }
+
+        public function voirAmis(){
+            $bdd = parent::$bdd;
+            $sth = $bdd->prepare("select * from EtreAmis inner join Utilisateurs on EtreAmis.idUtilisateur_1 = Utilisateurs.idUtilisateur  where EtreAmis.idUtilisateur = ?");
+            $sth->execute(array($_SESSION['id'] ));
+            $rows = $sth->fetchAll();
+            return $rows;
+        }
  
     }
 ?>

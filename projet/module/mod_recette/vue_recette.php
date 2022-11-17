@@ -33,6 +33,10 @@
             ;
                if($_SESSION['id']==$recette['idUtilisateur'])
                echo '<a href="index.php?module=recette&action=AffichermodifierMaRecette&idRecette='.htmlspecialchars($recette['idRecette']).'">modifier recette </a>';
+
+               echo '<form action= "index.php?module=profil&action=afficherProfilUtilisateur&idUtilisateur='.$recette['idUtilisateur'].'" method="POST">
+                  <input type="submit" value="voir profil"/>
+               </form>';
             }
           }
           public function afficherRecetteNonConnecter($recette){
