@@ -23,7 +23,7 @@
          }
 
 
-         public function afficherMaRecette($recette,$recetteLiker){
+         public function afficherMaRecette($recette){
             echo '<h1> '.htmlspecialchars($recette['titre']).'</h1>';   
             echo' description  : <br>'.htmlspecialchars($recette['description']).' <br>';  
             

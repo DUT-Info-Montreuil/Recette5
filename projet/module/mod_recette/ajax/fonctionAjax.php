@@ -16,7 +16,9 @@
             $('#divBoutonDeLike').append('<button  id="boutonDeLike"><img src="image/like.png" height ="80" width="100" /></button>');
             $("#boutonDeLike").hide();
             $("#boutonDeDisLike").hide();
-            
+            $.post("module/mod_recette/ajax/Nblike.php",{idRecette:<?php echo$_GET['idRecette']?>},function(data){  
+                $('#nbLike').empty().append(data);
+                });
             $.post("module/mod_recette/ajax/verfierSiLaRecetteEstLiker.php",{idUtilisateur:<?php echo $_SESSION['id'] ?>,idRecette:<?php echo$_GET['idRecette']?>},function(data){  
                    if(data==1)
                    $("#boutonDeDisLike").show();
