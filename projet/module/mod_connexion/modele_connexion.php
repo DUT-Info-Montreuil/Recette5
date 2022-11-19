@@ -40,6 +40,7 @@
                 if(password_verify($mdp, $row['mdp'])){
                     $_SESSION['login']=$row['login'];
                     $_SESSION['id']=$row['idUtilisateur'];
+                    $_SESSION['photo'] = $row['photo'];
                     echo 'connexion réeussi '.$row['login'].'';
                   
                 }else{

@@ -1,201 +1,61 @@
-/*---------------SITE PRINCIPAL---------------------*/
+/*------------------SITE--------------*/
 
-body{
-	width:1500px;
+.containers{
+	background-color: rgb(7, 7, 25);
+	width:100%;	
 	margin : auto;
-    background-color:rgb(148, 148, 148);
-
-}
-
-main{
-	margin-top: 20px;
-	font-size: 25px;
-	background-color:rgb(172, 76, 76);
-	padding: 50px;
+	color: azure;
 }
 
 header{
-	font-size: 25px;
-	padding: 20px;
-	padding-bottom: 50px;;
+	width:95%;
+	margin : auto;
+	padding-top: 50px;;
 	
 }
 
-img#logo{
-	margin-left: 680px;
-	height: 80px;
+main{
+	background-color: rgb(14, 14, 41);
+	width:90%;
+	margin : auto;
+	margin-top: 50px;
+	
 }
 
 footer{
-	text-align : center;
-	background-color:rgb(172, 76, 76);
-}
-
-body header{
-	background-color:rgb(172, 76, 76);
-
-}
-
-
-
-/*---------------FORMULAIRE CONNEXION/INSCRIPTION---------------------*/
-.boutonDeDisLike form{
-	
-	width: unset;
-	margin: unset;
-	background-color:unset;
-	border:unset;
-;
-	border-radius:unset;
-	padding: unset;
-}
-
-.boutonlike form{
-	
-	width: unset;
-	margin: unset;
-	background-color:unset;
-	border:unset;
-;
-	border-radius:unset;
-	padding: unset;
-}
-
-form{
-	width: 500px;
-	margin: auto;
-	background-color: rgb(204, 132, 127);
-	border: 3px solid #000000;
-	border-radius: 10px;
-	padding: 30px;
-}
-
-form h1{
-	margin: 0px;
-	font-weight: 100;
+	background-color: rgb(14, 14, 41);	
+	width:100%;
+	margin : auto;
+	margin-top: 30px;
 	text-align: center;
-}
-
-form .separation{
-	background-color: black;
-	height: 3px;
-	margin-bottom: 40px;
-}
-
-form .corps-formulaire .saisie{
-	margin-top: 20px;
-	display: flex;
-	flex-direction: column;
-}
-
-form .corps-formulaire .saisie input {
-	margin-top: 5px;
-	padding: 10px 5px 10px 30px;
-	border: 1px solid #000000;
-	size: 20;
-	border-radius: 5px;
-	outline: none;
-  }
-
-  form  button {
-	margin-top: 10px;
-	background-color: #000000;
-	color: white;
-	font-size: 15px;
-	border: none;
-	padding: 10px 20px;
-	border-radius: 5px;
-	outline: none;
-	cursor: pointer;
-  }
-  
-  
-/*---------------RECETTE---------------------*/
-
-#recette {
-	width: 300px;
-	height: 300px;
-	margin: 15px;
-	display: inline-block;
-	background-color: rgb(204, 132, 127);
-	border: 3px solid #000000;
-	border-radius:15px;
-}
-
-#recette .photo{
-	height: 150px;
-	background-color: black;
-	border-top-left-radius:15px;
-	border-top-right-radius:15px;
-	border-bottom: 3px solid #000000;
-}
-
-#recette h1{
-	font-size: 30px;
-	text-align: center;
-	text-decoration: underline;
-	margin:0px;
-	margin-top: 5px;
-	color: #000000;
-	text-decoration: none;
-}
-
-#recette p{
-	font-size: 15px;
-	margin: 0px;
-	color: #000000;
-	text-decoration: none;
-}
-
-#recette #pho{
-
-	min-width: 300px;
-	max-width: 300px;
-	min-height: 150px;
-	max-height: 150px;
-	border-top-left-radius:15px;
-	border-top-right-radius:15px;
 	
 }
 
-/*---------------MENU---------------------*/
+/*-----------------------------navbar----------------------------*/
 
-nav .nav{
-	background-color: #000000;
-	border-radius:10px;
+#pp{
+	max-width: 30px;
+	max-height: 30px;
+	min-width: 30px;
+	min-height: 30px;
+	clip-path:ellipse(50% 50%);
 }
 
 
-nav .nav #lien{
-	display: inline-block;
-	padding: 20px;
+#navbar{
+	height: 80px;
+	font-size: 24px;
+	padding-left: 100px;;
 }
 
-
-nav .profil {
-	float:right ;
-	
-	text-align: center;
+.navbar-brand #logo{
+	height: 60px;
 }
 
-nav  a{
-	color : white;
-	font-style: normal;
-	text-decoration: none;
-	font-size: 20px;
-	padding: 4px;
-	border-radius:20px;
-	border: 2px solid #ffffff;
-	margin: 15px;
-
+#navbar form{
+	padding-right:100px;
+}
+#navbar li{
+	padding-left: 25px;;
 }
 
-/*---------------PROFIL---------------------*/
-.rond img{
-	min-width: 300px;
-	max-width: 300px;
-	min-height: 200px;
-	max-height: 200px;
-	clip-path:ellipse(33% 50%);	
-
-}
