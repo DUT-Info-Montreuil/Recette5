@@ -24,6 +24,9 @@
 
 
          public function afficherMaRecette($recette){
+            if($recette['photo']==null)
+               $recette['photo']="vide.png";
+            echo '<img src="image/image_recette/'.$recette['photo'].'" width="200" height="200">';    
             echo '<h1> '.htmlspecialchars($recette['titre']).'</h1>';   
             echo' description  : <br>'.htmlspecialchars($recette['description']).' <br>';  
             
@@ -69,7 +72,7 @@
             
   
          }
-
+ 
          public function afficherChoixNbIngredient(){
             echo '
                <form method="post" action="index.php?module=recette&action=AfficherFormAjoutRecette">

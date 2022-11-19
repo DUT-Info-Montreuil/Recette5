@@ -161,7 +161,7 @@
       $this->vue->afficherMesRecette($this->modele->afficherMesRecette());
    }
    public function afficherMaRecette(){
-      $this->vue->afficherPhoto($this->modele->afficherPhoto($_GET['idRecette']));
+     
       if(!isset($_SESSION['id'])){
          $this->vue->afficherRecetteNonConnecter($this->modele->afficherMaRecette($_GET['idRecette']));
       }else{
@@ -201,17 +201,6 @@
    }
 
 
-   public function likerLaRecette($idRecette){
-      $this->modele->likerLaRecette($idRecette);
-   }
-
-   public function RetirerLikeRecette($idRecette){
-      $this->modele->RetirerLikeRecette($idRecette);
-   }
-
-   public function afficherRecetteLiker(){
-      $this->vue->afficherMesRecette($this->modele->recetteLiker());
-   }
 
       public function exec(){     
          switch ($this->action) {
@@ -266,17 +255,6 @@
             break;
          
 
-         case "likerLaRecette":
-            $this->likerLaRecette($_GET['idRecette']);
-         break;
-
-         case "RetirerLikeRecette":
-            $this->RetirerLikeRecette($_GET['idRecette']);
-            break;
-
-         case "afficherLiker":
-            $this->afficherRecetteLiker();
-            break;
 
       }
          global $affiche; 

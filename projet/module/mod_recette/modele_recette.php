@@ -93,7 +93,7 @@
 
        public function  afficherMaRecette($idRecette){
         $bdd=parent::$bdd;
-        $sthh = $bdd->prepare('SELECT * from Recette where idRecette=?') ;
+        $sthh = $bdd->prepare('SELECT * from Recette NATURAL join photo where idRecette=?') ;
             $sthh->execute(array($idRecette));
             $rows= $sthh->fetch();
             return $rows;
