@@ -31,7 +31,7 @@
             $sth = $bdd->prepare("SELECT count(login) FROM Utilisateurs WHERE login=? OR email=?");
             $sth->execute(array($login,$login));
             $row = $sth->fetch();
-            if($row["count(login)"]==0)
+            if($row["count(login)"]==0 || $login==NULL)
                 echo" nom d'utilisateur ou email inexistant ";
             else{
             $sth = $bdd->prepare("SELECT * FROM Utilisateurs WHERE login=? OR email=?");

@@ -13,14 +13,23 @@ class VueRecherche extends VueGenerique{
                
                 echo 
 
-                '<a href="index.php?module=recette&action=afficherMaRecette&idRecette='.$value['idRecette'].'"><div id="recette"><div class="photo">
-                <img id="pho" alt="photo de la recette" src="image/image_recette/'.$value['photo'].'" >
-                    </div>
-                    <div class="info">
-                        <h1>'.$value['titre'].'</h1>
-                        <p>'.$value['description'].'</p>
-                    </div>
-                </div></a>';
+                '
+              
+              <div class="col">
+               <div class="card shadow-sm">
+                 
+                  <img src="image/image_recette/'.$value['photo'].'"  width="100%" height="225">
+                 <div class="card-body">
+                   <p class="card-text">'.$value['description'].'</p>
+                   <div class="d-flex justify-content-between align-items-center">
+                     <div class="btn-group">
+                      <a href="index.php?module=recette&action=afficherMaRecette&idRecette='.$value['idRecette'].'"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
+                     </div>
+                     <small class="text-muted">'.$value['datePublication'].'</small>
+                   </div>
+                 </div>
+               </div>
+             </div> ';
              
             }
             

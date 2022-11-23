@@ -1,7 +1,8 @@
 /*------------------SITE--------------*/
 
 .containers{
-	background-color: rgb(7, 7, 25);
+	background: rgb(18,0,130);
+	background: linear-gradient(0deg, rgba(18,0,130,1) 0%, rgba(0,85,136,1) 100%); 
 	width:100%;	
 	margin : auto;
 	color: azure;
@@ -15,18 +16,20 @@ header{
 }
 
 main{
-	background-color: rgb(14, 14, 41);
+	background:rgb(14, 14, 41);
 	width:90%;
 	margin : auto;
 	margin-top: 50px;
+	padding: 20px;
 	
 }
 
 footer{
-	background-color: rgb(14, 14, 41);	
+	background: rgb(14, 14, 41);	
 	width:100%;
 	margin : auto;
 	margin-top: 30px;
+	padding-top: 5px;
 	text-align: center;
 	
 }
@@ -59,3 +62,58 @@ footer{
 	padding-left: 25px;;
 }
 
+/*----------------------------FORM CONNEXION--------------------------------*/
+
+form .mb-3{
+	width : 500px;
+	padding-top: 50px;
+}
+
+
+/*-------------------------FORM RECETTE----------------------------*/
+
+.card-body p{
+	color :black;
+}
+.col{
+	width: 400px;
+	display: inline-block	;
+}
+
+
+/*------------------------PROFIL------------------------------*/
+.rond img {
+	min-width: 300px;
+	max-width: 300px;
+	min-height: 200px;
+	max-height: 200px;
+	clip-path:ellipse(33% 50%);
+}
+
+.rond{
+	color: rgb(255, 255, 255);
+	width:  600px;
+	margin-left: 33%;
+}
+
+.modifPro {
+	margin-left: 560px;
+	padding-top: 10px;
+}
+
+.description{
+	padding-left: 10px;
+	padding-bottom: 10px;
+}
+
+.rien img{
+	min-width: 300px;
+	max-width: 300px;
+	min-height: 200px;
+	max-height: 200px;
+	clip-path:ellipse(33% 50%);
+}
+
+.card-title{
+	color: black;
+}

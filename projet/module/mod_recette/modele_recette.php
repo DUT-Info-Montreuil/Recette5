@@ -6,17 +6,10 @@
            
         }
         public  function ajouter_recette_dans_la_BD($titre,$tpsPrepa,$description,$annexe,$vegan,$nbingr){
-            $bdd=parent::$bdd;
-      
-            
-            $sth = $bdd->prepare("SELECT idUtilisateur from Utilisateurs where login=?");
-            $sth->execute(array($_SESSION['login']));
-            $row = $sth->fetch();
-            
-            $sth = $bdd->prepare("INSERT INTO `Recette` (`idRecette`, `titre`, `tpsPreparration`, `datePublication`, `description`, `noteAnnexe`, `vegan`, `idUtilisateur`) VALUES (NULL, ?,?, now(),?, ?, ?, ?)");
-            $sth->execute(array($titre,$tpsPrepa,$description,$annexe,$vegan,$row['idUtilisateur']));
-        
 
+            $bdd=parent::$bdd;
+            $sth2 = $bdd->prepare("INSERT INTO `Recette` (`idRecette`, `titre`, `tpsPreparration`, `datePublication`, `description`, `noteAnnexe`, `vegan`, `idUtilisateur`, ) VALUES (NULL, ?,?, now(),?, ?, ?, ?)");
+            $sth2->execute(array($titre,$tpsPrepa,$description,$annexe,$vegan,$_SESSION['id']));
                 echo 'La recette est bien ajouté';
           
            
@@ -78,15 +71,11 @@
 
 
          public  function afficherMesrecette(){
+            $sthh = parent::$bdd->prepare("SELECT * from Recette natural join photo where idUtilisateur=?") ;
             
-        
-            $bdd=parent::$bdd;
-            $sth = $bdd->prepare("SELECT idUtilisateur from Utilisateurs where login=?");
-            $sth->execute(array($_SESSION['login']));
-            $row = $sth->fetch();
-            $sthh = $bdd->prepare('SELECT * from Recette natural join photo where idUtilisateur=?') ;
-            $sthh->execute(array($row['idUtilisateur']));
+            $sthh->execute(array($_SESSION['id']));
             $rows= $sthh->fetchAll();
+            var_dump($rows);
             return $rows;
           
          } 
@@ -158,7 +147,7 @@
       public function recetteLiker(){
          $bdd = parent::$bdd;
 
-         $sth2 = $bdd->prepare("select Recette.idRecette ,titre,description,photo from DonnerAvis inner join Recette on DonnerAvis.idRecette = Recette.idRecette inner join photo on DonnerAvis.idRecette = photo.idRecette where aime = 1 and DonnerAvis.idUtilisateur = ?");
+         $sth2 = $bdd->prepare("select Recette.idRecette ,titre,description,photo,datePublication from DonnerAvis inner join Recette on DonnerAvis.idRecette = Recette.idRecette inner join photo on DonnerAvis.idRecette = photo.idRecette where aime = 1 and DonnerAvis.idUtilisateur = ?");
          $sth2->execute(array($_SESSION['id']));
          $rows = $sth2->fetchAll();
 

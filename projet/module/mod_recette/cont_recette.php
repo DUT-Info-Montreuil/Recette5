@@ -128,11 +128,11 @@
        
    public function ajouterRecetteDansLaBD(){
 
-      if(isset($_POST['titre'])){
+      if(!isset($_POST['titre'])){
 
       }else{
          $titre=$_POST['titre'];
-         $tpsPrepa=$_POST['tpsPreparration'];
+         $tpsPrepa=$_POST['heure']*60 + $_POST['min'];
          $description=$_POST['description'];
          $annexe=$_POST['annexe'];
          
@@ -231,7 +231,7 @@
                $this->ajouterRecetteDansLaBD();
                break;
                
-            case "afficherMesRecette":
+            case "afficherMesRecettes":
                $this->afficherMesRecettes();
                break;
             case "afficherMaRecette":
