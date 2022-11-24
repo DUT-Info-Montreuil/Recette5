@@ -42,7 +42,6 @@ class VueProfil extends VueGenerique{
                 <div class="description">
                 <p>'.$profil['description'].'</p>
                 </div>
-            </form>
         </div>';
 
         echo $pro;
@@ -63,14 +62,14 @@ class VueProfil extends VueGenerique{
         
         <div class="container" align="center">
       <div class="col-md-7 col-lg-8">
-      <div class="rien">
+      <div class="rien" >
         <img align="center" alt="pp par defaut" src="'.$photo.'">
       </div>
       <hr class="my-4">
         <h4 class="mb-3">Modification du profil</h4>
         <form class="needs-validation" novalidate method="post" action="index.php?module=profil&action=validerProfil" enctype="multipart/form-data">
 
-            <div class=" col-12">
+            <div class=" col-12" >
                 <label for="formFile" class="form-label">Changer votre photo de profil</label>
                 <input class="form-control" name="file" type="file" id="formFile">
             </div>
@@ -107,7 +106,8 @@ class VueProfil extends VueGenerique{
             </div>
 
           <hr class="my-4">
-          <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+          <a href="index.php?module=profil&action=afficherProfil"><button type="button" class="w-80 btn btn-secondary btn-lg" >Annuler</button></a>
+          <button class="w-80 btn btn-primary btn-lg" type="submit">Valider</button>
         </form>
       </div>
     </div>

@@ -29,7 +29,7 @@ class VueMenu{
                     </li>
                     <li class="nav-item dropdown">
                         
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"><img id="pp" alt="pp" src="image/image_utilisateur/'.$_SESSION['photo'].'">'.$_SESSION['login'].'</a>
+                        <a class="nav-link dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false"><img id="pp" alt="pp" src="image/image_utilisateur/'.$_SESSION['photo'].'">'.$_SESSION['login'].'</a>
                         <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="index.php?module=profil&action=afficherProfil">Profil</a></li>
                         <li><a class="dropdown-item" href="index.php?module=recette&action=afficherMesRecette">Mes recettes</a></li>
@@ -41,10 +41,11 @@ class VueMenu{
                     </ul>
                 </div>
 
-                <form  class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="recette" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
-                </form>
+                <div class="form-inline my-2 my-lg-0">
+                    <div class="input-group">
+                        <input type="search" id="search" class="form-control rounded" placeholder="Recette"/>
+                    </div>
+                </div>
                 </div>
             </nav>';
 
@@ -73,7 +74,7 @@ class VueMenu{
                  </ul>
              </div>
              <form  class="form-inline my-2 my-lg-0">
-                 <input class="form-control mr-sm-2" type="search" placeholder="recette" aria-label="Search">
+                <input class="form-control mr-sm-2" type="text" id="recherche" placeholder="recette" >
                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
              </form>
              </div>
