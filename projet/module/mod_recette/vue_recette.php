@@ -7,15 +7,24 @@
             parent::__construct();
              
          }
-       
+         
+         /*------------afficher toutes les recettes-------------*/
          public function afficherMesRecette($recette){    
             foreach( $recette as $value ){
+               if($value['photo'] != NULL){
+                  $photo= $value['photo'];
+                  
+               }
+               else{
+                  $photo = 'plat.png';
+               }
+                  
                echo 
                '
                <div class="col">
                <div class="card shadow-sm">
                  
-                  <img src="image/image_recette/'.$value['photo'].'"  width="100%" height="225">
+                  <img src="image/image_recette/'.$photo.'"  width="100%" height="225">
                  <div class="card-body">
                    <p class="card-text">'.$value['description'].'</p>
                    <div class="d-flex justify-content-between align-items-center">
@@ -30,7 +39,7 @@
             }
          }
 
-
+         /*-----------------------afficher les détails d'une recette-----------------------*/
          public function afficherMaRecette($recette){
             echo '<h1> '.htmlspecialchars($recette['titre']).'</h1>';   
             echo' description  : <br>'.htmlspecialchars($recette['description']).' <br>';  
@@ -47,21 +56,12 @@
                </form>';
             }
           }
-          public function afficherRecetteNonConnecter($recette){
-            echo '<h1> '.htmlspecialchars($recette['titre']).'</h1>';   
-            echo' description  : <br>'.htmlspecialchars($recette['description']).' <br>';  
-
-               
-           
-          }
-          
 
          public function afficherPhoto($photo){
-         if(!isset($photo['photo']))
-            echo '<img src="image/index.jpeg" width="200" height="200">';
-         else
-            echo '<img src="image/image_recette/'.$photo['photo'].'" width="200" height="200">';          
+         if(isset($photo['photo']))
+            echo '<img src="image/image_recette/'.$photo['photo'].'" width="200" height="200" >';         
          }
+            
 
          public function afficherIngredientDeMaRecette($Ingredient){
             echo '<h2>voici la liste des ingrédients</h2>';
@@ -77,7 +77,7 @@
             
   
          }
-
+         /*--------------supprimer-----------------*/
          public function afficherChoixNbIngredient(){
             echo '
                <form method="post" action="index.php?module=recette&action=AfficherFormAjoutRecette">
@@ -87,10 +87,8 @@
                ';  
           }
 
+          /*----------------afficher le formulaire de la recette---------------------*/
          public function afficher_form_Recette($tabIngr,$nbIngr){   
-               
-            
-
                echo '
             <div class="container">
                 <div class="col-md-7 col-lg-8">
@@ -169,20 +167,20 @@
                       <label class="form-check-label" for="flexSwitchCheckDefault">Vegan</label>
                     </div>
    
-                    <hr class="my-4">
-          
+                    <hr class="my-4">     
+                    <div id="divIngr"></div>
+                   <hr class="my-4">
+                    
+                    
                     <button class="w-100 btn btn-primary btn-lg" type="submit">Ajouter la recette</button>
                   </form>
                 </div>
               </div>
           </div>
-            
-            ';
+          <div id="igr"></div>';
         }
 
         public function afficherFormModifRecette($recette){
-    
-    
          echo'
          <form method="post" action="index.php?module=recette&action=modifierMaRecette&idRecette='.htmlspecialchars($recette['idRecette']).'" enctype="multipart/form-data">
             <label for="file">photo</label>
@@ -209,6 +207,6 @@
            
          echo'<input type="submit" value="envoyer"> </form>';
         }
-        
+
     }
 ?>

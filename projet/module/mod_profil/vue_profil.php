@@ -26,8 +26,8 @@ class VueProfil extends VueGenerique{
                   </svg></a></div>';
             else{
                 $pro = $pro.'
-                <div align="right">
-                <a href="index.php?module=profil&action=ajouterAmis&id='.$profil['idUtilisateur'].'"" ><button type="button" class="btn btn-outline-dark">Ajouter amis</button></a>
+                <div align="right" id="amis">
+                
                 </div>';
             }
 
@@ -103,7 +103,7 @@ class VueProfil extends VueGenerique{
 
             <div class="col-12 l-12">
               <label for="address2" class="form-label">Description<span class="text-muted"></span></label>
-              <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3" >'.$profil['description'].'</textarea>
             </div>
 
           <hr class="my-4">

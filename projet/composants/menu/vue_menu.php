@@ -32,7 +32,7 @@ class VueMenu{
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"><img id="pp" alt="pp" src="image/image_utilisateur/'.$_SESSION['photo'].'">'.$_SESSION['login'].'</a>
                         <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="index.php?module=profil&action=afficherProfil">Profil</a></li>
-                        <li><a class="dropdown-item" href="index.php?module=recette&action=afficherMesRecettes">Mes recettes</a></li>
+                        <li><a class="dropdown-item" href="index.php?module=recette&action=afficherMesRecette">Mes recettes</a></li>
                         <li><a class="dropdown-item" href="index.php?module=profil&action=listeAmis">Amis</a></li>
                         <div class="dropdown-divider"></div>
                         <li><a class="dropdown-item" href="index.php?module=connexion&action=deconnexion">Déconnexion</a></li>

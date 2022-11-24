@@ -132,9 +132,13 @@
 
       }else{
          $titre=$_POST['titre'];
+         echo $titre;
          $tpsPrepa=$_POST['heure']*60 + $_POST['min'];
+         echo $tpsPrepa;
          $description=$_POST['description'];
+         echo $description;
          $annexe=$_POST['annexe'];
+         echo $annexe;
          
          if(isset($_POST['vegan'])){
             $vegan='1';
@@ -162,12 +166,7 @@
    }
    public function afficherMaRecette(){
       $this->vue->afficherPhoto($this->modele->afficherPhoto($_GET['idRecette']));
-      if(!isset($_SESSION['id'])){
-         $this->vue->afficherRecetteNonConnecter($this->modele->afficherMaRecette($_GET['idRecette']));
-      }else{
-         $this->vue->afficherMaRecette($this->modele->afficherMaRecette($_GET['idRecette']));
-      }
-    
+      $this->vue->afficherMaRecette($this->modele->afficherMaRecette($_GET['idRecette']));
       $this->vue->afficherIngredientDeMaRecette($this->modele->afficherIngredientDeMaRecette($_GET['idRecette']));
       $this->vue->afficherNbLikes();
    

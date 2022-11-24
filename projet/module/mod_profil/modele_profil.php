@@ -25,6 +25,7 @@
             $bdd = parent::$bdd;
             $sth = $bdd->prepare("UPDATE Utilisateurs SET photo=? where login=?");
             $sth->execute(array($photo, $_SESSION['login']));
+            $_SESSION['photo'] = $photo;
         }
 
         public function recupererPhotoActuelle(){

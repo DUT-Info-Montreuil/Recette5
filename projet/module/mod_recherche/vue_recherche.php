@@ -10,7 +10,13 @@ class VueRecherche extends VueGenerique{
             echo 'Aucune recette ';
         }else{
             foreach($tabR as $value){
-               
+              if($value['photo'] != NULL){
+                $photo= $value['photo'];
+                
+             }
+             else{
+                $photo = 'plat.png';
+             }
                 echo 
 
                 '
@@ -18,7 +24,7 @@ class VueRecherche extends VueGenerique{
               <div class="col">
                <div class="card shadow-sm">
                  
-                  <img src="image/image_recette/'.$value['photo'].'"  width="100%" height="225">
+                  <img src="image/image_recette/'.$photo.'"  width="100%" height="225">
                  <div class="card-body">
                    <p class="card-text">'.$value['description'].'</p>
                    <div class="d-flex justify-content-between align-items-center">

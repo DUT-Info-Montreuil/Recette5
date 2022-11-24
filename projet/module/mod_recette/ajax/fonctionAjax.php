@@ -37,7 +37,6 @@
                     $("#boutonDeLike").hide();
                     $("#boutonDeDisLike").show();
                 });
-               
             }
 
         );
@@ -58,4 +57,6 @@
         );
         }
     );
+
+
    </script>

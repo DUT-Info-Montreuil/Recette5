@@ -22,11 +22,18 @@
             $sth = $bdd->prepare("SELECT MAX(idRecette) FROM Recette ");
             $sth->execute();
             $row = $sth->fetch();
+            
+            $sth2 = $bdd->prepare("SELECT MAX(idRecette) FROM photo");
+            $sth2->execute();
+            $row2 = $sth2->fetch();
 
+            if($row['MAX(idRecette)'] == $row2['MAX(idRecette)']){
+               echo 'cette recette possède déjà une photo';
+            }else{
 
             $sthh=$bdd->prepare("INSERT INTO `photo` (`idRecette`, `photo`) VALUES (?, ?)");
             $sthh->execute(array($row['MAX(idRecette)'],$photo));
-
+            }
 
          }
 
@@ -134,8 +141,6 @@
          }
         
         }
-
-    
 
 
       public function CommenterRecette($idRecette){
