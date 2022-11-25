@@ -40,31 +40,37 @@
          }
 
          /*-----------------------afficher les détails d'une recette-----------------------*/
-         public function afficherMaRecette($recette){
-            
-            
-               if($_SESSION['id']==$recette['idUtilisateur'])
-               echo '<a href="index.php?module=recette&action=AffichermodifierMaRecette&idRecette='.htmlspecialchars($recette['idRecette']).'">modifier recette </a>';
-
-               echo '<form action= "index.php?module=profil&action=afficherProfilUtilisateur&idUtilisateur='.$recette['idUtilisateur'].'" method="POST">
-                  <input type="submit" value="voir profil"/>
-               </form>';
-            
-  
+         public function afficherMaRecette($recette, $photo, $Ingredient){
          
                echo'
          <section class="py-5">
          <div class="container px-4 px-lg-5 my-5">
          <div class="row gx-4 gx-lg-5 align-items-center">
-             <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..."></div>
+             <div class="col-md-6">';
+
+             if($photo['photo'] == NULL)
+             echo '<img class="card-img-top mb-5 mb-md-0" src="image/image_recette/plat.png" alt="photo de la recette">';
+             else
+             echo '<img class="card-img-top mb-5 mb-md-0" src="image/image_recette/'.$photo['photo'].'" alt="photo de la recette">';
+             echo '</div>
              <div class="col-md-6">
-                 <div class="small mb-1">SKU: BST-498</div>
                  <h1 class="display-5 fw-bolder">'.htmlspecialchars($recette['titre']).'</h1>
-                 <div class="fs-5 mb-5">
-                     <span class="text-decoration-line-through">$45.00</span>
-                     <span>$40.00</span>
-                 </div>
+                 <div class="fs-5 mb-5">';
+                 if($_SESSION['id']==$recette['idUtilisateur'])
+                 echo '<a href="index.php?module=recette&action=AffichermodifierMaRecette&idRecette='.htmlspecialchars($recette['idRecette']).'">modifier recette </a>';
+                  else
+                 echo '<a href="index.php?module=profil&action=afficherProfilUtilisateur&idUtilisateur='.$recette['idUtilisateur'].'" ><input type="submit" value="voir profil"/></a>';
+              
+                 echo '</div>
                  <p class="lead">'.htmlspecialchars($recette['description']).'</p>
+                 <h2>voici la liste des ingrédients</h2>';
+                 foreach( $Ingredient as $value ){
+                    echo '<br> '.htmlspecialchars($value['nomIngredient']).' : '.htmlspecialchars($value['Quantite']).' '.htmlspecialchars($value['unite']).'';
+                 }
+                  echo '
+                  <table class="table table-hover">
+                  ...
+                  </table>
                  <div class="d-flex">';
                  if(isset($_SESSION['login'])){
                   echo'<div id="divBoutonDeLike">
@@ -80,23 +86,7 @@
      </div>
       </section>';
           }
-
-         public function afficherPhoto($photo){
-         if(isset($photo['photo']))
-            echo '<img src="image/image_recette/'.$photo['photo'].'" width="200" height="200" >';         
-         }
             
-
-         public function afficherIngredientDeMaRecette($Ingredient){
-            echo '<h2>voici la liste des ingrédients</h2>';
-            foreach( $Ingredient as $value ){
-               echo '<br> '.htmlspecialchars($value['nomIngredient']).' : '.htmlspecialchars($value['Quantite']).' '.htmlspecialchars($value['unite']).'';
-            }
-          }
-
-         public function afficherNbLikes(){
-         
-   }
          /*--------------supprimer-----------------*/
          public function afficherChoixNbIngredient(){
             echo '

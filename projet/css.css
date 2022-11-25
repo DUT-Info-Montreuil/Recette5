@@ -79,6 +79,17 @@ form .mb-3{
 	width: 400px;
 	display: inline-block	;
 }
+table, caption, th, td {
+
+	border: 2px solid rgb(0, 0, 0);
+	  border-collapse: collapse;
+	
+	}
+	caption, th, td {
+	
+	padding: 8px;
+	
+	}
 
 
 /*------------------------PROFIL------------------------------*/

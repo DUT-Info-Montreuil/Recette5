@@ -165,11 +165,7 @@
       $this->vue->afficherMesRecette($this->modele->afficherMesRecette());
    }
    public function afficherMaRecette(){
-      $this->vue->afficherPhoto($this->modele->afficherPhoto($_GET['idRecette']));
-      $this->vue->afficherMaRecette($this->modele->afficherMaRecette($_GET['idRecette']));
-      $this->vue->afficherIngredientDeMaRecette($this->modele->afficherIngredientDeMaRecette($_GET['idRecette']));
-      $this->vue->afficherNbLikes();
-   
+      $this->vue->afficherMaRecette($this->modele->afficherMaRecette($_GET['idRecette']), $this->modele->afficherPhoto($_GET['idRecette']) , $this->modele->afficherIngredientDeMaRecette($_GET['idRecette']));
    }
 
    public function AffichermodifierMaRecette(){
