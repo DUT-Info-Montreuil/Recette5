@@ -10,7 +10,7 @@ $bdd=new PDO('mysql:host=database-etudiants.iut.univ-paris8.fr;dbname=dutinfopw2
     $sth->execute(array($idRecette));
     $row = $sth->fetch();
     
-    echo'nblike <br>'.$row['count(aime)'];
+    echo'<br>   '.$row['count(aime)'];
     
   
 ?>

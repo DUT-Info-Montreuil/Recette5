@@ -41,20 +41,44 @@
 
          /*-----------------------afficher les détails d'une recette-----------------------*/
          public function afficherMaRecette($recette){
-            echo '<h1> '.htmlspecialchars($recette['titre']).'</h1>';   
-            echo' description  : <br>'.htmlspecialchars($recette['description']).' <br>';  
             
-            if(isset($_SESSION['login'])){
-           echo'<div id="divBoutonDeLike">
-               </div>'
-            ;
+            
                if($_SESSION['id']==$recette['idUtilisateur'])
                echo '<a href="index.php?module=recette&action=AffichermodifierMaRecette&idRecette='.htmlspecialchars($recette['idRecette']).'">modifier recette </a>';
 
                echo '<form action= "index.php?module=profil&action=afficherProfilUtilisateur&idUtilisateur='.$recette['idUtilisateur'].'" method="POST">
                   <input type="submit" value="voir profil"/>
                </form>';
-            }
+            
+  
+         
+               echo'
+         <section class="py-5">
+         <div class="container px-4 px-lg-5 my-5">
+         <div class="row gx-4 gx-lg-5 align-items-center">
+             <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..."></div>
+             <div class="col-md-6">
+                 <div class="small mb-1">SKU: BST-498</div>
+                 <h1 class="display-5 fw-bolder">'.htmlspecialchars($recette['titre']).'</h1>
+                 <div class="fs-5 mb-5">
+                     <span class="text-decoration-line-through">$45.00</span>
+                     <span>$40.00</span>
+                 </div>
+                 <p class="lead">'.htmlspecialchars($recette['description']).'</p>
+                 <div class="d-flex">';
+                 if(isset($_SESSION['login'])){
+                  echo'<div id="divBoutonDeLike">
+                      </div>';
+                 }
+                 echo '<div id="nbLike">
+           
+                 </div>
+                     </button>
+                 </div>
+             </div>
+         </div>
+     </div>
+      </section>';
           }
 
          public function afficherPhoto($photo){
@@ -71,12 +95,8 @@
           }
 
          public function afficherNbLikes(){
-            echo"<div id='nbLike'>";
-           
-            echo"</div>";
-            
-  
-         }
+         
+   }
          /*--------------supprimer-----------------*/
          public function afficherChoixNbIngredient(){
             echo '
