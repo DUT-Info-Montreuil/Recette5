@@ -61,8 +61,10 @@ body header{
 	padding: unset;
 }
 
+
+
 form{
-	width: 500px;
+	width: 850px;
 	margin: auto;
 	background-color: rgb(204, 132, 127);
 	border: 3px solid #000000;
@@ -198,4 +200,22 @@ nav  a{
 	max-height: 200px;
 	clip-path:ellipse(33% 50%);	
 
+}
+
+
+/*--------------eror----------*/
+
+
+#errorRecette{
+	color:red;
+}
+#validerAjout{
+	color:green;
+}
+
+
+td{
+	width: 50%;
+	background-color: red;
+	border: 2px solid #ffffff;
 }

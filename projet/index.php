@@ -14,6 +14,7 @@ $compLogo = new CompLogo();
 session_start();
 $_SESSION['login'] = isset($_SESSION['login']) ? $_SESSION['login'] : null;
 $affiche;
+$ListIngredient;
 $connexionBd = new Connexion();
 $connexionBd->initConnexion();
 

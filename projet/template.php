@@ -9,6 +9,7 @@
 		<title>Recette5</title>
         <link rel="stylesheet" href="css.css"/>
         <?php include('module/mod_recette/ajax/fonctionAjax.php');?>
+   
 	</head>
 	<body>
         <header>

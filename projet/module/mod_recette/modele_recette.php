@@ -114,6 +114,9 @@
             $sth = $bdd->prepare("SELECT * from Ingredient");
             $sth->execute();
             $rows = $sth->fetchAll();
+
+           global $ListIngredient;
+           $ListIngredient=$rows;
             return $rows;
         }
     

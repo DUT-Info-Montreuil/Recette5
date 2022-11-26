@@ -7,15 +7,17 @@ class VueMenu{
     }
 
     public function menu(){
+       
             if($_SESSION['login'] != null){
             
             $this->menu=
-            '<nav>
+            '
+            <nav>
                 <div class="nav">
                     <div id="lien" class="onglets">
                         <a href="index.php?module=connexion&action=bienvenue">Acceuil</a>
                         <a href="index.php?module=recherche&action=toute">Recette</a>
-                        <a href="index.php?module=recette&action=choisirNbIngredient">Ajouter Recette</a>
+                        <a href="index.php?module=recette&action=AfficherFormAjoutRecette">Ajouter Recette</a>
                         <a href="index.php?module=recette&action=afficherMesRecette">Mes Recettes</a>
                         <a href="index.php?module=recette&action=afficherLiker">Aimé</a>
                     </div>
