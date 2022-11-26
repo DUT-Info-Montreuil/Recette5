@@ -9,34 +9,42 @@
          }
          
          /*------------afficher toutes les recettes-------------*/
-         public function afficherMesRecette($recette){    
-            foreach( $recette as $value ){
-               if($value['photo'] != NULL){
-                  $photo= $value['photo'];
-                  
-               }
-               else{
-                  $photo = 'plat.png';
-               }
-                  
-               echo 
-               '
-               <div class="col">
-               <div class="card shadow-sm">
-                 
-                  <img src="image/image_recette/'.$photo.'"  width="100%" height="225">
-                 <div class="card-body">
-                   <p class="card-text">'.$value['description'].'</p>
-                   <div class="d-flex justify-content-between align-items-center">
-                     <div class="btn-group">
-                      <a href="index.php?module=recette&action=afficherMaRecette&idRecette='.$value['idRecette'].'"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
-                     </div>
-                     <small class="text-muted">'.$value['datePublication'].'</small>
-                   </div>
-                 </div>
-               </div>
-             </div> ';
-            }
+         public function afficherMesRecette($tabR){    
+            if($tabR == NULL){
+               echo 'Aucune recette ';
+           }else{
+               foreach($tabR as $value){
+                 if($value['photo'] != NULL){
+                   $photo= $value['photo'];   
+                }
+                else{
+                   $photo = 'plat.png';
+                }
+                   echo'
+                 <div class="col"> 
+                  <div class="card shadow-sm">            
+                     <img src="image/image_recette/'.$photo.'"  width="100%" height="225">          
+                    <div class="card-body">
+                      <p class="card-text">'.$value['description'].'</p>                
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                         <a href="index.php?module=recette&action=afficherMaRecette&idRecette='.$value['idRecette'].'"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>          
+                          </div>
+                        <div class="text-group">
+                         <small class="text-muted">'.$value['tpsPreparration'].' mins</small>';
+                         if($value['vegan'] == 1){
+                         echo '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-droplet-fill" viewBox="0 0 16 16">
+                         <path d="M8 16a6 6 0 0 0 6-6c0-1.655-1.122-2.904-2.432-4.362C10.254 4.176 8.75 2.503 8 0c0 0-6 5.686-6 10a6 6 0 0 0 6 6ZM6.646 4.646l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448c.82-1.641 1.717-2.753 2.093-3.13Z"/>
+                       </svg>';
+                       }
+                        echo '</div>
+                        <small class="text-muted">'.$value['datePublication'].'</small>
+                      </div>
+                    </div>
+                  </div>
+                </div> ';
+               }       
+           }
          }
 
          /*-----------------------afficher les détails d'une recette-----------------------*/
@@ -55,6 +63,7 @@
              echo '</div>
              <div class="col-md-6">
                  <h1 class="display-5 fw-bolder">'.htmlspecialchars($recette['titre']).'</h1>
+                 <p class="lead">'.htmlspecialchars($recette['tpsPreparration']).' mins</p>
                  <div class="fs-5 mb-5">';
                  if($_SESSION['id']==$recette['idUtilisateur'])
                  echo '<a href="index.php?module=recette&action=AffichermodifierMaRecette&idRecette='.htmlspecialchars($recette['idRecette']).'">modifier recette </a>';
@@ -62,15 +71,16 @@
                  echo '<a href="index.php?module=profil&action=afficherProfilUtilisateur&idUtilisateur='.$recette['idUtilisateur'].'" ><input type="submit" value="voir profil"/></a>';
               
                  echo '</div>
-                 <p class="lead">'.htmlspecialchars($recette['description']).'</p>
-                 <h2>voici la liste des ingrédients</h2>';
+                 <p class="lead">'.htmlspecialchars($recette['description']).'</p>';
+                  if($recette['noteAnnexe'] != NULL){
+                 echo '<hr class="my-4"><p class="lead">'.htmlspecialchars($recette['noteAnnexe']).'</p>';
+                  }
+                 echo '<h2>voici la liste des ingrédients</h2>';
                  foreach( $Ingredient as $value ){
                     echo '<br> '.htmlspecialchars($value['nomIngredient']).' : '.htmlspecialchars($value['Quantite']).' '.htmlspecialchars($value['unite']).'';
                  }
                   echo '
-                  <table class="table table-hover">
-                  ...
-                  </table>
+
                  <div class="d-flex">';
                  if(isset($_SESSION['login'])){
                   echo'<div id="divBoutonDeLike">
@@ -79,8 +89,10 @@
                  echo '<div id="nbLike">
            
                  </div>
+                 
                      </button>
                  </div>
+                 date de publication : '.$recette['datePublication'].'
              </div>
          </div>
      </div>
@@ -104,26 +116,7 @@
                 <div class="col-md-7 col-lg-8">
                   <h4 class="mb-3">Ajouter une Recette</h4>
                   <hr class="my-4">
-                  <form class="needs-validation" novalidate method="post" action="index.php?module=recette&action=ajouterRecetteDansLaBD&nbIngr='.$nbIngr.'" enctype="multipart/form-data">';
-                  for ($i=0; $i<$nbIngr; $i++) {
-                     echo'<br>';
-                     echo' Ingredient '.($i+1).'  <select name="ingredient'.$i.'">';
-                     foreach( $tabIngr as $value ){
-                         echo'   <option value="'.htmlspecialchars($value['idIngredient']).' ">'.htmlspecialchars($value['nomIngredient']).'</option>';
-                     }     
-                     echo'</select>';
-                     echo'quantite : <input type="text" name="quantite'.$i.'">';   
-                     echo'<select name="unite'.$i.'">';   
-                     echo'<option value="kg">kg</option>';
-                     echo'<option value="g">g</option>';
-                     echo'<option value="mg">mg</option>';
-                     echo'<option value="nb">nb</option>';
-                     echo'<option value="l">l</option>';
-                     echo'<option value="ml">ml</option>';
-                     echo'</select><br><br>';
-                     echo'<br>';  
-                  }
-                     echo'
+                  <form class="needs-validation" novalidate method="post" action="index.php?module=recette&action=ajouterRecetteDansLaBD&nbIngr='.$nbIngr.'" enctype="multipart/form-data">
                     <div class="row g-3">
                       <div class="col-sm-6">
                         <label for="firstName" class="form-label">Nom</label>
@@ -178,7 +171,26 @@
                     </div>
    
                     <hr class="my-4">     
-                    <div id="divIngr"></div>
+                    <div id="divIngr">';
+                    for ($i=0; $i<$nbIngr; $i++) {
+                     echo'<br>';
+                     echo' Ingredient '.($i+1).'  <select name="ingredient'.$i.'">';
+                     foreach( $tabIngr as $value ){
+                         echo'   <option value="'.htmlspecialchars($value['idIngredient']).' ">'.htmlspecialchars($value['nomIngredient']).'</option>';
+                     }     
+                     echo'</select>';
+                     echo'quantite : <input type="text" name="quantite'.$i.'">';   
+                     echo'<select name="unite'.$i.'">';   
+                     echo'<option value="kg">kg</option>';
+                     echo'<option value="g">g</option>';
+                     echo'<option value="mg">mg</option>';
+                     echo'<option value="nb">nb</option>';
+                     echo'<option value="l">l</option>';
+                     echo'<option value="ml">ml</option>';
+                     echo'</select><br><br>';
+                     echo'<br>';  
+                  }
+                    echo '</div>
                    <hr class="my-4">
                     
                     

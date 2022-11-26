@@ -89,6 +89,22 @@
             $rows = $sth->fetchAll();
             return $rows;
         }
+
+        public function touteRecetteUtilisateur(){
+            $bdd=parent::$bdd;
+            $sthh = $bdd->prepare('SELECT * from Recette natural join photo where idUtilisateur= ?') ;
+            $sthh->execute(array($_GET['idUtilisateur']));
+            $rows= $sthh->fetchAll();
+            return $rows;
+        }
+
+        public function touteMesRecettes(){
+            $bdd=parent::$bdd;
+            $sthh = $bdd->prepare('SELECT * from Recette natural join photo where idUtilisateur= ?') ;
+            $sthh->execute(array($_SESSION['id']));
+            $rows= $sthh->fetchAll();
+            return $rows;
+        }
  
     }
 ?>

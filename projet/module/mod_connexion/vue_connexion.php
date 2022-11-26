@@ -57,6 +57,12 @@
             }          
         }
 
+        public function bienvenue(){
+            echo '<div align="center" id="bvn">
+            <h1 id="bienvenue">BIENVENUE SUR NOTRE SITE</h1>
+            </div>';
+        }
+
 
     }
 ?>

@@ -51,7 +51,7 @@
                unset($_SESSION['login']);
                break;
             case "bienvenue":
-               echo 'bienvenue';
+               $this->vue->bienvenue();
                break;  
          }      
          global $affiche; 

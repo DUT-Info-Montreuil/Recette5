@@ -13,7 +13,7 @@ public function __construct(){
 }  
 
 public function afficherProfil(){
-    $this->vue->afficherProfil($this->modele->profil() );
+    $this->vue->afficherProfil($this->modele->profil(), $this->modele->touteMesRecettes() );
     
 }
 
@@ -81,7 +81,7 @@ public function modifierMotDePasse(){
 }
 
 public function afficherProfilUtilisateur($pro){
-    $this->vue->afficherProfil($this->modele->profilId($pro));
+    $this->vue->afficherProfil($this->modele->profilId($pro), $this->modele->touteRecetteUtilisateur());
 }
 
 public function ajouterAmis($idAmis){

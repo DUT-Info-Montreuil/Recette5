@@ -152,7 +152,7 @@
       public function recetteLiker(){
          $bdd = parent::$bdd;
 
-         $sth2 = $bdd->prepare("select Recette.idRecette ,titre,description,photo,datePublication from DonnerAvis inner join Recette on DonnerAvis.idRecette = Recette.idRecette inner join photo on DonnerAvis.idRecette = photo.idRecette where aime = 1 and DonnerAvis.idUtilisateur = ?");
+         $sth2 = $bdd->prepare("select Recette.idRecette ,titre,description,photo,datePublication,vegan,tpsPreparration from DonnerAvis inner join Recette on DonnerAvis.idRecette = Recette.idRecette inner join photo on DonnerAvis.idRecette = photo.idRecette where aime = 1 and DonnerAvis.idUtilisateur = ?");
          $sth2->execute(array($_SESSION['id']));
          $rows = $sth2->fetchAll();
 
