@@ -197,6 +197,10 @@
             }
               
             break;
+
+         case "afficherLiker" :
+            $this->vue->afficherMesRecette($this->modele->recetteLiker());
+            break;
          
 
 

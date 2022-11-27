@@ -23,8 +23,6 @@ if(isset($_FILES['file_photoRecette']['name'])){
 
 if($titre=="")
     echo json_encode('pas de titre');
-else if($tpsPreparration==""  ||!is_numeric($tpsPreparration))
-    echo json_encode('Veuillez mettre un temps de préparation valide');
 else if($description=="")
     echo json_encode('Veuillez mettre une description');
 
@@ -33,9 +31,11 @@ else if(!in_array($extension, $extensions) && $_FILES['file_photoRecette']['name
 }
 else if($size > $maxSize  && $_FILES['file_photoRecette']['name']!=""){
             echo json_encode("fichier trop grand");
-}else if($error != 0 && $_FILES['file_photoRecette']['name']!=""){
+}
+else if($error != 0 && $_FILES['file_photoRecette']['name']!=""){
             echo json_encode("Une erreur est survenue");
-}else{ 
+}
+else{ 
     echo json_encode("bon");
 }      
    

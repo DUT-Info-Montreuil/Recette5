@@ -15,6 +15,8 @@ $bdd=new PDO('mysql:host=database-etudiants.iut.univ-paris8.fr;dbname=dutinfopw2
      }else{
         $vegan='0';
      }  
+   $tpsPreparration = $heure*60 + $min;
+
      $sth = $bdd->prepare("INSERT INTO `Recette` (`idRecette`, `titre`, `tpsPreparration`, `datePublication`, `description`, `noteAnnexe`, `vegan`, `idUtilisateur`) VALUES (NULL, ?, ?, now(), ?, ?, ?, ?)");
      $sth->execute(array($titre,$tpsPreparration,$description,$annexe,$vegan,$_SESSION['id']));
      $sth = $bdd->prepare("SELECT MAX(idRecette) FROM Recette WHERE Recette.idUtilisateur=?");
@@ -55,8 +57,8 @@ $bdd=new PDO('mysql:host=database-etudiants.iut.univ-paris8.fr;dbname=dutinfopw2
       
             
       }else{
-         $sthh=$bdd->prepare("INSERT INTO `photo` (`idPhoto`, `photo`, `idRecette`) VALUES (NULL, ?, ?)");
-            $sthh->execute(array("null",$row['MAX(idRecette)']));
+         $sthh=$bdd->prepare("INSERT INTO `photo` (`idPhoto`, `photo`, `idRecette`) VALUES (NULL, NULL, ?)");
+            $sthh->execute(array($row['MAX(idRecette)']));
       }
 
 echo 4;

@@ -23,7 +23,7 @@ class VueMenu{
                         <a class="nav-link active" aria-current="page" href="index.php?module=recherche&action=toute">Recette</a>
                     </li>
                     <li class="nav-item">
-                        <a  class="nav-link" href="index.php?module=recette&action=choisirNbIngredient">Ajouter Recette</a>
+                        <a  class="nav-link" href="index.php?module=recette&action=AfficherFormAjoutRecette">Ajouter Recette</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?module=recette&action=afficherLiker">Aimé</a>
