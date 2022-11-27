@@ -18,57 +18,14 @@
 
 
    public function afficher_form_Recette(){
-   
-      $this->vue-> afficher_form_Recette($this->modele->recupererListeIngredient(),$_POST['nbIngr']);
-     
+      $ingr=$this->modele->recupererListeIngredient();
+      $this->vue-> afficher_form_Recette($ingr);
+
    }
 
 
-   public function gerer_ajout_photo($photo,$modif){
+   public function gerer_ajout_photo($photo){
 
-      if($modif==1){
-         
-     $anciennePhoto=$this->modele->afficherPhoto($_GET['idRecette']);
-     
-       if(isset($photo['file'])){
-        
-            $tmpName = $photo['file']['tmp_name'];
-            $name = $photo['file']['name'];
-            $size = $photo['file']['size'];
-            $error = $photo['file']['error'];
-        
-            $tabExtension = explode('.', $name);
-            $extension = strtolower(end($tabExtension));
-        
-            $extensions = ['jpg', 'png', 'jpeg', 'gif'];
-            $maxSize = 4000000000;
-
-            if(in_array($extension, $extensions) && $size <= $maxSize && $error == 0){
-             
-                $uniqueName = uniqid('', true);
-                $file = $uniqueName.".".$extension;
-                move_uploaded_file($tmpName, './image/image_recette/'.$file);
-        
-               $this->modele->modifierPhotoDansLaRecette($file,$anciennePhoto['photo']);
-               unlink('./image/image_recette/'.$anciennePhoto['photo']);
-                echo "<br> Image enregistrée";
-            }
-            else{ 
-               echo "<br>";
-   
-               if(!in_array($extension, $extensions)){
-                  echo'mauvaise extension';
-               }else if($size <= $maxSize){
-                  echo "fichier trop grand";
-               }else{
-                  echo "Une erreur est survenue";
-               }
-               }
-               
-            }
-    
-      }
-   else{
       if(isset($photo['file'])){
          $tmpName = $photo['file']['tmp_name'];
          $name = $photo['file']['name'];
@@ -118,7 +75,7 @@
             
          }
 
-      }
+      
      
      }
    
@@ -128,9 +85,7 @@
        
    public function ajouterRecetteDansLaBD(){
 
-      if(!isset($_POST['titre'])){
-
-      }else{
+  
          $titre=$_POST['titre'];
          echo $titre;
          $tpsPrepa=$_POST['heure']*60 + $_POST['min'];
@@ -150,16 +105,15 @@
          for ($i=0; $i<$_GET['nbIngr']; $i++) {
           $this->modele->ajouter_Ingredient_dans_recette($_POST['ingredient'.$i.''],$_POST['quantite'.$i.''],$_POST['unite'.$i.'']);
          }
-   
-        $this->gerer_ajout_photo(($_FILES),0);
-      }
- 
+         if($_FILES['file']['name']==null){
+            $this->modele->ajouterPhotoDansLaRecette(null);
+         }else{
+            $this->gerer_ajout_photo(($_FILES));
+         }
+
    }
 
 
-   public function choisirNbIngredient(){
-      $this->vue->afficherChoixNbIngredient();
-   }
 
    public function afficherMesRecettes(){
       $this->vue->afficherMesRecette($this->modele->afficherMesRecette());
@@ -196,17 +150,6 @@
    }
 
 
-   public function likerLaRecette($idRecette){
-      $this->modele->likerLaRecette($idRecette);
-   }
-
-   public function RetirerLikeRecette($idRecette){
-      $this->modele->RetirerLikeRecette($idRecette);
-   }
-
-   public function afficherRecetteLiker(){
-      $this->vue->afficherMesRecette($this->modele->recetteLiker());
-   }
 
       public function exec(){     
          switch ($this->action) {
@@ -218,13 +161,8 @@
                $this->afficher_form_Recette();
                break;
 
-            case "choisirNbIngredient":
-                  $this->choisirNbIngredient();
-                  break;
+           
 
-            case "ajouterRecetteDansLaBD":
-               $this->ajouterRecetteDansLaBD();
-               break;
                
             case "afficherMesRecettes":
                $this->afficherMesRecettes();
@@ -261,17 +199,6 @@
             break;
          
 
-         case "likerLaRecette":
-            $this->likerLaRecette($_GET['idRecette']);
-         break;
-
-         case "RetirerLikeRecette":
-            $this->RetirerLikeRecette($_GET['idRecette']);
-            break;
-
-         case "afficherLiker":
-            $this->afficherRecetteLiker();
-            break;
 
       }
          global $affiche; 

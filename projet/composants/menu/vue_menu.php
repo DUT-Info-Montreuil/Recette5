@@ -7,6 +7,7 @@ class VueMenu{
     }
 
     public function menu(){
+       
             if($_SESSION['login'] != null){
             
             $this->menu=

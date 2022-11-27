@@ -156,3 +156,15 @@ table, caption, th, td {
 .card-title{
 	color: black;
 }
+
+
+/*--------------eror----------*/
+
+
+#errorRecette{
+	color:red;
+}
+#validerAjout{
+	color:green;
+}
+
