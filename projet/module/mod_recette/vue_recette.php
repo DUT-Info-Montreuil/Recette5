@@ -84,75 +84,65 @@
 
          public function afficher_form_Recette($tabIngr){   
             global $ListIngredient;
+            
          
       
             echo'
-            <div id="validerAjout"></div>
-            <form action="#" method="post" id="formcom">
+            
+            <form action="#" method="post" onsubmit="return false" id="formcom">
             <div id="errorRecette"></div>
+               <div id="validerAjout"></div>
+            <div id="formulaireRecette">
+               
+         
             
-      
-          
-            <label for="titre"> nom Recette :</label>
-            <input type="text" name="titre">
-            <br />
-            <label for="tpsPreparrration">temps de préparation : </label>
-            <input type="text" name="tpsPreparration">
-            <br />
-            Description: <input type="textArea" name="description">
-            <br />
-            note annexe: <input type="textArea" name="annexe">
-            <br />
-            vegan: <input type="checkbox" id="vegan">
-            <br />
+               <label for="titre"> nom Recette :</label>
+               <input type="text" name="titre">
+               <br />
+               <label for="file">Photo de la recette</label>
+               <input type="file" name="file_photoRecette" id="id_file_photo_Recette" />
+               <label for="tpsPreparrration">temps de préparation : </label>
+               <input type="text" name="tpsPreparration">
+               <br />
+               Description: <input type="textArea" name="description">
+               <br />
+               note annexe: <input type="textArea" name="annexe">
+               <br />
+               vegan: <input type="checkbox" id="vegan">
+               <br />
 
-            </div id=divIngredient1"> 
-            
-            ingredient :<select name="ingredient1" id="ingredient1" form="formcom">  ';
-            foreach( $tabIngr as $value ){
-                     echo'  <option value="'.htmlspecialchars($value['idIngredient']).' ">'.htmlspecialchars($value['nomIngredient']).'</option>';
-            }  
-            echo' </select>
-          quantite : <input type="text" name="quantite1">   
-           <select name="unite1" form="formcom">   
-                     <option value="kg">kg</option>
-                     <option value="g">g</option>
-                     <option value="mg">mg</option>
-                     <option value="nb">nb</option>
-                     <option value="l">l</option>
-                     <option value="ml">ml</option>
-          </select>
+               <div id=divIngredient1"> 
+               
+                  ingredient :<select name="ingredient1" id="ingredient1" form="formcom">  ';
+                  foreach( $tabIngr as $value ){
+                           echo'  <option value="'.htmlspecialchars($value['idIngredient']).' ">'.htmlspecialchars($value['nomIngredient']).'</option>';
+                  }  
+                  echo' </select>
+               quantite : <input type="text" name="quantite1">   
+               <select name="unite1" form="formcom">   
+                           <option value="kg">kg</option>
+                           <option value="g">g</option>
+                           <option value="mg">mg</option>
+                           <option value="nb">nb</option>
+                           <option value="l">l</option>
+                           <option value="ml">ml</option>
+               </select>
 
+                  
+                  </div>
+               <div id="divContenantLesIngredient"> 
             
+               </div>';
+
+
+            echo'
+               <button type="button" id="ajtIngredient" targetId="divContenantLesIngredient" value="ajouter ingr"/>ajt ingredient </button>
+               <button type="button" id="suppIngredient"  />supprimer ingredient </button>
+               <input id="boutonvaliderAJout" type="submit" value="Valider"/>
             </div>
-             <div id="divContenantLesIngredient"> 
-           
-            </div>';
-
-
-           echo'
-            <button type="button" id="ajtIngredient" targetId="divContenantLesIngredient" value="ajouter ingr"/>ajt ingredient </button>
-            <button type="button" id="suppIngredient"  />supprimer ingredient </button>
-            <input type="submit" value="Valider"/>
-
             ';
-            // <form method="post" action="#" enctype="multipart/form-data" id="boutonRecette">
-         //    <label for="file">Photo de la recette</label>
-         //    <input type="file" name="file"><br />
-         //    <label for="titre"> nom Recette :</label>
-         //    <input type="text" name="titre">
-         //    <br />
-         //    <label for="tpsPreparrration">temps de préparation : </label>
-         //    <input type="text" name="tpsPreparration">
-         //    <br />
-         //    Description: <input type="textArea" name="description">
-         //    <br />
-         //    note annexe: <input type="textArea" name="annexe">
-         //    <br />
-         //    vegan: <input type="checkbox" name="vegan">
-         //    <br />' ;
-       
-         // echo'<input type="submit" value="envoyer"> </form
+          
+           
             
         }
 

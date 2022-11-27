@@ -1,42 +1,75 @@
 
 <script>
 $(document).ready(function(){  
+    var nbingredient=1;  
+    $('#boutonvaliderAJout').hide();
+    $("#formcom").bind("keypress", function (e) {
+    if (e.keyCode == 13) {
+        $("#btnSearch").attr('value');
+        
+        return false;
+    }
+});
 
 
-  
-    var i=1;  
-   
+
+        document.getElementById("formcom").onchange = function() {
+               
+               var myForm = document.getElementById('formcom');
+               let form=new FormData(myForm);
+               form.append('nbingredient',nbingredient);
+                      $.ajax({
+                       type: "POST",
+                       url: "module/mod_recette/ajax/verifierFormRecette.php",
+                       data: form,
+                       contentType: false,
+                       cache: false,
+                       processData: false,
+                       dataType: "json",
+                       success: function (data) {
+                        if(data=="bon"){
+                            $('#boutonvaliderAJout').show();
+                            $('#errorRecette').empty();
+                        }
+
+                        else{
+                            $('#boutonvaliderAJout').hide();
+                            $('#errorRecette').empty().append(data);
+                        }
+                           
+                        
+                    }
+                   })
+                  
+               };
+
     $(
         function(){
 
 
             $("#formcom").submit(
             function(){
-           
-                $.ajax({
-                    method: "POST",
-                    url:    "module/mod_recette/ajax/ajoutDeRecette.php",
-                    data : $(this).serialize() + '&nbIngredient=' + i+ '&idutilisateur=' +<?php echo $_SESSION['id'] ?>,
-                    dataType: "json"
-                })
-                .done(function(data){
-                   
-                    if(data==1)
-                        $('#errorRecette').empty().append('pas de titre');
-                    else if(data==2)
-                        $('#errorRecette').empty().append('Veuillez mettre un temps de préparation valide');
-                    else if(data==3)
-                        $('#errorRecette').empty().append('Veuillez mettre une description');
-                    else{
-                        $('#validerAjout').empty().append('Votre recette a bien été ajoutée');
-                       
-                        $('#formcom').hide();
-                    }
-                   
+               
+                $('#validerAjout').empty();
+                $('#errorRecette').empty();
 
-                });
 
-                    return false;
+                let form=new FormData(this);
+                form.append('nbingredient',nbingredient);
+               $.ajax({
+                type: "POST",
+                url: "module/mod_recette/ajax/ajoutDeRecette.php",
+                data: form,
+                contentType: false,
+                cache: false,
+                processData: false,
+                dataType: "json",
+                success: function (data) {
+                    $('#validerAjout').empty().append("recette ajoutée");
+                    $("#formulaireRecette").hide();
+                }
+            })
+
             }
 
         );
@@ -59,10 +92,10 @@ $(document).ready(function(){
         function(){
             $("#ajtIngredient").click(
             function(){
-                i++;
+                nbingredient++;
          
-                $('#divContenantLesIngredient').append('<div id="divIngredient'+i+'"> ingredient: <select name=ingredient'+i+' form="formcom"><?php echo $liste; ?></select>');
-                $('#divIngredient'+i+'').append('quantite : <input type="text" name="quantite'+i+'" form="formcom"> <select form="formcom" name="unite'+i+'"><option value="kg">kg</option> <option value="g">g</option><option value="mg">mg</option><option value="nb">nb</option><option value="l">l</option><option value="ml">ml</option></select>');
+                $('#divContenantLesIngredient').append('<div id="divIngredient'+nbingredient+'"> ingredient: <select name=ingredient'+nbingredient+' form="formcom"><?php echo $liste; ?></select>');
+                $('#divIngredient'+nbingredient+'').append('quantite : <input type="text" name="quantite'+nbingredient+'" form="formcom"> <select form="formcom" name="unite'+nbingredient+'"><option value="kg">kg</option> <option value="g">g</option><option value="mg">mg</option><option value="nb">nb</option><option value="l">l</option><option value="ml">ml</option></select>');
                 $('#divContenantLesIngredient').append(' </div>');
               
                
@@ -79,8 +112,8 @@ $(document).ready(function(){
         function(){
             $("#suppIngredient").click(
                 function(){
-                    $('#divIngredient'+i+'').remove();  
-                    i--;
+                    $('#divIngredient'+nbingredient+'').remove();  
+                    nbingredient--;
                 }
 
             );
@@ -105,32 +138,7 @@ $(document).ready(function(){
          }
 
          $(document).ready(function(){
-            var i=1;  
-    $(
-        function(){
-            $("#ajtIngredient").click(
-            function(){
-                i++;
-                $('#tabIngredient').append('<tr id="row'+i+'">  <td><br><select name="cars1" id="cars" form="carform">  <option value="volvo">Volvo</option> <option value="saab">Saab</option> <option value="opel">Opel</option>  <option value="audi">Audi</option></select> </td>  </tr>');  
-      
-            }
-
-        );
-       
-        }
-    );
-
-    $(
-        function(){
-            $("#suppIngredient").click(
-                function(){
-                    $('#row'+i+'').remove();  
-                    i--;
-                }
-
-            );
-        }
-    );
+           
             $('#divBoutonDeLike').append('<button  id="boutonDeDisLike"><img src="image/dislike.png" height ="80" width="100" /></button>   ');
             $('#divBoutonDeLike').append('<button  id="boutonDeLike"><img src="image/like.png" height ="80" width="100" /></button>');
             $("#boutonDeLike").hide();
