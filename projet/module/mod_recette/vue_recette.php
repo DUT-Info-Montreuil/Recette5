@@ -9,10 +9,17 @@
          }
          
          /*------------afficher toutes les recettes-------------*/
-         public function afficherMesRecette($tabR){    
+         public function afficherMesRecette($tabR){
+            
+            
             if($tabR == NULL){
                echo 'Aucune recette ';
            }else{
+
+
+                        
+
+
                foreach($tabR as $value){
                  if($value['photo'] != NULL){
                    $photo= $value['photo'];   
@@ -26,6 +33,7 @@
                   <div class="card shadow-sm">            
                      <img src="image/image_recette/'.$photo.'"  width="100%" height="225">          
                     <div class="card-body">
+                     <h1 class="card-text">'.$value['titre'].'</h1>
                       <p class="card-text">'.$value['description'].'</p>                
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
@@ -43,7 +51,7 @@
                       </div>
                     </div>
                   </div>
-                </div> ';
+                </div>  ';
                }       
            }
          }
@@ -193,8 +201,8 @@
             
                </div>
                <hr class="my-4">
-               <button type="button" id="ajtIngredient" targetId="divContenantLesIngredient" value="ajouter ingr"/>ajt ingredient </button>
-               <button type="button" id="suppIngredient"  />supprimer ingredient </button>
+               <button type="button" id="ajtIngredient" targetId="divContenantLesIngredient" class="w-10 btn btn-success btn-lg" value="ajouter ingr"/>ajt ingredient </button>
+               <button type="button" id="suppIngredient" class="w-10 btn btn-danger btn-lg" />supprimer ingredient </button>
                <button class="w-100 btn btn-primary btn-lg" type="submit" id="boutonvaliderAJout">Ajouter la recette</button>
                </div></div>
                

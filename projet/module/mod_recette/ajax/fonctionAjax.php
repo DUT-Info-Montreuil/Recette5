@@ -94,8 +94,8 @@ $(document).ready(function(){
             function(){
                 nbingredient++;
          
-                $('#divContenantLesIngredient').append('<div id="divIngredient'+nbingredient+'"> ingredient: <select name=ingredient'+nbingredient+' form="formcom"><?php echo $liste; ?></select>');
-                $('#divIngredient'+nbingredient+'').append('quantite : <input type="text" name="quantite'+nbingredient+'" form="formcom"> <select form="formcom" name="unite'+nbingredient+'"><option value="kg">kg</option> <option value="g">g</option><option value="mg">mg</option><option value="nb">nb</option><option value="l">l</option><option value="ml">ml</option></select>');
+                $('#divContenantLesIngredient').append('<div id="divIngredient'+nbingredient+'"> ingredient :<select name=ingredient'+nbingredient+' form="formcom"><?php echo $liste; ?></select>');
+                $('#divIngredient'+nbingredient+'').append(' quantite : <input type="text" name="quantite'+nbingredient+'" form="formcom"> <select form="formcom" name="unite'+nbingredient+'"><option value="kg">kg</option> <option value="g">g</option><option value="mg">mg</option><option value="nb">nb</option><option value="l">l</option><option value="ml">ml</option></select>');
                 $('#divContenantLesIngredient').append(' </div>');
               
                
@@ -139,8 +139,8 @@ $(document).ready(function(){
 
          $(document).ready(function(){
            
-            $('#divBoutonDeLike').append('<button  id="boutonDeDisLike"><img src="image/dislike.png" height ="80" width="100" /></button>   ');
-            $('#divBoutonDeLike').append('<button  id="boutonDeLike"><img src="image/like.png" height ="80" width="100" /></button>');
+            $('#divBoutonDeLike').append('<button class="btn btn-lg btn-primary" id="boutonDeLike"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-heart-fill"    ><path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"></path></svg></span></button>');
+            $('#divBoutonDeLike').append('<button type="button" class="btn btn-lg btn-default" id="boutonDeDisLike"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-heart-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"></path></svg></button>');
             $("#boutonDeLike").hide();
             $("#boutonDeDisLike").hide();
             $.post("module/mod_recette/ajax/Nblike.php",{idRecette:<?php echo$_GET['idRecette']?>},function(data){  

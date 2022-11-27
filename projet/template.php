@@ -13,6 +13,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
         <?php include('module/mod_recette/ajax/fonctionAjax.php');?>
         <?php include('module/mod_profil/ajax/fonctionAjouterAmis.php')?>
+        <?php include('composants/menu/ajax/barreRecherche.php')?>
 	</head>
 	<body>
         <div class="containers">
@@ -22,13 +23,13 @@
             $compMenu->affichage();
             ?>
 		</header>	
-        <main id="main">	
+        <main id="main">
             <?php
                 global $affiche;
                 echo $affiche;
             ?>
         </main>
-
+            
             <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 " >
                 <div id="divf" align="center"></div>
                 <p class="col-md-4 mb-0 text-muted">&copy; 2022 Company, Inc</p>

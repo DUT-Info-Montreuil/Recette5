@@ -79,10 +79,8 @@
 
          public  function afficherMesrecette(){
             $sthh = parent::$bdd->prepare("SELECT * from Recette natural join photo where idUtilisateur=?") ;
-            
             $sthh->execute(array($_SESSION['id']));
             $rows= $sthh->fetchAll();
-            var_dump($rows);
             return $rows;
           
          } 

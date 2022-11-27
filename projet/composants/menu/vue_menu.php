@@ -7,7 +7,13 @@ class VueMenu{
     }
 
     public function menu(){
-       
+
+            if(!isset($_SESSION['photo']))
+                $photo = 'profil.png';
+            else{
+                $photo = $_SESSION['photo'];
+            } 
+
             if($_SESSION['login'] != null){
             
             $this->menu=
@@ -30,10 +36,10 @@ class VueMenu{
                     </li>
                     <li class="nav-item dropdown">
                         
-                        <a class="nav-link dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false"><img id="pp" alt="pp" src="image/image_utilisateur/'.$_SESSION['photo'].'">'.$_SESSION['login'].'</a>
+                        <a class="nav-link dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false"><img id="pp" alt="pp" src="image/image_utilisateur/'.$photo.'">'.$_SESSION['login'].'</a>
                         <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="index.php?module=profil&action=afficherProfil">Profil</a></li>
-                        <li><a class="dropdown-item" href="index.php?module=recette&action=afficherMesRecette">Mes recettes</a></li>
+                        <li><a class="dropdown-item" href="index.php?module=recette&action=afficherMesRecettes">Mes recettes</a></li>
                         <li><a class="dropdown-item" href="index.php?module=profil&action=listeAmis">Amis</a></li>
                         <div class="dropdown-divider"></div>
                         <li><a class="dropdown-item" href="index.php?module=connexion&action=deconnexion">Déconnexion</a></li>
@@ -43,9 +49,24 @@ class VueMenu{
                 </div>
 
                 <div class="form-inline my-2 my-lg-0">
-                    <div class="input-group">
-                        <input type="search" id="search" class="form-control rounded" placeholder="Recette"/>
+                    <div class="input-group">   
+                        <input type="search" id="search" class="form-control rounded" placeholder="Recette"/>    
                     </div>
+
+                    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Search</button>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel" id="black">voici les resultats</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" id="barreRecherche">
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                    
                 </div>
                 </div>
             </nav>';
@@ -74,10 +95,13 @@ class VueMenu{
                  </li>
                  </ul>
              </div>
-             <form  class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" id="recherche" placeholder="recette" >
-                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
-             </form>
+             <div class="form-inline my-2 my-lg-0">
+                    <div class="input-group">
+                        <input type="search" id="search" class="form-control rounded" placeholder="Recette"/>
+                    </div>
+
+                    
+                </div>
              </div>
          </nav>';
       

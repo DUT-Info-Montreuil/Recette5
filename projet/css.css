@@ -65,10 +65,10 @@ footer{
 /*-----------------------------navbar----------------------------*/
 
 #pp{
-	max-width: 30px;
-	max-height: 30px;
-	min-width: 30px;
-	min-height: 30px;
+	max-width: 33px;
+	max-height: 33px;
+	min-width: 33px;
+	min-height: 33px;
 	clip-path:ellipse(50% 50%);
 }
 
@@ -76,7 +76,7 @@ footer{
 #navbar{
 	height: 80px;
 	font-size: 24px;
-	padding-left: 100px;;
+	padding-left: 100px;
 }
 
 .navbar-brand #logo{
@@ -89,6 +89,23 @@ footer{
 #navbar li{
 	padding-left: 25px;;
 }
+
+/*--------------------------------------------------------BARRE DE RECHERCHE-------------------------------*/
+#exampleModal{
+	color: black;
+}
+
+#barreRecherche img{
+	width: 150px;
+	padding-right:15px;
+}
+
+#barreRecherche a{
+	color: black;
+	text-decoration: none;
+}
+
+
 
 /*----------------------------FORM CONNEXION--------------------------------*/
 
@@ -103,9 +120,16 @@ form .mb-3{
 .card-body p{
 	color :black;
 }
+
+.card-body h1{
+	color :black;
+}
+
 .col{
 	width: 400px;
 	display: inline-block	;
+	padding-top: 30px;
+	margin-left: 10px;
 }
 table, caption, th, td {
 
