@@ -13,10 +13,10 @@ class VueProfil extends VueGenerique{
         else
             $photo = 'image/image_utilisateur/'.$profil['photo'];
         
-
+        
         $pro = '
         <div class="rond" > ';
-            
+        if(isset($_SESSION['id'])){
             if($profil['idUtilisateur'] == $_SESSION['id'])
                 $pro = $pro.'
                 <div class="modifPro">
@@ -30,6 +30,7 @@ class VueProfil extends VueGenerique{
                 
                 </div>';
             }
+          }
 
             $pro = $pro.
                 '<div align="center">

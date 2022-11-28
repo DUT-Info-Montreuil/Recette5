@@ -44,15 +44,24 @@ $bdd=new PDO('mysql:host=database-etudiants.iut.univ-paris8.fr;dbname=dutinfopw2
          $extensions = ['jpg', 'png', 'jpeg', 'gif'];
          $maxSize = 9000000000000000;
 
+         $sthr = $bdd->prepare("SELECT MAX(idRecette) FROM Recette ");
+         $sthr->execute();
+         $rowr = $sthr->fetch();
+            
+         $sth2p = $bdd->prepare("SELECT MAX(idRecette) FROM photo");
+         $sth2p->execute();
+         $row2p = $sth2p->fetch();
 
 
-         if(in_array($extension, $extensions) && $size <= $maxSize && $error == 0){
+         if(in_array($extension, $extensions) && $size <= $maxSize && $error == 0 && $rowr['MAX(idRecette)'] != $row2p['MAX(idRecette)']){
 
             $uniqueName = uniqid('', true);
             $file = $uniqueName.".".$extension;
             move_uploaded_file($tmpName, '../../../image/image_recette/'.$file);
             $sthh=$bdd->prepare("INSERT INTO `photo` (`idPhoto`, `photo`, `idRecette`) VALUES (NULL, ?, ?)");
+
             $sthh->execute(array($file,$row['MAX(idRecette)']));
+            
          }
       
             

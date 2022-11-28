@@ -48,7 +48,9 @@
                $this->connexion_dans_inscription( htmlspecialchars($login),htmlspecialchars($mdp));       
                break;
             case "deconnexion":               
-               unset($_SESSION['login']);
+               unset($_SESSION['login'] );
+               unset($_SESSION['id'] );
+               unset($_SESSION['photo'] );
                break;
             case "bienvenue":
                $this->vue->bienvenue();

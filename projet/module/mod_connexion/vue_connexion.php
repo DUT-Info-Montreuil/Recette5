@@ -26,7 +26,7 @@
                         <label for="exampleInputPassword1" class="form-label">MOT DE PASSE</label>
                         <input type="password" class="form-control" id="exampleInputPassword1" name="mdp">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Inscription</button>
                     </div>
                 </form>';           
         }
@@ -51,7 +51,7 @@
                         <label for="exampleInputPassword1" class="form-label">MOT DE PASSE</label>
                         <input type="password" class="form-control" id="exampleInputPassword1" name="mdp">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Connexion</button>
                     </div>
                 </form>';
             }          
