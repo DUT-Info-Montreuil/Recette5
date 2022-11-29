@@ -86,6 +86,7 @@
          } 
 
        public function  afficherMaRecette($idRecette){
+         
         $bdd=parent::$bdd;
         $sthh = $bdd->prepare('SELECT * from Recette NATURAL join photo where idRecette=?') ;
             $sthh->execute(array($idRecette));
@@ -96,7 +97,7 @@
 
        public function  afficherIngredientDeMaRecette($idRecette){
         $bdd=parent::$bdd;
-        $sth=$bdd->prepare("SELECT nomIngredient,unite,Quantite FROM Utiliser NATURAL JOIN Ingredient WHERE idRecette=?");
+        $sth=$bdd->prepare("SELECT nomIngredient,unite,Quantite FROM Utiliser NATURAL JOIN Ingredient WHERE idRecette=? ORDER BY idIngredient");
         $sth->execute(array($idRecette));
         $rows= $sth->fetchAll();
         return $rows;

@@ -31,31 +31,11 @@
    }
 
    public function AffichermodifierMaRecette(){
-      $this->vue->afficherFormModifRecette($this->modele->afficherMaRecette($_GET['idRecette']));
+      $this->vue->afficherFormModifRecette($this->modele->afficherMaRecette($_GET['idRecette']),$this->modele->recupererListeIngredient(),$this->modele->afficherIngredientDeMaRecette($_GET['idRecette']));
    }
 
 
-   public function modifierMaRecette(){
 
-      $titre=$_POST['titre'];
-      $tpsPrepa=$_POST['tpsPreparration'];
-      $description=$_POST['description'];
-      $annexe=$_POST['annexe'];
-     
-     
-      if(isset($_POST['vegan'])){
-         $vegan='1';
-      }else{
-         $vegan='0';
-      }
-
-      
-     $this->modele->modifierMaRecette($_GET['idRecette'],$titre,$tpsPrepa,$description,$annexe,$vegan,$this->nbingr);
-      
-
-     $this->gerer_ajout_photo(($_FILES),1);
-
-   }
 
 
 
@@ -66,8 +46,10 @@
                break;  
 
             case "AfficherFormAjoutRecette":
-               $this->afficher_form_Recette();
-               break;
+                  
+                   $this->afficher_form_Recette();
+                   include('module/mod_recette/ajax/ajoutRecette/fonctionAjaxAjoutRecette.php') ;
+            break;
 
            
 
@@ -77,8 +59,11 @@
                break;
             case "afficherMaRecette":
 
-              if($this->modele->verifierSiRecetteExiste($_GET['idRecette'])==1)
+              if($this->modele->verifierSiRecetteExiste($_GET['idRecette'])==1){
                   $this->afficherMaRecette();
+                  include('module/mod_recette/ajax/likerRecette/fonctionAjaxLike.php');
+              }
+                
                else
                   echo"recette inexistante";
                
@@ -90,21 +75,14 @@
                echo"recette inexistante";
             }
             elseif($_SESSION['id']==$this->modele->recupererIdDuPropietaireDeLaRecette($_GET['idRecette'])){
+              
                $this->AffichermodifierMaRecette();
+               include('module/mod_recette/ajax/modifierRecette/fonctionAjaxModifierRecette.php') ;
             }else{
                echo"cette recette ne vous appartient pas";
             }
             break;
 
-         case "modifierMaRecette":
-            
-            if($_SESSION['id']==$this->modele->recupererIdDuPropietaireDeLaRecette($_GET['idRecette'])){
-               $this->modifierMaRecette();
-            }else{
-               echo"cette recette ne vous appartient pas";
-            }
-              
-            break;
 
          case "afficherLiker" :
             $this->vue->afficherMesRecette($this->modele->recetteLiker());

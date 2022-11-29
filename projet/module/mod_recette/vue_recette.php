@@ -124,11 +124,12 @@
 
 
          public function afficher_form_Recette($tabIngr){   
+            
             global $ListIngredient;
             echo'
             
             
-            <form action="#" method="post" onsubmit="return false" id="formcom">
+            <form action="#" method="post" onsubmit="return false" id="formAjoutRecette">
             <div class="container">
             
             <div id="errorRecette"></div>
@@ -192,13 +193,13 @@
                <hr class="my-4">
                <div id=divIngredient1"> 
                
-                  ingredient :<select name="ingredient1" id="ingredient1" form="formcom">  ';
+                  ingredient :<select name="ingredient1" id="ingredient1" form="formAjoutRecette">  ';
                   foreach( $tabIngr as $value ){
                            echo'  <option value="'.htmlspecialchars($value['idIngredient']).' ">'.htmlspecialchars($value['nomIngredient']).'</option>';
                   }  
                   echo' </select>
                quantite : <input type="text" name="quantite1">   
-               <select name="unite1" form="formcom">   
+               <select name="unite1" form="formAjoutRecette">   
                            <option value="kg">kg</option>
                            <option value="g">g</option>
                            <option value="mg">mg</option>
@@ -228,33 +229,130 @@
             
         }
 
-        public function afficherFormModifRecette($recette){
+        public function afficherFormModifRecette($recette,$tabIngr,$ListIngredient){
+
+        
          echo'
-         <form method="post" action="index.php?module=recette&action=modifierMaRecette&idRecette='.htmlspecialchars($recette['idRecette']).'" enctype="multipart/form-data">
-            <label for="file">photo</label>
-            <input type="file" name="file"><br />
-            <label for="titre"> nom Recette :</label>
-            <input type="text" name="titre" value="'.htmlspecialchars($recette['titre']).'">
-            <br />
-            <label for="tpsPreparrration">temps de préparation : </label>
-            <input type="text" name="tpsPreparration" value="'.htmlspecialchars($recette['tpsPreparration']).'">
-            <br />
-            Description: <input type="textArea" name="description" value="'.htmlspecialchars($recette['description']).'">
-            <br />
-            note annexe: <input type="textArea" name="annexe" value="'.htmlspecialchars($recette['noteAnnexe']).'">
-            <br />' ;
+            
+         <form action="#" method="post" onsubmit="return false" id="formModifRecette">
+        
+         <div class="container">
+         
+         <div id="errorRecette"></div>
+            <div id="validerAjout"></div>
+         <div id="formulaireRecette">
+         <div class="col-md-7 col-lg-8">
+         <h4 class="mb-3">modifier la Recette '.$recette['titre'].'</h4>
+         <hr class="my-4">
+      
+         <div class="row g-3">
+               <div class="col-sm-6">
+                  <label for="titre" class="form-label">Nom</label>
+                  <input type="text" class="form-control" value="'.$recette['titre'].'"id="titre" name="titre" required>
+               </div>
 
-            if($recette['vegan']==1){
-               echo '  vegan: <input type="checkbox" name="vegan" checked="checked">
-               <br />';
-            }else{
-               echo '  vegan: <input type="checkbox" name="vegan" >
-               <br />';
+            <div class=" col-12">
+               <label for="file" class="form-label">Photo de la recette<span class="text-muted">(Optional)</span></label>
+               <input class="form-control" name="file_photoRecette" type="file" id="id_file_photo_Recette">
+            </div>
+
+            <div class="col-md-3">
+            <label for="country" class="form-label">Heure</label>
+            <select class="form-select" id="country" name="heure" required>
+              <option value="0">Choose...</option>
+              ';
+              for($i=0 ; $i<10 ; $i++){
+                 echo'<option>'.$i.'</option>';
+              };
+              echo '
+            </select>
+          </div>
+
+          <div class="col-md-3">
+            <label for="state" class="form-label">Minutes</label>
+            <select class="form-select" id="state" name="min" required>
+              <option value="0">Choose...</option>
+              ';
+              for($i=10 ; $i<60 ; $i=$i+10){
+                 echo'<option>'.$i.'</option>';
+              };
+              echo '
+            </select>
+          </div>
+
+
+          <div class="col-12 l-12">
+            <label for="address2" class="form-label">Description<span class="text-muted"></span></label>
+            <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3">'.$recette['description'].'</textarea>
+         </div>
+
+         <div class="col-12">
+            <label for="email" class="form-label">Annexe <span class="text-muted">(Optional)</span></label>
+            <input type="text" value="'.$recette['noteAnnexe'].'" name="annexe" class="form-control" id="email" >
+         </div>';
+         if($recette['vegan']==1){
+            echo'
+            <div class="form-check form-switch">
+            <input class="form-check-input" checked="cheked" type="checkbox" name="vegan" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Vegan</label>
+         </div>
+            
+            ';
+         }
+         else{
+
+            echo'
+            
+            <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" name="vegan" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Vegan</label>
+         </div>
+
+            
+            ';
+
+         }
+echo'
+        
+            </div>
+            <hr class="my-4">
+            <div id=divIngredient1"> 
+            
+
+
+               ingredient :<select name="ingredient1" id="ingredient1" form="formModifRecette">  ';
+               
+               foreach( $tabIngr as $value ){
+                        echo'  <option value="'.htmlspecialchars($value['idIngredient']).' ">'.htmlspecialchars($value['nomIngredient']).'</option>';
+               }  
+               echo' </select>
+            quantite : <input type="text" name="quantite1">   
+            <select name="unite1" form="formModifRecette">   
+                        <option value="kg">kg</option>
+                        <option value="g">g</option>
+                        <option value="mg">mg</option>
+                        <option value="nb">nb</option>
+                        <option value="l">l</option>
+                        <option value="ml">ml</option>
+            </select>
+
+               
+               </div>
+            <div id="divContenantLesIngredient"> 
+         
+            </div>
+            <hr class="my-4">
+            <button type="button" id="ajtIngredient" targetId="divContenantLesIngredient" class="w-10 btn btn-success btn-lg" value="ajouter ingr"/>ajt ingredient </button>
+            <button type="button" id="suppIngredient" class="w-10 btn btn-danger btn-lg" />supprimer ingredient </button>
+            <hr class="my-4">
+            <button class="w-100 btn btn-primary btn-lg" type="submit" id="boutonvaliderAJout">Modifier la recette</button>
+            </div></div>
+            
+         </div>    
+                 
+
+               </form>
+      ';
             }
-          
-           
-         echo'<input type="submit" value="envoyer"> </form>';
-        }
-
     }
 ?>
