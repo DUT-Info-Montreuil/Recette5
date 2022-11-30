@@ -5,8 +5,29 @@
          
            
         }
-        public  function inscrire_dans_la_BD($login,$mdp,$email){
-            $tro = parent::$bdd->prepare("SELECT count(login) FROM Utilisateurs WHERE login = ?");
+        public  function inscrire_dans_la_BD($login,$mdp,$mdp2,$email){
+            if($mdp!=$mdp2){
+                echo "
+                <script> 
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Les mots de passes ne sont pas identiques',
+                    
+                  })
+                  setTimeout(
+                    function() 
+                    {
+                       window.location.href = 'index.php?module=connexion&action=AfficherFormulaireInscription';
+                    }, 1000);
+                
+                </script>
+                
+                
+                ";
+            }else{
+                $tro = parent::$bdd->prepare("SELECT count(login) FROM Utilisateurs WHERE login = ?");
             $tro->execute(array($login));
             $row = $tro->fetch();
             if($row["count(login)"] == "0"){
@@ -18,11 +39,50 @@
                     $sth->execute(array($login,password_hash($mdp,PASSWORD_ARGON2I),$email,NULL));
                     echo 'Bienvenue sur notre site : '.$login;
                 }else{
-                    echo 'Adresse mail déjà utilisé';
+                    echo "
+                    <script> 
+                    
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Adresse mail déjà utilisé',
+                        
+                      })
+                      setTimeout(
+                        function() 
+                        {
+                           window.location.href = 'index.php?module=connexion&action=AfficherFormulaireInscription';
+                        }, 1000);
+                    
+                    </script>
+                    
+                    
+                    ";
                 }
             }else{
-                echo 'Login déjà utilisé</br>';
+                echo "
+                    <script> 
+                    
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'login déjà utilisé',
+                        
+                      })
+                      setTimeout(
+                        function() 
+                        {
+                           window.location.href = 'index.php?module=connexion&action=AfficherFormulaireInscription';
+                        }, 1000);
+                    
+                    </script>
+                    
+                    
+                    ";
             }
+            }
+            
+            
         } 
 
 
