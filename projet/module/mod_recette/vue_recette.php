@@ -65,8 +65,8 @@
          }
 
          /*-----------------------afficher les détails d'une recette-----------------------*/
-         public function afficherMaRecette($recette, $photo, $Ingredient){
-               
+         public function afficherMaRecette($recette, $photo, $Ingredient,$commentaires){
+        
                echo'
          <section class="py-5">
          <div class="container px-4 px-lg-5 my-5">
@@ -118,8 +118,59 @@
              </div>
          </div>
      </div>
-      </section>';
-          }  
+     </section> 
+                
+      ';
+
+      if(isset($_SESSION['login'])){
+         echo'
+         
+        
+         <section class="content-item" >
+       <div class="container">   
+          <div class="row">
+               <div class="col-sm-8">   
+                   <form id="formCommenterRecette" onsubmit="return false">
+                      <h3 class="pull-left">New Comment</h3>
+                      
+                       <fieldset>
+                           <div class="row">
+                              
+                               <div class="form-group col-xs-12 col-sm-9 col-lg-10">
+                                 <textarea class="form-control" name="commentaire" id="exampleFormControlTextarea1" placeholder="Entrez votre commentaire " rows="3"></textarea>
+                                   <button type="submit" class="w-10 btn btn-danger btn-lg" />Envoyer</button>
+                               </div>
+                              
+                           </div>  	
+                       </fieldset>
+                   </form>
+                   </section>
+                   </>
+         
+         
+         ';
+                
+         
+      }
+      foreach( $commentaires as $value ){
+         echo'
+         
+         
+         <div class="media">
+                 <a class="pull-left" href="#"><img width="100" class="media-object" src="image/image_utilisateur/'.$value['photo'].'" alt=""></a>
+                 <div class="media-body">
+                     <h4 class="media-heading">'.$value['login'].'</h4>
+                     <p>'.$value['commentaire'].'</p>
+          
+                 </div>
+             </div>
+         
+         
+         ';
+     
+      } 
+
+   }  
         
 
 
@@ -358,7 +409,8 @@ echo'
          </div>    
                  
 
-               </form>
+
+
       ';
             }
     }

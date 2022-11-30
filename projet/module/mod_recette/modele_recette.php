@@ -36,7 +36,14 @@
             }
 
          }
-
+         public function recupererCommentaire($idRecette){
+            $bdd=parent::$bdd;
+            $sth = $bdd->prepare("SELECT commentaire,login,photo FROM DonnerAvis NATURAL JOIN Utilisateurs where idRecette=? ");
+            $sth->execute(array($idRecette));
+            $row = $sth->fetchAll();
+       
+            return $row;
+         }
          
          public function afficherPhoto($recette){
             $bdd=parent::$bdd;
