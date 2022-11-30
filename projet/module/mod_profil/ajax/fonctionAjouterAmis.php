@@ -2,18 +2,14 @@
 
 
          $().ready(function(){
-            $('#amis').append('<button type="button" id="ajouter" class="btn btn-outline-light">Ajouter en amis</button>');
-            $('#amis').append('<button type="button" id="supprimer" class="btn btn-outline-danger">Supprimer des amis</button>');
-            $('#amis').append('<p id="text">Utilisateur ajouté</p>');
-            $('#amis').append('<p id="text2">Utilisateur supprimé</p>');
+            $('#amis').append('<button type="button" id="ajouter" class="btn btn-outline-light">SUIVRE</button>');
+            $('#amis').append('<button type="button" id="supprimerAmis" class="btn btn-outline-danger">NE PAS SUIVRE</button>');
             $('#ajouter').hide();
             $('#supprimer').hide();
-            $('#text').hide();
-            $('#text2').hide();
 
             $.post("module/mod_profil/ajax/amis.php",{idUtilisateur:<?php echo$_GET['idUtilisateur']?>, profil:<?php echo$_SESSION['id']?>}, function(data){
                 if(data==1){
-                    $("#supprimer").show();
+                    $("#supprimerAmis").show();
                     
                 }else{
                     $("#ajouter").show();
@@ -23,20 +19,19 @@
 
 $(
         function(){
-            $("#supprimer").click(
+            $("#supprimerAmis").click(
             function(){
                 
                 $.post("module/mod_profil/ajax/supprimerAmi.php",{idUtilisateur:<?php echo$_GET['idUtilisateur'] ?>,profil:<?php echo$_SESSION['id']?>},function(data){  
-                    $("#supprimer").hide();
-                    $("#text2").show();
-                    
+                    $("#supprimerAmis").hide();
                     setTimeout(
-                        function() 
-                        {
-                            $("#text2").hide();
+                        function(){
                             $("#ajouter").show();
                         }, 1000);
-
+                    Notif.fire({
+                        icon: 'error',
+                        title: 'Cette utilisateur n\'est plus suivi'
+                    })
                 });
             }
 
@@ -53,13 +48,14 @@ $(
                 $.post("module/mod_profil/ajax/ajouterAmi.php",{idUtilisateur:<?php echo$_GET['idUtilisateur'] ?>,profil:<?php echo$_SESSION['id']?>},function(data){  
                     
                     $("#ajouter").hide();
-                    $("#text").show();
                     setTimeout(
-                        function() 
-                        {
-                            $("#text").hide();
-                            $("#supprimer").show();
+                        function(){
+                            $("#supprimerAmis").show();
                         }, 1000);
+                    Notif.fire({
+                        icon: 'success',
+                        title: 'Cette utilisateur est suivi'
+                    })
 
                 });
             }

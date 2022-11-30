@@ -81,7 +81,7 @@
             $("#supRec").click(
             function(){
                 
-                $.post("module/mod_recette/ajax/likerLaRecette/supprimerRecette.php",{idRecette:<?php echo$_GET['idRecette']?>},function(data){  
+                $.post("module/mod_recette/ajax/likerRecette/supprimerRecette.php",{idRecette:<?php echo$_GET['idRecette']?>},function(data){  
                     $('#supprimerRecette').empty().append("votre recette s'est bien supprimer");
                     window.location.href = "index.php?module=recherche&action=toute";
                 });

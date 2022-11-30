@@ -106,7 +106,6 @@ footer{
 }
 
 
-
 /*----------------------------FORM CONNEXION--------------------------------*/
 
 form .mb-3{
@@ -145,6 +144,10 @@ table, caption, th, td {
 
 #supprimer{
 	color :rgb(0, 0, 0);
+}
+
+#categorie h1{
+	color : black;
 }
 
 

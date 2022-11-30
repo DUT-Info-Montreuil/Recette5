@@ -14,7 +14,6 @@ $(document).on('click', '.btn_remove', function(){
                 confirmButtonText: 'oui',
                 denyButtonText: `non`,
                 }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {
                         idRecette=<?php echo $_GET['idRecette'] ?>;
                         $.post("module/mod_recette/ajax/modifierRecette/supprimerIngredientDeLaRecette.php",{idIngredient:button_id,idRecette:<?php echo$_GET['idRecette']?>},function(data){  
@@ -50,6 +49,7 @@ $(document).ready(function(){
         console.log("ezeeze");
         var nbingredient=1;  
         $('#boutonvaliderAJout').hide();
+        $('#boutonvaliderAJoutNonClickable').show();
         $("#formAjoutRecette").bind("keypress", function (e) {
             if (e.keyCode == 13) {
                 $("#btnSearch").attr('value');
@@ -83,11 +83,13 @@ $(document).ready(function(){
                         
                             if(data=="bon"){
                                 $('#boutonvaliderAJout').show();
+                                $('#boutonvaliderAJoutNonClickable').hide();
                                 $('#errorRecette').empty();
                             }
 
                             else{
                                 $('#boutonvaliderAJout').hide();
+                                $('#boutonvaliderAJoutNonClickable').show();
                                 $('#errorRecette').empty().append(data);
                             }
                             
@@ -115,7 +117,6 @@ $(document).ready(function(){
                 confirmButtonText: 'oui',
                 denyButtonText: `non`,
                 }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {
                         let form=new FormData(this);
                         form.append('nbingredient',nbingredient);

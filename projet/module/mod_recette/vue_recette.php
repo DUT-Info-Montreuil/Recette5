@@ -98,14 +98,18 @@
              echo 'date de publication : '.$recette['datePublication'].'</div>
              <div class="col-md-6">
                  <h1 class="display-5 fw-bolder">'.htmlspecialchars($recette['titre']).'</h1>
-                 <p class="lead">temps de préparation estimé : '.floor((htmlspecialchars($recette['tpsPreparration'])/60)).'heure(s) et '.(htmlspecialchars($recette['tpsPreparration'])%60).' minute(s)</p>
+                 <p class="lead">temps de préparation estimé : ';
+                 if(floor((htmlspecialchars($recette['tpsPreparration'])/60))!= 0 )
+                  echo floor((htmlspecialchars($recette['tpsPreparration'])/60)).'heure(s) et ';
+                 echo (htmlspecialchars($recette['tpsPreparration'])%60).' minute(s)</p>
                  <hr class="my-4">
                  <div class="fs-5 mb-2">';
                  
               
                  echo '</div>
                  <h3>description : </h3>
-                 <p class="lead">'.htmlspecialchars($recette['description']).'</p>';
+
+                 <p class="lead" id="descriptionAffichage">'.htmlspecialchars($recette['description']).'</p>';
                   if($recette['noteAnnexe'] != NULL){
                  echo '
                  <hr class="my-4"><h3>Annexe : </h3><p class="lead">'.htmlspecialchars($recette['noteAnnexe']).'</p>';
@@ -189,7 +193,7 @@
 
              <div class="col-12 l-12">
                <label for="address2" class="form-label">Description<span class="text-muted"></span></label>
-               <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3"></textarea>
+               <textarea class="form-control" name="description" id="exampleFormControlTextarea1" maxlength="1000" rows="3"></textarea>
             </div>
 
             <div class="col-12">
@@ -226,8 +230,31 @@
             
                </div>
                <hr class="my-4">
-               <button type="button" id="ajtIngredient" targetId="divContenantLesIngredient" class="w-10 btn btn-success btn-lg" value="ajouter ingr"/>ajt ingredient </button>
-               <button type="button" id="suppIngredient" class="w-10 btn btn-danger btn-lg" />supprimer ingredient </button>
+               
+               <h6>Catégories : </h6>
+               
+               <!-- Modal -->
+               <div id="lesCategories"> 
+               <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#categorie">Ajouter une categorie</button>
+               </div>
+               <div class="modal fade" id="categorie" tabindex="-1" aria-labelledby="categorie" aria-hidden="true">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="categorie">Ajouter une categorie</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" id="ajouterCategorie">
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+               <!-------fin du modal-------->
+               
+
+               <hr class="my-4">
+               <button type="button" id="ajtIngredient" targetId="divContenantLesIngredient" class="w-10 btn btn-success " value="ajouter ingr"/>ajt ingredient </button>
+               <button type="button" id="suppIngredient" class="w-10 btn btn-danger " />supprimer ingredient </button>
                <hr class="my-4">
                <button class="w-100 btn btn-primary btn-lg" type="submit" id="boutonvaliderAJout">Ajouter la recette</button>
                </div></div>
@@ -254,7 +281,7 @@
             <div id="validerAjout"></div>
          <div id="formulaireRecette">
          <div class="col-md-7 col-lg-8">
-         <h4 class="mb-3">modifier la Recette '.$recette['titre'].'</h4>
+         <h4 class="mb-3">modifier la Recette : '.$recette['titre'].'</h4>
          <hr class="my-4">
       
          <div class="row g-3">
@@ -362,7 +389,9 @@ echo'
             <button type="button" id="ajtIngredient" targetId="divContenantLesIngredient" class="w-10 btn btn-success btn-lg" value="ajouter ingr"/>ajt ingredient </button>
             <button type="button" id="suppIngredient" class="w-10 btn btn-danger btn-lg" />supprimer ingredient </button>
             <hr class="my-4">
-            <button class="w-100 btn btn-primary btn-lg" type="submit" id="boutonvaliderAJout">Modifier la recette</button>
+            <a href="index.php?module=recette&action=afficherMaRecette&idRecette='.$recette['idRecette'].'"><button class="w-20 btn btn-secondary btn-lg" type="button">Annuler</button></a>
+            <button class="w-50 btn btn-primary btn-lg" type="submit" id="boutonvaliderAJout">Modifier la recette</button>
+            <button class="w-50 btn btn-primary btn-lg" type="submit" id="boutonvaliderAJoutNonClickable" disabled>Modifier la recette</button>
             </div></div>
             
          </div>    
