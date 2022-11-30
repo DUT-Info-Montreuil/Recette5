@@ -236,6 +236,8 @@
                <!-- Modal -->
                <div id="lesCategories"> 
                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#categorie">Ajouter une categorie</button>
+               <button type="button" id="supprimerCategories" class="btn btn-secondary" >Annuler</button>
+               <di id="categoriesSelectionne"></div>
                </div>
                <div class="modal fade" id="categorie" tabindex="-1" aria-labelledby="categorie" aria-hidden="true">
                     <div class="modal-dialog modal-sm">
@@ -259,7 +261,7 @@
                <button class="w-100 btn btn-primary btn-lg" type="submit" id="boutonvaliderAJout">Ajouter la recette</button>
                </div></div>
                
-            </div>    
+  
                     
 
                   </form>

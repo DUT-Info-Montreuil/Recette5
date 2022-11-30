@@ -1,39 +1,30 @@
 <script>
 $().ready(function(){  
-    $('#ajouterCategorie').append('<button type="button" class="non btn btn-secondary" data-bs-dismiss="modal" name="categ" value="plat" style="margin:5px">PLAT</button>');
-    $('#ajouterCategorie').append('<button type="button" class="non btn btn-secondary" data-bs-dismiss="modal" name="categ" value="dessert" style="margin:5px">DESSERT</button>');
+    $('#ajouterCategorie').append('<button type="button" class="non btn btn-info" data-bs-dismiss="modal" name="categ" value="PLAT" style="margin:5px">PLAT</button>');
+    $('#ajouterCategorie').append('<button type="button" class="non btn btn-info" data-bs-dismiss="modal" name="categ" value="DESSERT" style="margin:5px">DESSERT</button>');
 
 });
 
-$(
+$(  
         function(){
             $(".non").click(
                 
             function(){
-                var button = $(this);
                 var nom = $(this).val();
-                $("#lesCategories").append('<button type="button" class="choisie btn btn-info" name="categorieChoisie" value='+nom+'  style="margin:5px">'+nom+'</button>');
-                button.hide();
+                $("#categoriesSelectionne").append('<button type="button" class="choisie btn btn-info" name="categorieChoisie" value='+nom+'  style="margin:5px" disabled>'+nom+'</button>');
+                $(this).hide();              
+            });
+        });
+
+$(
+        function(){
+            $("#supprimerCategories").click(
                 
-                $(".choisie").click(
-                    function(){
-                        $(this).hide();
-                        $(button).show();
-                        
-                    }
-
-                );
-                
-            }
-
-            
-
-        );
-
-
-        }
-        
-    );
+            function(){
+                $("#categoriesSelectionne").empty(); 
+                $(".non").show();         
+            });
+        });
     
 
 </script>
