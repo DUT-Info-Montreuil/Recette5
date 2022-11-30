@@ -13,7 +13,7 @@
             
             
             if($tabR == NULL){
-               echo 'Aucune recette ';
+               echo ' <div align="center"><p class="text-muted">Aucune recette</p></div> ';
            }else{
 
 
@@ -36,8 +36,7 @@
                     <h1 class="card-text">'.substr($value['titre'], 0, 15);
                  if(strlen($value['titre']) > 15)
                     echo '...';
-                 echo '</h1>
-                   <p class="card-text">'.substr($value['description'], 0, 39,);
+                 echo '</h1><p class="card-text">'.substr($value['description'], 0, 39);
                    if(strlen($value['description']) > 39)
                     echo '...';
                    echo '</p>            
@@ -74,9 +73,23 @@
              <div class="col-md-6">';
 
                if( isset($_SESSION['id']) && $_SESSION['id']==$recette['idUtilisateur'] )
-               echo '<a href="index.php?module=recette&action=AffichermodifierMaRecette&idRecette='.htmlspecialchars($recette['idRecette']).'"><button type="button" id="suppIngredient" class="w-10 btn btn-primary btn-lg" />Modifier</button> </a>';
+               echo '<a href="index.php?module=recette&action=AffichermodifierMaRecette&idRecette='.htmlspecialchars($recette['idRecette']).'"><button type="button" id="suppIngredient" class="btn btn-outline-primary" />Modifier</button></a>
+                     <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#supprimer">Supprimer</button>
+                    <div class="modal fade" id="supprimer" tabindex="-1" aria-labelledby="supprimer" aria-hidden="true">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="supprimer" id="black">Voulez-vous vraiment supprimer cette recette ?</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" id="supprimerRecette" >   
+                           
+                        </div>
+                        </div>
+                    </div>
+                    </div>';
                  else
-               echo '<a href="index.php?module=profil&action=afficherProfilUtilisateur&idUtilisateur='.$recette['idUtilisateur'].'" ><button type="button" id="suppIngredient" class="w-10 btn btn-success btn-lg" />Profil créateur</button></a>';
+               echo '<a href="index.php?module=profil&action=afficherProfilUtilisateur&idUtilisateur='.$recette['idUtilisateur'].'" ><button type="button" id="suppIngredient" class="btn btn-outline-success" />Profil créateur</button></a>';
              if($photo['photo'] == NULL)
              echo '<img class="card-img-top mb-5 mb-md-0" src="image/image_recette/plat.png" alt="photo de la recette">';
                  
@@ -110,9 +123,7 @@
                       </div>';
                  }
                  echo '<div id="nbLike"></div>
-                 
-                     </button>
-                     
+                                    
                  </div>
                  
              </div>
@@ -152,8 +163,8 @@
                </div>
 
                <div class="col-md-3">
-               <label for="country" class="form-label">Heure</label>
-               <select class="form-select" id="country" name="heure" required>
+               <label for="heure" class="form-label">Heure</label>
+               <select class="form-select" id="heure" name="heure" required>
                  <option value="0">Choose...</option>
                  ';
                  for($i=0 ; $i<10 ; $i++){
@@ -342,7 +353,6 @@ echo'
                         <option value="l">l</option>
                         <option value="ml">ml</option>
             </select>
-
                
                </div>
             <div id="divContenantLesIngredient"> 
