@@ -97,7 +97,7 @@
 
        public function  afficherIngredientDeMaRecette($idRecette){
         $bdd=parent::$bdd;
-        $sth=$bdd->prepare("SELECT nomIngredient,unite,Quantite FROM Utiliser NATURAL JOIN Ingredient WHERE idRecette=? ORDER BY idIngredient");
+        $sth=$bdd->prepare("SELECT idIngredient,nomIngredient,unite,Quantite FROM Utiliser NATURAL JOIN Ingredient WHERE idRecette=? ORDER BY idIngredient");
         $sth->execute(array($idRecette));
         $rows= $sth->fetchAll();
         return $rows;

@@ -99,6 +99,7 @@
                   }
                  echo '<hr class="my-4"><h3>Liste des ingrédients</h3>';
                  foreach( $Ingredient as $value ){
+                   
                     echo '<br> '.htmlspecialchars($value['nomIngredient']).' : '.htmlspecialchars($value['Quantite']).' '.htmlspecialchars($value['unite']).'';
                  }
                   echo '
@@ -315,7 +316,13 @@
 echo'
         
             </div>
-            <hr class="my-4">
+            <hr class="my-4">';
+         foreach( $ListIngredient as $value ){
+            echo'<p id="boutonSupp'.$value['idIngredient'].'"> '.htmlspecialchars($value['nomIngredient']).' '.htmlspecialchars($value['Quantite']).' '.htmlspecialchars($value['unite']).' <button type="button" name="remove" id="'.$value['idIngredient'].'"  class="btn btn-danger btn_remove">X</button> </p>';
+      
+             
+            }  
+    echo'        
             <div id=divIngredient1"> 
             
 

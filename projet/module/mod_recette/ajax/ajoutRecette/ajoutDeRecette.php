@@ -57,7 +57,7 @@ $bdd=new PDO('mysql:host=database-etudiants.iut.univ-paris8.fr;dbname=dutinfopw2
 
             $uniqueName = uniqid('', true);
             $file = $uniqueName.".".$extension;
-            move_uploaded_file($tmpName, '../../../image/image_recette/'.$file);
+            move_uploaded_file($tmpName, '../../../../image/image_recette/'.$file);
             $sthh=$bdd->prepare("INSERT INTO `photo` (`idPhoto`, `photo`, `idRecette`) VALUES (NULL, ?, ?)");
 
             $sthh->execute(array($file,$row['MAX(idRecette)']));
