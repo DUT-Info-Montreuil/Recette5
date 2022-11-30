@@ -12,7 +12,18 @@
         <link rel="shortcut icon" href="image/logo.png"/>
         <link rel="stylesheet" href="css.css"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-      
+        <script > const Notif = Swal.mixin({
+                toast: true,
+                position: 'top',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: false,
+                didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+             })
+        </script>
   
         <?php include('module/mod_profil/ajax/fonctionAjouterAmis.php')?>
         <?php include('composants/menu/ajax/barreRecherche.php')?>

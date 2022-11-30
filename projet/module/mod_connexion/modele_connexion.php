@@ -42,7 +42,7 @@
                     $_SESSION['id']=$row['idUtilisateur'];
                     $_SESSION['photo'] = $row['photo'];
                     echo 'connexion réeussi '.$row['login'].'';
-                  
+                   
                 }else{
                     echo"mot de passe incorrecte";
                 }         

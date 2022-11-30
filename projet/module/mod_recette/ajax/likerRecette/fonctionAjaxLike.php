@@ -1,5 +1,6 @@
 
 <script > 
+
          setInterval('load_nblikes()',500);
         
          function load_nblikes(){
@@ -38,6 +39,11 @@
                 $.post("module/mod_recette/ajax/likerRecette/likerLaRecette.php",{idUtilisateur:<?php echo $_SESSION['id'] ?>,idRecette:<?php echo$_GET['idRecette']?>},function(data){  
                     $("#boutonDeLike").hide();
                     $("#boutonDeDisLike").show();
+                    
+                    Notif.fire({
+                        icon: 'success',
+                        title: 'Recette ajoutée aux favoris'
+                    })
                 });
             }
 
@@ -52,6 +58,11 @@
                 $.post("module/mod_recette/ajax/likerRecette/dislikerLaRecette.php",{idUtilisateur:<?php echo $_SESSION['id'] ?>,idRecette:<?php echo$_GET['idRecette']?>},function(data){  
                     $("#boutonDeDisLike").hide();
                     $("#boutonDeLike").show();
+
+                    Notif.fire({
+                        icon: 'error',
+                        title: 'Recette retirée des favoris'
+                    })
                 });
                 
             }

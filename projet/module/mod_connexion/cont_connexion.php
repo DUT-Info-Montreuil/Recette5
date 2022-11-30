@@ -45,12 +45,28 @@
             case "connexion":       
                $login=isset($_POST['login']) ?$_POST['login']:"";
                $mdp=isset($_POST['mdp']) ?$_POST['mdp']:"";    
-               $this->connexion_dans_inscription( htmlspecialchars($login),htmlspecialchars($mdp));       
+               $this->connexion_dans_inscription( htmlspecialchars($login),htmlspecialchars($mdp));    
+               
                break;
             case "deconnexion":               
                unset($_SESSION['login'] );
                unset($_SESSION['id'] );
                unset($_SESSION['photo'] );
+               echo"<script>
+
+               Swal.fire({
+                                  
+                  title: 'Vous êtes bien déconnecter',
+                  confirmButtonText: 'OK',
+                  
+                  }).then((result) => {
+                      
+                      if (result.isConfirmed) {
+                       window.location.href = 'index.php?module=connexion&action=bienvenue';
+                      } 
+                  })         
+                  </script>"
+               ;   
                break;
             case "bienvenue":
                $this->vue->bienvenue();
