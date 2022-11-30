@@ -6,6 +6,9 @@ extract($_POST);
     $sth=$bdd->prepare("SELECT titre,idRecette,photo FROM Recette natural join photo WHERE titre LIKE ?");
     $sth->execute(array($titre.'%'));
     $row = $sth->fetchAll();
-    echo json_encode($row);
+    if($row==null)
+        echo json_encode("vide");
+    else
+        echo json_encode($row);
 
 ?>
