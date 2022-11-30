@@ -31,7 +31,7 @@
    }
 
    public function AffichermodifierMaRecette(){
-      $this->vue->afficherFormModifRecette($this->modele->afficherMaRecette($_GET['idRecette']));
+      $this->vue->afficherFormModifRecette($this->modele->afficherMaRecette($_GET['idRecette']), $this->modele->afficherIngredientDeMaRecette($_GET['idRecette']));
    }
 
 

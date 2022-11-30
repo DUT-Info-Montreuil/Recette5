@@ -100,12 +100,12 @@ class VueMenu{
                         <input type="search" id="search" class="form-control rounded" placeholder="Recette"/>
                     </div>
 
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Search</button>
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#search">Search</button>
+                    <div class="modal fade" id="search" tabindex="-1" aria-labelledby="search" aria-hidden="true">
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel" id="black">voici les resultats</h1>
+                            <h1 class="modal-title fs-5" id="search" id="black">Voici les resultats</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body" id="barreRecherche">

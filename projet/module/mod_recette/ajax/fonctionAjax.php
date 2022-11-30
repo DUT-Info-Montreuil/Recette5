@@ -143,6 +143,9 @@ $(document).ready(function(){
             $('#divBoutonDeLike').append('<button type="button" class="btn btn-lg btn-primary" id="boutonDeDisLike"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-heart-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"></path></svg></button>');
             $("#boutonDeLike").hide();
             $("#boutonDeDisLike").hide();
+            $("#supprimerRecette").append('<button class="btn btn-lg btn-danger" id="supRec">Supprimer</button>');
+            $("#supprimerRecette").append('<button class="btn btn-lg btn-secondary" class="btn-close" data-bs-dismiss="modal">Annuler</button>');
+
             $.post("module/mod_recette/ajax/Nblike.php",{idRecette:<?php echo$_GET['idRecette']?>},function(data){  
                 $('#nbLike').empty().append(data);
                 });
@@ -179,6 +182,23 @@ $(document).ready(function(){
                     $("#boutonDeLike").show();
                 });
                 
+            }
+
+        );
+        }
+        
+    );
+    
+
+    $(
+        function(){
+            $("#supRec").click(
+            function(){
+                
+                $.post("module/mod_recette/ajax/supprimerRecette.php",{idRecette:<?php echo$_GET['idRecette']?>},function(data){  
+                    $('#supprimerRecette').empty().append("votre recette s'est bien supprimer");
+                    window.location.href = "index.php?module=recherche&action=toute";
+                });
             }
 
         );

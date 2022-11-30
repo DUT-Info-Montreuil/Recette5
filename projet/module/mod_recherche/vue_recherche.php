@@ -7,7 +7,7 @@ class VueRecherche extends VueGenerique{
 
     public function afficherRecette($tabR){
         if($tabR == NULL){
-            echo 'Aucune recette ';
+            echo '<div align="center"><p class="text-muted">Aucune recette</p></div> ';
         }else{
 
             foreach($tabR as $value){
@@ -26,8 +26,8 @@ class VueRecherche extends VueGenerique{
                  <h1 class="card-text">'.substr($value['titre'], 0, 15);
                  if(strlen($value['titre']) > 15)
                     echo '...';
-                 echo '</h1>
-                   <p class="card-text">'.substr($value['description'], 0, 39,);
+                 echo '</h1><p class="card-text">'.substr($value['description'],0,39);
+                   
                    if(strlen($value['description']) > 39)
                     echo '...';
                    echo '</p>
