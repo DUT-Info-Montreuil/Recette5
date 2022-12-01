@@ -5,19 +5,13 @@
 
  $(document).ready(function(){
     
-    $.post("module/mod_recette/ajax/commenterRecette/verifierCommentaire.php",{idRecette:<?php echo$_GET['idRecette']?>},function(data){  
-            
-        if(data=="deja com"){
-         
-                    $("#formCommenterRecette").hide();
-                }
-                });
 
 
             $(
         function(){
                 $("#formCommenterRecette").submit(
                 function(){
+                    
                         let form=new FormData(this);
                         form.append('idRecette',<?php echo $_GET['idRecette'] ?>)
                     $.ajax({
@@ -29,13 +23,18 @@
                         processData: false,
                         dataType: "json",
                         success: function (data) {
-                        
+                            console.log(data);
                                 Notif.fire({
                                     icon: 'success',
                                     title: 'Commentaire Ajouter'
                                 })
-                                $("#formCommenterRecette").hide();
-                           
+                                $('#sectionCommentaireInserer').append('<div class="media"> <a class="pull-left" href="#"><img width="100" class="media-object" src="image/image_utilisateur/'+data.photo+'" alt=""></a> <div class="media-body"><h4 class="media-heading"> '+data.login+' a écrit le '+data.dateAjout+' a '+data.heureAjout+' :</h4><p>'+data.commentaire+'</p></div></div>'); 
+                                // $('#sectionCommentaire').append('<div class="media">')
+                                // .append(' <a class="pull-left" href="#"><img width="100" class="media-object" src="image/image_utilisateur/'+data.photo+'" alt=""></a>')
+                                // .append('<div class="media-body">')
+                                // .append('<h4 class="media-heading"> '+data.login+' a écrit le '+data.dateAjout+' a '+data.heureAjout+' :</h4>')
+                                // .append('<p>'+data.commentaire+'</p>')
+                                // .append('</div></div>'); 
                         }
                     })
                 }

@@ -152,6 +152,10 @@
                 
          
       }
+      echo'<section id="sectionCommentaireInserer">
+      
+      </section>';
+      
       foreach( $commentaires as $value ){
          echo'
          
@@ -159,7 +163,7 @@
          <div class="media">
                  <a class="pull-left" href="#"><img width="100" class="media-object" src="image/image_utilisateur/'.$value['photo'].'" alt=""></a>
                  <div class="media-body">
-                     <h4 class="media-heading">'.$value['login'].'</h4>
+                     <h4 class="media-heading">'.$value['login'].' a écrit le '.$value['dateAjout'].' a '.$value['heureAjout'].' :</h4>
                      <p>'.$value['commentaire'].'</p>
           
                  </div>
@@ -169,6 +173,8 @@
          ';
      
       } 
+
+     
 
    }  
         

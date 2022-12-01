@@ -5,22 +5,20 @@ extract($_POST);
 $idUtilisateur=$_SESSION['id'];
 
       $bdd=new PDO('mysql:host=database-etudiants.iut.univ-paris8.fr;dbname=dutinfopw201631','dutinfopw201631','mudepuna');
-     // on verifie si un avis existe
-      $sth=$bdd->prepare("SELECT * FROM DonnerAvis WHERE idUtilisateur=?AND idRecette=?");
-      $sth->execute(array($idUtilisateur,$idRecette));
-      $row = $sth->fetch();
-      if($row==null){
-         $sth=$bdd->prepare("INSERT INTO `DonnerAvis` (`idUtilisateur`, `commentaire`, `idRecette`) VALUES (?,?,?);");
-         $sth->execute(array($idUtilisateur,$commentaire,$idRecette));
-         echo 1;
-      }
-    
-      
-      else{    $sth=$bdd->prepare("UPDATE `DonnerAvis` SET `commentaire` = ? WHERE `DonnerAvis`.`idUtilisateur` = ? AND `DonnerAvis`.`idRecette` = ?;");
+   
+
+         $sth=$bdd->prepare("INSERT INTO `commentaire` (`idCommentaire`, `commentaire`, `idUtilisateur`, `idRecette`, `dateAjout`, `heureAjout`) VALUES (NULL, ?,?,?, now(), curtime());");
          $sth->execute(array($commentaire,$idUtilisateur,$idRecette));
-         echo 2;
-      }
- 
+    
+         $sth = $bdd->prepare("SELECT MAX(idCommentaire) FROM commentaire ");
+         $sth->execute();
+         $row = $sth->fetch();
+
+         $sth = $bdd->prepare("SELECT commentaire,photo,login,heureAjout,dateAjout FROM commentaire NATURAL JOIN Utilisateurs where idCommentaire=? ");
+         $sth->execute(array($row['MAX(idCommentaire)']));
+         $row2 = $sth->fetch();
+         echo json_encode($row2);
+   
 
      
  
