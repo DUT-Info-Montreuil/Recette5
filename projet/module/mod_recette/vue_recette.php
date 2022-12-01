@@ -160,10 +160,14 @@
          echo'
          
          
-         <div class="media">
+         <div id="commentaire'.$value['idCommentaire'].'" class="media">
                  <a class="pull-left" href="#"><img width="100" class="media-object" src="image/image_utilisateur/'.$value['photo'].'" alt=""></a>
                  <div class="media-body">
-                     <h4 class="media-heading">'.$value['login'].' a écrit le '.$value['dateAjout'].' a '.$value['heureAjout'].' :</h4>
+                     <h4 class="media-heading">'.$value['login'].' a écrit le '.$value['dateAjout'].' a '.$value['heureAjout'].' :';
+                     if(isset($_SESSION['login'])&&$_SESSION['id']==$value['idUtilisateur']){
+                        echo'<button type="button" name="remove" id="'.$value['idCommentaire'].'"  class="btn btn-danger btn_remove">X</button>';
+                     }
+                     echo' </p></h4>
                      <p>'.$value['commentaire'].'</p>
           
                  </div>

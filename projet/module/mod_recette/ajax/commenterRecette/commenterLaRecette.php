@@ -14,7 +14,7 @@ $idUtilisateur=$_SESSION['id'];
          $sth->execute();
          $row = $sth->fetch();
 
-         $sth = $bdd->prepare("SELECT commentaire,photo,login,heureAjout,dateAjout FROM commentaire NATURAL JOIN Utilisateurs where idCommentaire=? ");
+         $sth = $bdd->prepare("SELECT commentaire,photo,login,heureAjout,dateAjout,idCommentaire FROM commentaire NATURAL JOIN Utilisateurs where idCommentaire=? ");
          $sth->execute(array($row['MAX(idCommentaire)']));
          $row2 = $sth->fetch();
          echo json_encode($row2);
