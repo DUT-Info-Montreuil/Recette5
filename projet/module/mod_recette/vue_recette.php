@@ -131,7 +131,7 @@
           <div class="row">
                <div class="col-sm-8">   
                    <form id="formCommenterRecette" onsubmit="return false">
-                      <h3 class="pull-left">New Comment</h3>
+                      <h3 class="pull-left">Ajouter un commentaire</h3>
                       
                        <fieldset>
                            <div class="row">
@@ -147,8 +147,9 @@
                    </section>
                    </>
          
-         
-         ';
+         <h2 class="media"> les commentaire :</h2>   
+         '
+      ;
                 
          
       }
@@ -161,7 +162,7 @@
          
          
          <div id="commentaire'.$value['idCommentaire'].'" class="media">
-                 <a class="pull-left" href="#"><img width="100" class="media-object" src="image/image_utilisateur/'.$value['photo'].'" alt=""></a>
+                 <a class="pull-left" href="#"><img id="pp" width="100" class="media-object" src="image/image_utilisateur/'.$value['photo'].'" alt=""></a>
                  <div class="media-body">
                      <h4 class="media-heading">'.$value['login'].' a écrit le '.$value['dateAjout'].' a '.$value['heureAjout'].' :';
                      if(isset($_SESSION['login'])&&$_SESSION['id']==$value['idUtilisateur']){
