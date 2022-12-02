@@ -101,10 +101,39 @@
                     $_SESSION['login']=$row['login'];
                     $_SESSION['id']=$row['idUtilisateur'];
                     $_SESSION['photo'] = $row['photo'];
-                    echo 'connexion réeussi '.$row['login'].'';
+                    echo "
+                        <script> Swal.fire('Connexion réussie')  
+                        setTimeout(
+                            function() 
+                            {
+                            window.location.href = 'index.php?module=connexion&action=bienvenue';
+                            }, 1000);
+                    
+                        </script>
+                        
+                                "
+         ;
                    
                 }else{
-                    echo"mot de passe incorrecte";
+                    echo "
+                    <script> 
+                    
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'mot de passe incorrect',
+                        
+                      })
+                      setTimeout(
+                        function() 
+                        {
+                           window.location.href = 'index.php?module=connexion&action=AfficherFormulaireConnexion';
+                        }, 1000);
+                    
+                    </script>
+                    
+                    
+                    ";
                 }         
             }
         }
