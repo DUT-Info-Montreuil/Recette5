@@ -13,15 +13,21 @@ $(document).ready(function(){
                 dataType: "json",
                 success: function (data) {
                     $(data).each(function(i, row){
-                        alert(row.nom);
-                        
+                        $("#lesCategories").append('<div class="form-check">');
+                        $("#lesCategories").append('<input type="radio" name="cat" value="'+row.idCategorie+'" id="cat" onchange="zizi()">');
+                        $("#lesCategories").append('<label class="form-check-label" for="'+row.nom+'">');
+                        $("#lesCategories").append(row.nom+'</label></div>');
                     });
                 }
             });
-
-
             });
-        });
-   
 
+
+            
+        function zizi(){
+           alert('zizi');
+            };
+        });
+
+  
 </script>
