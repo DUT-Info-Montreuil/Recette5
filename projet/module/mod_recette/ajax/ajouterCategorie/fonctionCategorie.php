@@ -14,20 +14,28 @@ $(document).ready(function(){
                 success: function (data) {
                     $(data).each(function(i, row){
                         $("#lesCategories").append('<div class="form-check">');
-                        $("#lesCategories").append('<input type="radio" name="cat" value="'+row.idCategorie+'" id="cat" onchange="zizi()">');
+                        $("#lesCategories").append('<input type="radio" name="cat" value="'+row.idCategorie+'" id="cat" >');
                         $("#lesCategories").append('<label class="form-check-label" for="'+row.nom+'">');
                         $("#lesCategories").append(row.nom+'</label></div>');
+                      
                     });
+                
                 }
+             
             });
             });
 
 
-            
-        function zizi(){
-           alert('zizi');
-            };
+            $(document).on('click', '#cat', function(){  
+           
+                alert("eee");
+
+        });  
+
+           
+             
+        
         });
 
-  
+      
 </script>
