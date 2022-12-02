@@ -26,6 +26,12 @@
                         <label for="exampleInputPassword1" class="form-label">MOT DE PASSE</label>
                         <input type="password" class="form-control" id="exampleInputPassword1" name="mdp">
                     </div>
+
+                    <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">CONFIRMER VOTRE MOT DE PASSE</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="mdp2">
+                </div>
+
                     <button type="submit" class="btn btn-primary">Inscription</button>
                     </div>
                 </form>';           

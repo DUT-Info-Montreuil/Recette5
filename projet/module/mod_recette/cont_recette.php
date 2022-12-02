@@ -27,7 +27,7 @@
       $this->vue->afficherMesRecette($this->modele->afficherMesRecette());
    }
    public function afficherMaRecette(){
-      $this->vue->afficherMaRecette($this->modele->afficherMaRecette($_GET['idRecette']), $this->modele->afficherPhoto($_GET['idRecette']) , $this->modele->afficherIngredientDeMaRecette($_GET['idRecette']));
+      $this->vue->afficherMaRecette($this->modele->afficherMaRecette($_GET['idRecette']), $this->modele->afficherPhoto($_GET['idRecette']) , $this->modele->afficherIngredientDeMaRecette($_GET['idRecette']), $this->modele->recupererCommentaire($_GET['idRecette']));
    }
 
    public function AffichermodifierMaRecette(){
@@ -62,6 +62,8 @@
               if($this->modele->verifierSiRecetteExiste($_GET['idRecette'])==1){
                   $this->afficherMaRecette();
                   include('module/mod_recette/ajax/likerRecette/fonctionAjaxLike.php');
+                  include('module/mod_recette/ajax/commenterRecette/fonctionAjaxCommenter.php');
+                
               }
                 
                else

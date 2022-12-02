@@ -36,7 +36,14 @@
             }
 
          }
-
+         public function recupererCommentaire($idRecette){
+            $bdd=parent::$bdd;
+            $sth = $bdd->prepare("SELECT commentaire,photo,login,heureAjout,dateAjout,idCommentaire,idUtilisateur FROM commentaire NATURAL JOIN Utilisateurs where idRecette=? ORDER BY dateAjout,heureAjout DESC ");
+            $sth->execute(array($idRecette));
+            $row = $sth->fetchAll();
+       
+            return $row;
+         }
          
          public function afficherPhoto($recette){
             $bdd=parent::$bdd;

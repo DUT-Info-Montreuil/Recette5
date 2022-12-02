@@ -199,3 +199,8 @@ table, caption, th, td {
 	color:green;
 }
 
+/*--------------------------*/
+.media{
+	margin-top: 10px;
+	border-bottom: 5px solid rgb(0, 0, 0);
+}
