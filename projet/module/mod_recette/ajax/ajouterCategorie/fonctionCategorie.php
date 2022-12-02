@@ -12,8 +12,10 @@ $(document).ready(function(){
                 processData: false,
                 dataType: "json",
                 success: function (data) {
-                    $('#lesCategories').append(data);
-                 
+                    $(data).each(function(i, row){
+                        alert(row.nom);
+                        
+                    });
                 }
             });
 
