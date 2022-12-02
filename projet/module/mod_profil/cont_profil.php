@@ -93,10 +93,12 @@ public function voirAmis(){
 }
 
 public function exec(){
+    include('module/mod_profil/ajax/fonctionAjouterAmis.php');
     switch ($this->action){
         case "afficherProfil" :
+           
             $this->afficherProfil();
-            
+           
             break;
         case "modifierProfil" :
             $this->afficherFormModifierProfil();

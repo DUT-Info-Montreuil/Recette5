@@ -26,18 +26,7 @@
 
       public function connexion_dans_inscription($login,$mdp){
          $this->modele->connexion_dans_la_BD($login,$mdp);
-         echo "
-         <script> Swal.fire('Connexion réussie')  
-         setTimeout(
-            function() 
-            {
-               window.location.href = 'index.php?module=connexion&action=bienvenue';
-            }, 1000);
-      
-          </script>
-        
-                  "
-         ;
+         
          
          }
        
