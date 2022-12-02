@@ -1,19 +1,25 @@
 <script>
-$().ready(function(){  
-    $("#categoriesSelectionne").append('<input class="cat form-check-input mt-0" type="checkbox" name="plat" value="PLAT"> <label class="form-check-label" for="cat">PLAT</label>');
-    $("#categoriesSelectionne").append('<input class="cat form-check-input mt-0" type="checkbox" name="dessert" value="DESSERT"> <label class="form-check-label" for="cat">DESSERT</label>');
+$(document).ready(function(){  
+    
+    $(function(){
 
-});
+               $.ajax({
+                type: "POST",
+                url: "module/mod_recette/ajax/ajouterCategorie/recupererCategorie.php",
+                contentType: false,
+           
+                cache: false,
+                processData: false,
+                dataType: "json",
+                success: function (data) {
+                    $('#lesCategories').append(data);
+                 
+                }
+            });
 
-$(  
-        function(){
-            $("#supprimerCategories").click(
-                
-            function(){
-                $(".cat").prop('checked',false);             
+
             });
         });
-
-    
+   
 
 </script>

@@ -70,17 +70,6 @@ $bdd=new PDO('mysql:host=database-etudiants.iut.univ-paris8.fr;dbname=dutinfopw2
             $sthh->execute(array($row['MAX(idRecette)']));
       }
 
-      if($plat!=NULL){
-         $sthC = $bdd->prepare("INSERT INTO `Categorie` (nom,idRecette) VALUES (?,?)");
-         $sthC->execute(array($plat,$row['MAX(idRecette)']));
-      }
-
-      if($dessert!=NULL){
-         $sthC = $bdd->prepare("INSERT INTO `Categorie` (nom,idRecette) VALUES (?,?)");
-         $sthC->execute(array($dessert,$row['MAX(idRecette)']));
-      }
-      
-
 echo 4;
 
 ?>
