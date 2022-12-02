@@ -152,9 +152,24 @@ table, caption, th, td {
 
 #lesCategories{
 	border-right: 1px solid white;
-	width: 10%;
+
 	margin-left: 30px;
+	display: inline-block;
+	padding-right: 30px;
 }
+
+#lesSousCategories{
+	margin-left: 30px;
+	display: inline-block;
+}
+
+.cat{
+	padding-right: 10px;
+	display: inline-block;
+	vertical-align: middle;
+	float: none;
+}
+
 
 /*------------------------PROFIL------------------------------*/
 .rond img {

@@ -28,9 +28,17 @@ $(document).ready(function(){
 
             $(document).on('click', '#cat', function(){  
                 var oui = $(this).val();
+                $("#lesSousCategories").empty();
+                $.post("module/mod_recette/ajax/ajouterCategorie/recupererSousCategorie.php",{test:oui},function(data){  
+                    $(data).each(function(i, row){
+                        $("#lesSousCategories").append('<div class="form-check">');
+                        $("#lesSousCategories").append('<input type="radio" name="sousCat" value="'+row.idSousCategorie+'" id="sousCat" >');
+                        $("#lesSousCategories").append('<label class="form-check-label"');
+                        $("#lesSousCategories").append(row.nomSousCategorie+'</label></div>');
+                      
+                    });
+                });
                
-                $("#lesSousCategories").append('zaazazaz');
-          
 
         });  
 

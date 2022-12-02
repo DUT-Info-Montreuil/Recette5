@@ -232,9 +232,15 @@
                <hr class="my-4">
                
                <h6>Catégories : </h6>
-               
-               <div id="lesCategories"> 
                   
+               <div class="cat">
+               <div id="lesCategories" > 
+                  
+               </div>
+
+               <div id="lesSousCategories" float="right"> 
+                  
+               </div>
                </div>
                
 
