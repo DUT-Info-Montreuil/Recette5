@@ -19,7 +19,7 @@ $(document).ready(function(){
                    
                     if (result.isConfirmed) {
                      
-                        $.post("module//ajax/commentaire/supprimerCom.php",{idCommentaire:idCom},function(data){  
+                        $.post("module/mod_admin/ajax/commentaire/supprimerCom.php",{idCommentaire:idCom},function(data){  
                                              
                                                 Notif.fire({
                                                     icon: 'success',
