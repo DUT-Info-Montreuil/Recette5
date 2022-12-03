@@ -117,6 +117,29 @@
             $sth = $bdd->prepare("SELECT * FROM Utilisateurs WHERE login=? OR email=?");
             $sth->execute(array($login,$login));
             $row = $sth->fetch();
+
+            if($row['banni']==1){
+                echo "
+                <script> 
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Désoler vous êtes banni',
+                    
+                  })
+                  setTimeout(
+                    function() 
+                    {
+                       window.location.href = 'index.php?module=connexion&action=bienvenue';
+                    }, 1000);
+                
+                </script>
+                
+                
+                ";
+            }else{
+
                 if(password_verify($mdp, $row['mdp'])){
                     $_SESSION['login']=$row['login'];
                     $_SESSION['id']=$row['idUtilisateur'];
@@ -159,6 +182,7 @@
                     
                     ";
                 }         
+            }
             }
         }
             
