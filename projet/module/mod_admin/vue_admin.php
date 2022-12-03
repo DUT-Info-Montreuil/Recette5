@@ -68,7 +68,13 @@
        public function afficherGererCommentaire($listeCommentaire){
       
      
-            echo'<h2> voici les commentaires</h2>';
+            echo'<h2> voici les commentaires</h2>
+            
+            <input widht type="search" id="chercherCom" class="form-control rounded" placeholder="chercher un mot spécifique"/>
+            
+            <div id="divCommentaire">
+            '
+            ;
         
        
         foreach($listeCommentaire as $commentaire){
@@ -92,6 +98,7 @@
             
             ';
         }
+        echo' </div>';
        }
 
        public function afficherUtilisateur($utilisateur){
