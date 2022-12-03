@@ -39,6 +39,12 @@
          $this->vue->afficherUtilisateur($utilisateur);
        }
 
+       public function gererRecette(){
+
+         $listeRecette=$this->modele->TouteLesRecette();
+
+         $this->vue->afficherTouteLesRecette($listeRecette);
+       }
       public function exec(){   
          if($_SESSION['role']!=1){
             echo "
@@ -77,6 +83,10 @@
    
                   $this->gererCommentaire();
                   include('module/mod_admin/ajax/commentaire/fonctionAjaxCommentaire.php');
+               break;
+               case"gererRecette";
+                     $this->gererRecette();
+                   include('module/mod_admin/ajax/recette/fonctionAjaxRecette.php');
                break;
 
                case"afficherUtilisateur":

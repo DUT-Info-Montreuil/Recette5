@@ -204,3 +204,9 @@ table, caption, th, td {
 	margin-top: 10px;
 	border-bottom: 5px solid rgb(0, 0, 0);
 }
+
+
+.recetteAdmin{
+	border-bottom: 5px solid rgb(0, 0, 0);
+	padding-bottom: 20px;
+}

@@ -32,6 +32,13 @@
             $utilisateur= $sthh->fetch();
             return $utilisateur;
         }
+
+        public function TouteLesRecette(){
+            $sthh = parent::$bdd->prepare(" SELECT * from Recette NATURAL JOIN photo ") ;
+            $sthh->execute();
+            $listeRecette= $sthh->fetchAll();
+            return $listeRecette;
+        }
     
     }
 ?>

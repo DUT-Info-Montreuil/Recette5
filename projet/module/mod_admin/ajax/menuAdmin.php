@@ -21,6 +21,10 @@ $this->menu=
                     <li class="nav-item">
                         <a  class="nav-link" href="index.php?module=admin&action=gererCommentaire">Gerer commentaire</a>
                     </li>
+
+                    <li class="nav-item">
+                    <a  class="nav-link" href="index.php?module=admin&action=gererRecette">Gerer Recette</a>
+                </li>
                     <li class="nav-item">
                         <a  class="nav-link" href="index.php?module=connexion&action=bienvenue">Espace utilisateur</a>
                     </li>

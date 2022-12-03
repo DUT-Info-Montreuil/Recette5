@@ -111,5 +111,45 @@
         ';
        }
 
+       public function afficherTouteLesRecette($listeRecette){
+
+        if($listeRecette == NULL){
+            echo '<div align="center"><p class="text-muted">Aucune recette</p></div> ';
+        }else{
+            echo' <input widht type="search" id="chercherRecette" class="form-control rounded" placeholder="chercher une Recette"/>';
+            echo'<div id="divRecette">';
+
+            foreach($listeRecette as $recette){
+    
+                if($recette['photo'] != NULL){
+                    $photo= $recette['photo'];
+                    
+                 }
+                 else{
+                    $photo = 'plat.png';
+                 }
+                echo'<div class="recetteAdmin" id="recette'.$recette['idRecette'].'">
+                <img src="image/image_recette/'.$photo.'"  width="20%" >
+                <p>titre : '.$recette['titre'].'<p/>
+                <p>temps dePreparation : '.$recette['tpsPreparration'].'<p/>
+                <p>date de Publication : '.$recette['datePublication'].'<p/>
+                <p>note annexe : '.$recette['noteAnnexe'].'<p/>
+                <p> vegan : '.$recette['vegan'].'</p>
+                <p> createur :<a href="index.php?module=admin&action=afficherUtilisateur&idUtilisateur='.$recette['idUtilisateur'].'">'.$recette['idUtilisateur'].'</a></p>
+                <button type="button"  id="BoutonSupprimerRecette" value="'.$recette['idRecette'].'" class="btn btn-danger btn_remove">supprimer Recette</button>
+                            
+                
+                
+                
+                </div>
+                ';
+            }
+       
+       
+              echo'</div>';
+                   
+           }
+        }
+        
     }
 ?>
