@@ -56,18 +56,15 @@
                unset($_SESSION['id'] );
                unset($_SESSION['photo'] );
                echo"<script>
-
-               Swal.fire({
-                                  
-                  title: 'Vous êtes bien déconnecter',
-                  confirmButtonText: 'OK',
-                  
-                  }).then((result) => {
+                   Swal.fire('Vous êtes bien déconnecter')  
+                     setTimeout(
+                        function() 
+                        {
+                        window.location.href = 'index.php?module=connexion&action=bienvenue';
+                        }, 1000);
+           
+              
                       
-                      if (result.isConfirmed) {
-                       window.location.href = 'index.php?module=connexion&action=bienvenue';
-                      } 
-                  })         
                   </script>"
                ;   
                break;
