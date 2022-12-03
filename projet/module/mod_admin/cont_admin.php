@@ -32,7 +32,12 @@
          $this->vue->afficherGererCommentaire($listeCommentaire);
        }
 
+       public function afficherUtilisateur($idUtilisateur){
 
+         $utilisateur=$this->modele->recupererToutSurUtilisateur($idUtilisateur);
+
+         $this->vue->afficherUtilisateur($utilisateur);
+       }
 
       public function exec(){   
          if($_SESSION['role']!=1){
@@ -71,6 +76,12 @@
                case"gererCommentaire":
    
                   $this->gererCommentaire();
+                  include('module/mod_admin/ajax/commentaire/fonctionAjaxCommentaire.php');
+               break;
+
+               case"afficherUtilisateur":
+   
+                  $this->afficherUtilisateur($_GET['idUtilisateur']);
                   include('module/mod_admin/ajax/commentaire/fonctionAjaxCommentaire.php');
                break;
                

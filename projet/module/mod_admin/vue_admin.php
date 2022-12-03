@@ -23,6 +23,7 @@
                 <th>ID</th>
                 <th>email</th>
                 <th>PHOTO</th>
+                <th>description</th>
                 <th>NB de Recette</th>
                 <th>NB de commentaire</th>
             </tr>
@@ -43,6 +44,7 @@
             }
 
             echo'
+                    <td>'.$utilisateur['description'].'</td>
                     <td>'.$utilisateur['COUNT(Recette.idRecette)'].'</td>
                     <td>'.$utilisateur['COUNT(commentaire.idCommentaire)'].'</td>
                 ';
@@ -90,6 +92,16 @@
             
             ';
         }
+       }
+
+       public function afficherUtilisateur($utilisateur){
+        
+        echo' <p>photo de profile :<img  width="100px" height="100px" class="media-object" src="image/image_utilisateur/'.$utilisateur['photo'].'" alt=""></p>
+              <p> id Utilisateur : '.$utilisateur['idUtilisateur'].'</p>
+              <p> login : '.$utilisateur['login'].'</p>
+              <p> email : '.$utilisateur['email'].'</p>
+              <p> description : '.$utilisateur['description'].'</p>
+        ';
        }
 
     }

@@ -8,7 +8,7 @@
 
         public function RecupererTousLesUtilisateurs(){
             $sthh = parent::$bdd->prepare("
-            SELECT Utilisateurs.idUtilisateur,Utilisateurs.banni,Utilisateurs.login,Utilisateurs.photo,Utilisateurs.email,COUNT(Recette.idRecette),COUNT(commentaire.idCommentaire) 
+            SELECT Utilisateurs.idUtilisateur,Utilisateurs.banni,Utilisateurs.login,Utilisateurs.photo,Utilisateurs.email,Utilisateurs.description,COUNT(Recette.idRecette),COUNT(commentaire.idCommentaire) 
             from Utilisateurs left JOIN Recette ON Utilisateurs.idUtilisateur=Recette.idUtilisateur 
             left join commentaire ON Utilisateurs.idUtilisateur=commentaire.idUtilisateur 
              GROUP BY Utilisateurs.idUtilisateur
@@ -24,6 +24,13 @@
             $sthh->execute();
             $listeCommentaire= $sthh->fetchAll();
             return $listeCommentaire;
+        }
+
+        public function recupererToutSurUtilisateur($idUtilisateur){
+            $sthh = parent::$bdd->prepare(" SELECT * from Utilisateurs where idUtilisateur=?") ;
+            $sthh->execute(array($idUtilisateur));
+            $utilisateur= $sthh->fetch();
+            return $utilisateur;
         }
     
     }
