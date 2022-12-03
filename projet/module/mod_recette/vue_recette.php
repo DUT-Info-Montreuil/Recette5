@@ -232,19 +232,18 @@
                <hr class="my-4">
                
                <h6>Catégories : </h6>
-
+                  <div class="categories">
                <div id="lesCategories">     
                </div>
                <div id="lesSousCategories"> 
-               </div
+               </div></div>
                
-
                <hr class="my-4">
                <button type="button" id="ajtIngredient" targetId="divContenantLesIngredient" class="w-10 btn btn-success " value="ajouter ingr"/>ajt ingredient </button>
                <button type="button" id="suppIngredient" class="w-10 btn btn-danger " />supprimer ingredient </button>
                <hr class="my-4">
                <button class="w-100 btn btn-primary btn-lg" type="submit" id="boutonvaliderAJout">Ajouter la recette</button>
-               </div></div>
+               </div></div></div>
                
                   </form>
 ';
@@ -368,12 +367,12 @@ echo'
                </div>
             <div id="divContenantLesIngredient"> 
             <hr class="my-4">
-
+            <div class="categories">
             <div id="lesCategories">     
             </div>
-            <div id="lesSousCategories"> 
+            <div id="lesSousCategories" float="right"> 
             </div
-         
+            </div>
             </div>
             <hr class="my-4">
             <button type="button" id="ajtIngredient" targetId="divContenantLesIngredient" class="w-10 btn btn-success btn-lg" value="ajouter ingr"/>ajt ingredient </button>

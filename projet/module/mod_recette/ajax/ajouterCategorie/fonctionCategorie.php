@@ -10,7 +10,6 @@ $(document).ready(function(){
                 type: "POST",
                 url: "module/mod_recette/ajax/ajouterCategorie/recupererCategorie.php",
                 contentType: false,
-           
                 cache: false,
                 processData: false,
                 dataType: "json",
