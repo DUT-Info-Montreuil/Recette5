@@ -162,6 +162,25 @@
 
       }
 
+      public function afficherCategories($cat){
+         $bdd = parent::$bdd;
+         $sth = $bdd->prepare("SELECT idSousCategorie from Appartenir where idRecette=?");
+         $sth->execute(array($cat));
+         $row = $sth->fetch();
+
+         if(isset($row['idSousCategorie'])){
+            $sth2 = $bdd->prepare("SELECT nom , nomSousCategorie from Appartenir NATURAL JOIN Categorie NATURAL JOIN sousCategorie where idRecette=?");
+            $sth2->execute(array($cat));
+            $row2 = $sth2->fetch();
+            return $row2;
+         }else{
+            $sth3 = $bdd->prepare("SELECT nom  from Appartenir NATURAL JOIN Categorie  where idRecette=?");
+            $sth3->execute(array($cat));
+            $row3 = $sth3->fetch();
+            return $row3;
+         }
+      }
+
 
    }
 

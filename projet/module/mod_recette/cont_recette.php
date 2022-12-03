@@ -27,7 +27,7 @@
       $this->vue->afficherMesRecette($this->modele->afficherMesRecette());
    }
    public function afficherMaRecette(){
-      $this->vue->afficherMaRecette($this->modele->afficherMaRecette($_GET['idRecette']), $this->modele->afficherPhoto($_GET['idRecette']) , $this->modele->afficherIngredientDeMaRecette($_GET['idRecette']));
+      $this->vue->afficherMaRecette($this->modele->afficherMaRecette($_GET['idRecette']), $this->modele->afficherPhoto($_GET['idRecette']) , $this->modele->afficherIngredientDeMaRecette($_GET['idRecette']), $this->modele->afficherCategories($_GET['idRecette']) );
    }
 
    public function AffichermodifierMaRecette(){

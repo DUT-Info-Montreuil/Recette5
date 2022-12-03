@@ -9,6 +9,7 @@ require_once('composants/menu/comp_menu.php');
 require_once('composants/logo/comp_logo.php');
 #connexion
 require_once('connexion.php');
+
 $compMenu = new CompMenu();
 $compLogo = new CompLogo();
 session_start();
@@ -34,6 +35,7 @@ switch ($module) {
         new ModProfil();
         break;
      case "rien":
+      header("index.php?module=connexion&action=bienvenue");
       break;
 }
 $_SESSION['login'] = isset($_SESSION['login']) ? $_SESSION['login'] : null;

@@ -1,8 +1,8 @@
 /*------------------SITE--------------*/
 
 .containers{
-	background: rgb(18,0,130);
-	background: linear-gradient(0deg, rgba(18,0,130,1) 0%, rgba(0,85,136,1) 100%); 
+	background: rgb(195,34,129);
+background: linear-gradient(0deg, rgba(195,34,129,1) 0%, rgba(225,123,40,1) 52%, rgba(253,45,45,1) 100%);
 	width:100%;	
 	margin : auto;
 	color: azure;
@@ -165,6 +165,16 @@ table, caption, th, td {
 
 }
 
+.selCat{
+	display: inline-block;
+	text-align: center;
+	margin-left: 12%;
+
+}
+.selCat a{
+	color: black;
+	text-decoration : none;
+}
 
 
 /*------------------------PROFIL------------------------------*/
@@ -215,3 +225,6 @@ table, caption, th, td {
 	color:green;
 }
 
+
+
+/*--------------------------------------

@@ -64,7 +64,7 @@
          }
 
          /*-----------------------afficher les détails d'une recette-----------------------*/
-         public function afficherMaRecette($recette, $photo, $Ingredient){
+         public function afficherMaRecette($recette, $photo, $Ingredient,$categorie){
                
                echo'
          <section class="py-5">
@@ -95,7 +95,15 @@
                  
              else
              echo '<img class="card-img-top mb-5 mb-md-0" src="image/image_recette/'.$photo['photo'].'" alt="photo de la recette">';
-             echo 'date de publication : '.$recette['datePublication'].'</div>
+             echo '<p>date de publication : '.$recette['datePublication'].', catégories : ';
+             if(isset($categorie['nom']))
+               echo $categorie['nom'];
+             if(isset($categorie['nomSousCategorie']))
+               echo ', '.$categorie['nomSousCategorie'];
+             
+             
+             
+             echo '</p></div>
              <div class="col-md-6">
                  <h1 class="display-5 fw-bolder">'.htmlspecialchars($recette['titre']).'</h1>
                  <p class="lead">temps de préparation estimé : ';
@@ -227,12 +235,11 @@
                   
                   </div>
                <div id="divContenantLesIngredient"> 
-            
                </div>
                <hr class="my-4">
                
                <h6>Catégories : </h6>
-                  <div class="categories">
+               <div class="categories">
                <div id="lesCategories">     
                </div>
                <div id="lesSousCategories"> 

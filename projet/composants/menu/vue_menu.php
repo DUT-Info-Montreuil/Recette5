@@ -46,7 +46,15 @@ class VueMenu{
                         </ul>
                     </li>
                     </ul>
+
+                   
+                
+                 
+
                 </div>
+
+
+
 
                 <div class="form-inline my-2 my-lg-0">
                     <div class="input-group">   
@@ -66,6 +74,7 @@ class VueMenu{
                         </div>
                     </div>
                     </div>
+                    
                     
                 </div>
                 </div>

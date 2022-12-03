@@ -23,7 +23,10 @@
               echo 'bienvenue';
              break;  
            case "toute":
-             $this->afficherRecette();
+               $this->afficherRecette();
+
+
+             include('module\mod_recette\ajax\ajouterCategorie\fonctionRechercherCategorie.php');
              break;
         }      
         global $affiche; 
@@ -31,7 +34,12 @@
     } 
 
     public function afficherRecette(){
-      $recette = $this->modele->touteRecette();
+      if(isset($_GET['idCategorie']))
+         $recette = $this->modele->touteRecetteCat($_GET['idCategorie']);
+      else if(isset($_GET['idSousCategorie']))
+         $recette = $this->modele->touteRecetteSousCat($_GET['idSousCategorie']);
+      else
+         $recette = $this->modele->touteRecette();
       
       $this->vue->afficherRecette($recette);
     }
