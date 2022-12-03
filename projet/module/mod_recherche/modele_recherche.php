@@ -22,6 +22,14 @@
             return $rows;
         }
 
+        public function touteRecetteVegan(){
+            $bdd=parent::$bdd;
+            $sthh = $bdd->prepare('SELECT * from Recette natural join photo where vegan=1') ;
+            $sthh->execute();
+            $rows= $sthh->fetchAll();
+            return $rows;
+        }
+
         public function touteRecetteSousCat($sousCat){
             $bdd=parent::$bdd;
             $sthh = $bdd->prepare('SELECT * from Recette natural join photo natural join Appartenir where idSousCategorie=?') ;

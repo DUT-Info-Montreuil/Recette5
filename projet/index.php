@@ -43,3 +43,9 @@ $_SESSION['login'] = isset($_SESSION['login']) ? $_SESSION['login'] : null;
 
 include_once('template.php');
 ?>
+<!----------------
+Version 1.0 - 2022/12/5
+GNU GPL Copyleft © 2022-2032 
+Initiated by Emilio & Priyank
+Web Site = <https://Recette5>
+------------------>

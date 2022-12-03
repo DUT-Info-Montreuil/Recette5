@@ -38,6 +38,8 @@
          $recette = $this->modele->touteRecetteCat($_GET['idCategorie']);
       else if(isset($_GET['idSousCategorie']))
          $recette = $this->modele->touteRecetteSousCat($_GET['idSousCategorie']);
+      else if(isset($_GET['vegan']))
+         $recette = $this->modele->touteRecetteVegan();
       else
          $recette = $this->modele->touteRecette();
       

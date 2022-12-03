@@ -46,14 +46,14 @@
             
             <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 " >
                 <div id="divf" align="center"></div>
-                <p class="col-md-4 mb-0 text-muted">&copy; 2022 Company, Inc</p>
+                <p class="col-md-4 mb-0 text-muted">GNU GPL &copy; 2022 Recette5, 2022-2032 </br> Initiated by Emilio & Priyank</p>
 
                 <a href="index.php?module=connexion&action=bienvenue" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
                 <img src="image/logo.png" width="32" height="32">
                 </a>
 
                 <ul class="nav col-md-4 justify-content-end" id="liste">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+                <li class="nav-item"><a href="index.php?module=connexion&action=bienvenue" class="nav-link px-2 text-muted">Home</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
@@ -62,4 +62,11 @@
             </footer>
         </div>
 	</body>
+    
 </html>
+<!----------------
+Version 1.0 - 2022/12/5
+GNU GPL Copyleft © 2022-2032 
+Initiated by Emilio & Priyank
+Web Site = <https://Recette5>
+------------------>
