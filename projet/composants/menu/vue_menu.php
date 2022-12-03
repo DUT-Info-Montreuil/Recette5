@@ -34,6 +34,9 @@ class VueMenu{
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?module=recette&action=afficherLiker">Aimé</a>
                     </li>
+                    <li class="nav-item">
+                     <a class="nav-link" href="index.php?module=admin&action=acceuilAdmin">Espace Admin</a>
+                 </li>
                     <li class="nav-item dropdown">
                         
                         <a class="nav-link dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false"><img id="pp" alt="pp" src="image/image_utilisateur/'.$photo.'">'.$_SESSION['login'].'</a>

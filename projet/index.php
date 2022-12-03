@@ -4,6 +4,7 @@ require_once('module/mod_connexion/mod_connexion.php');
 require_once('module/mod_recette/mod_recette.php');
 require_once('module/mod_recherche/mod_recherche.php');
 require_once('module/mod_profil/mod_profil.php');
+require_once('module/mod_admin/mod_admin.php');
 #composant
 require_once('composants/menu/comp_menu.php');
 require_once('composants/logo/comp_logo.php');
@@ -32,6 +33,9 @@ switch ($module) {
         break;
       case "profil" :
         new ModProfil();
+        break;
+      case "admin" :
+        new ModAdmin();
         break;
      case "rien":
       break;

@@ -77,46 +77,6 @@ $(document).on('click', '.btn_remove', function(){
       
     );
 });
-       
-         $(
-        function(){
-            $("#boutonDeLike").click(
-            function(){
-                
-                $.post("module/mod_recette/ajax/likerRecette/likerLaRecette.php",{idUtilisateur:<?php echo $_SESSION['id'] ?>,idRecette:<?php echo$_GET['idRecette']?>},function(data){  
-                    $("#boutonDeLike").hide();
-                    $("#boutonDeDisLike").show();
-                    
-                    Notif.fire({
-                        icon: 'success',
-                        title: 'Recette ajoutée aux favoris'
-                    })
-                });
-            }
-
-        );
-        }
-    );
-    $(
-        function(){
-            $("#boutonDeDisLike").click(
-            function(){
-
-                $.post("module/mod_recette/ajax/likerRecette/dislikerLaRecette.php",{idUtilisateur:<?php echo $_SESSION['id'] ?>,idRecette:<?php echo$_GET['idRecette']?>},function(data){  
-                    $("#boutonDeDisLike").hide();
-                    $("#boutonDeLike").show();
-
-                    Notif.fire({
-                        icon: 'error',
-                        title: 'Recette retirée des favoris'
-                    })
-                });
-                
-            }
-
-        );
-        }
-    );
 
 
    </script>
