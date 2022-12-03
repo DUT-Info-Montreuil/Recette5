@@ -11,6 +11,9 @@ extract($_POST);
 
     $sth2=$bdd->prepare("DELETE FROM Utiliser WHERE idRecette = ?");
     $sth2->execute(array($idRecette));
+
+    $sth2=$bdd->prepare("DELETE FROM commentaire WHERE idRecette = ?");
+    $sth2->execute(array($idRecette));
     
     $sth=$bdd->prepare("DELETE FROM Recette WHERE idRecette = ?");
     $sth->execute(array($idRecette));
