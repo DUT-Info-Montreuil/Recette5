@@ -8,13 +8,8 @@
          }
     
         public function afficherAcceuilAdmin(){
-            echo'acceuil adminnn
-            
-                <a  href="index.php?module=admin&action=gererUtilisateur"> Gérer utilisateurs</a>
-                <a></a>
-                <a></a>
-                <a></a>
-                
+            echo'<h1>acceuil admin</h1>
+       
                 
             ';
         }

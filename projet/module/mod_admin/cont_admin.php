@@ -46,6 +46,7 @@
             
             ";
          }  else{
+            include('module/mod_admin/ajax/menuAdmin.php');
             switch ($this->action) {
 
                case"acceuilAdmin":
