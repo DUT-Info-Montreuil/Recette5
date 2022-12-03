@@ -3,7 +3,7 @@
 extract($_POST);
  session_start();
 $idUtilisateur=$_SESSION['id'];
-if($commentaire==""){
+if($commentaire=="" || empty($commentaire)){
       echo json_encode("vide");
 }else{
       $bdd=new PDO('mysql:host=database-etudiants.iut.univ-paris8.fr;dbname=dutinfopw201631','dutinfopw201631','mudepuna');

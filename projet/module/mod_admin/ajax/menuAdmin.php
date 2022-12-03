@@ -17,6 +17,10 @@ $this->menu=
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="index.php?module=admin&action=gererUtilisateur">Gérer utilisateurs</a>
                     </li>
+
+                    <li class="nav-item">
+                        <a  class="nav-link" href="index.php?module=admin&action=gererCommentaire">Gerer commentaire</a>
+                    </li>
                     <li class="nav-item">
                         <a  class="nav-link" href="index.php?module=connexion&action=bienvenue">Espace utilisateur</a>
                     </li>

@@ -17,6 +17,14 @@
             $listeUtilisateur= $sthh->fetchAll();
             return $listeUtilisateur;
         }
+
+
+        public function RecupererTousLesCommentaires(){
+            $sthh = parent::$bdd->prepare(" SELECT c.idCommentaire,c.commentaire,c.idUtilisateur,c.dateAjout,c.heureAjout,u.login,u.photo  FROM commentaire c NATURAL JOIN Utilisateurs u;") ;
+            $sthh->execute();
+            $listeCommentaire= $sthh->fetchAll();
+            return $listeCommentaire;
+        }
     
     }
 ?>

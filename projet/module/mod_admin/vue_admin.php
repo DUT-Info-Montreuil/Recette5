@@ -14,7 +14,7 @@
             ';
         }
 
-       public function affichergererUtilisateur($listeUtilisateur){
+       public function afficherGererUtilisateur($listeUtilisateur){
 
         echo'
          <table width="100%">
@@ -37,24 +37,15 @@
                 <td>'.$utilisateur['email'].'</td>
             ';
             if($utilisateur['photo']==null){
-                echo'
-              
-                <td><img src="image/profil.png"  width="50px" height="50px"> </td>  
-    
-                ';
+                echo' <td><img src="image/profil.png"  width="50px" height="50px"> </td> ';
             }else{
-                echo'
-            
-                <td><img src="image/image_utilisateur/'.$utilisateur['photo'].'"  width="50px" height="50px"></td> 
-    
-                ';
+                echo'<td><img src="image/image_utilisateur/'.$utilisateur['photo'].'"  width="50px" height="50px"></td>';
             }
 
             echo'
-            
-                <td>'.$utilisateur['COUNT(Recette.idRecette)'].'</td>
-                <td>'.$utilisateur['COUNT(commentaire.idCommentaire)'].'</td>
-            ';
+                    <td>'.$utilisateur['COUNT(Recette.idRecette)'].'</td>
+                    <td>'.$utilisateur['COUNT(commentaire.idCommentaire)'].'</td>
+                ';
 
             if($utilisateur['banni']==0){
                 echo '    <td id="LesBoutonBan'.$utilisateur['idUtilisateur'].'"><button type="button" id="boutonBanUtilisateurs" value="'.$utilisateur['idUtilisateur'].'">bannir utilisateur</button></td>
@@ -66,14 +57,39 @@
 
          echo' </tr>';
         }
-        echo'
-
-       
-     </table>
-
-        ';
+        echo'</table> ';
 
    
+       }
+
+
+       public function afficherGererCommentaire($listeCommentaire){
+      
+     
+            echo'<h2> voici les commentaires</h2>';
+        
+       
+        foreach($listeCommentaire as $commentaire){
+            echo'
+         
+         
+            <div id="commentaire'.$commentaire['idCommentaire'].'" class="media">
+                    <a class="pull-left" href="#"><img id="pp" width="100" class="media-object" src="image/image_utilisateur/'.$commentaire['photo'].'" alt=""></a>
+                    <div class="media-body">
+                        <h4 class="media-heading">'.$commentaire['login'].' a écrit le '.$commentaire['dateAjout'].' a '.$commentaire['heureAjout'].' :
+                     
+                            <button type="button"  id="BoutonSupprimerCommentaire" value="'.$commentaire['idCommentaire'].'" class="btn btn-danger btn_remove">supprimer commentaire</button>
+                        
+                       </p></h4>
+                       id commentaire :'.$commentaire['idCommentaire'].' 
+                        <p>texte :'.$commentaire['commentaire'].'</p>
+             
+                    </div>
+                </div>
+            
+            
+            ';
+        }
        }
 
     }

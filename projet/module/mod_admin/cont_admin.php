@@ -22,8 +22,18 @@
 
          $listeUtilisateur=$this->modele->RecupererTousLesUtilisateurs();
 
-         $this->vue->affichergererUtilisateur($listeUtilisateur);
+         $this->vue->afficherGererUtilisateur($listeUtilisateur);
        }
+
+       public function gererCommentaire(){
+
+         $listeCommentaire=$this->modele->RecupererTousLesCommentaires();
+
+         $this->vue->afficherGererCommentaire($listeCommentaire);
+       }
+
+
+
       public function exec(){   
          if($_SESSION['role']!=1){
             echo "
@@ -58,6 +68,12 @@
                   $this->gererUtilisateur();
                   include('module/mod_admin/ajax/bannirUtilisateur/fonctionAjaxbannirUtilisateur.php');
                break;
+               case"gererCommentaire":
+   
+                  $this->gererCommentaire();
+                  include('module/mod_admin/ajax/commentaire/fonctionAjaxCommentaire.php');
+               break;
+               
    
             }      
          }
