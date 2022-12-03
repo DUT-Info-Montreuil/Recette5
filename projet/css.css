@@ -152,23 +152,21 @@ table, caption, th, td {
 
 #lesCategories{
 	border-right: 1px solid white;
-
+	margin-bottom: 50px;
 	margin-left: 30px;
 	display: inline-block;
 	padding-right: 30px;
+	margin-bottom: 50px;
+
 }
 
 #lesSousCategories{
 	margin-left: 30px;
 	display: inline-block;
+	width: 75%;
+
 }
 
-.cat{
-	padding-right: 10px;
-	display: inline-block;
-	vertical-align: middle;
-	float: none;
-}
 
 
 /*------------------------PROFIL------------------------------*/

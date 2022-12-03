@@ -232,16 +232,11 @@
                <hr class="my-4">
                
                <h6>Catégories : </h6>
-                  
-               <div class="cat">
-               <div id="lesCategories" > 
-                  
-               </div>
 
-               <div id="lesSousCategories" float="right"> 
-                  
+               <div id="lesCategories">     
                </div>
-               </div>
+               <div id="lesSousCategories"> 
+               </div
                
 
                <hr class="my-4">
@@ -251,9 +246,6 @@
                <button class="w-100 btn btn-primary btn-lg" type="submit" id="boutonvaliderAJout">Ajouter la recette</button>
                </div></div>
                
-  
-                    
-
                   </form>
 ';
            
@@ -375,6 +367,12 @@ echo'
                
                </div>
             <div id="divContenantLesIngredient"> 
+            <hr class="my-4">
+
+            <div id="lesCategories">     
+            </div>
+            <div id="lesSousCategories"> 
+            </div
          
             </div>
             <hr class="my-4">

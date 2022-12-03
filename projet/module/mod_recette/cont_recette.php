@@ -78,6 +78,7 @@
             elseif($_SESSION['id']==$this->modele->recupererIdDuPropietaireDeLaRecette($_GET['idRecette'])){
               
                $this->AffichermodifierMaRecette();
+               include('module/mod_recette/ajax/ajouterCategorie/fonctionCategorie.php') ;
                include('module/mod_recette/ajax/modifierRecette/fonctionAjaxModifierRecette.php') ;
             }else{
                echo"cette recette ne vous appartient pas";

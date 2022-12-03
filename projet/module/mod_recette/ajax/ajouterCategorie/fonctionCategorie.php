@@ -3,6 +3,9 @@ $(document).ready(function(){
     
     $(function(){
 
+
+                
+
                $.ajax({
                 type: "POST",
                 url: "module/mod_recette/ajax/ajouterCategorie/recupererCategorie.php",
@@ -23,10 +26,13 @@ $(document).ready(function(){
                 }
              
             });
+
+    
             });
 
 
             $(document).on('click', '#cat', function(){  
+                
                 var oui = $(this).val();
                 $("#lesSousCategories").empty();
                 $.post("module/mod_recette/ajax/ajouterCategorie/recupererSousCategorie.php",{test:oui},function(data){  
@@ -38,6 +44,8 @@ $(document).ready(function(){
                       
                     });
                 });
+
+                
                
 
         });  
