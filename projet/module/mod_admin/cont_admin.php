@@ -24,20 +24,43 @@
 
          $this->vue->affichergererUtilisateur($listeUtilisateur);
        }
-      public function exec(){     
-         switch ($this->action) {
+      public function exec(){   
+         if($_SESSION['role']!=1){
+            echo "
+            <script> 
+            
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Vous ne pouvez pas accéder a la partie admin :)',
+                
+              })
+              setTimeout(
+                function() 
+                {
+                   window.location.href = 'index.php?module=connexion&action=bienvenue';
+                }, 1000);
+            
+            </script>
+            
+            
+            ";
+         }  else{
+            switch ($this->action) {
 
-            case"acceuilAdmin":
-
-               $this->acceuilAdmin();
-            break;
-            case"gererUtilisateur":
-
-               $this->gererUtilisateur();
-               include('module/mod_admin/ajax/bannirUtilisateur/fonctionAjaxbannirUtilisateur.php');
-            break;
-
-         }      
+               case"acceuilAdmin":
+   
+                  $this->acceuilAdmin();
+               break;
+               case"gererUtilisateur":
+   
+                  $this->gererUtilisateur();
+                  include('module/mod_admin/ajax/bannirUtilisateur/fonctionAjaxbannirUtilisateur.php');
+               break;
+   
+            }      
+         }
+         
          global $affiche; 
          $affiche=$this->vue->getAffichage();   
    } 

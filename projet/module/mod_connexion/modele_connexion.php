@@ -121,6 +121,10 @@
                     $_SESSION['login']=$row['login'];
                     $_SESSION['id']=$row['idUtilisateur'];
                     $_SESSION['photo'] = $row['photo'];
+                    if($row['idRole']==1)
+                        $_SESSION['role']=1;
+                    else
+                         $_SESSION['role']=0;
                     echo "
                         <script> Swal.fire('Connexion réussie')  
                         setTimeout(

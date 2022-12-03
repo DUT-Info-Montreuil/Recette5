@@ -55,6 +55,7 @@
                unset($_SESSION['login'] );
                unset($_SESSION['id'] );
                unset($_SESSION['photo'] );
+               unset($_SESSION['role'] );
                echo"<script>
                    Swal.fire('Vous êtes bien déconnecter')  
                      setTimeout(
