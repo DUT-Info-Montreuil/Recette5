@@ -50,10 +50,10 @@
                 ';
 
             if($utilisateur['banni']==0){
-                echo '    <td id="LesBoutonBan'.$utilisateur['idUtilisateur'].'"><button type="button" id="boutonBanUtilisateurs" value="'.$utilisateur['idUtilisateur'].'">bannir utilisateur</button></td>
+                echo '    <td id="LesBoutonBan'.$utilisateur['idUtilisateur'].'"><button class="btn btn-danger" type="button" id="boutonBanUtilisateurs" value="'.$utilisateur['idUtilisateur'].'">bannir utilisateur</button></td>
                 ';
             }else{
-                echo '    <td id="LesBoutonBan'.$utilisateur['idUtilisateur'].'"><button type="button" id="boutonDeBanUtilisateurs" value="'.$utilisateur['idUtilisateur'].'">deban utilisateur</button></td>
+                echo '    <td id="LesBoutonBan'.$utilisateur['idUtilisateur'].'"><button class="btn btn-success" type="button" id="boutonDeBanUtilisateurs" value="'.$utilisateur['idUtilisateur'].'">deban utilisateur</button></td>
                 ';
             }
 
@@ -102,13 +102,23 @@
        }
 
        public function afficherUtilisateur($utilisateur){
-        
         echo' <p>photo de profile :<img  width="100px" height="100px" class="media-object" src="image/image_utilisateur/'.$utilisateur['photo'].'" alt=""></p>
               <p> id Utilisateur : '.$utilisateur['idUtilisateur'].'</p>
               <p> login : '.$utilisateur['login'].'</p>
               <p> email : '.$utilisateur['email'].'</p>
               <p> description : '.$utilisateur['description'].'</p>
-        ';
+              <div id="#LesBoutonBan'.$utilisateur['idUtilisateur'].'"> 
+          ';
+          if($utilisateur['banni']==1){
+            echo'<button  type="button" class="btn btn-success" id="boutonDeBanUtilisateurs" value="'.$utilisateur['idUtilisateur'].'">deban utilisateur</button>';
+          
+          }
+          else{
+            echo'<button  type="button" class="btn btn-danger" id="boutonBanUtilisateurs" value="'.$utilisateur['idUtilisateur'].'">bannir utilisateur</button>';
+          }
+           
+
+          echo'<button  type="button" class="btn btn-danger" id="boutonSupprimerUtilisateur" value="'.$utilisateur['idUtilisateur'].'">supprimer utilisateur</button>          </div>';
        }
 
        public function afficherTouteLesRecette($listeRecette){

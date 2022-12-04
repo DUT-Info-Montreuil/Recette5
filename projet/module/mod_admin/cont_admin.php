@@ -92,7 +92,8 @@
                case"afficherUtilisateur":
    
                   $this->afficherUtilisateur($_GET['idUtilisateur']);
-                  include('module/mod_admin/ajax/commentaire/fonctionAjaxCommentaire.php');
+                  include('module/mod_admin/ajax/bannirUtilisateur/fonctionAjaxbannirUtilisateur.php');
+                  include('module/mod_admin/ajax/supprimerUtilisateur/fonctionAjaxSupprimerUtilisateur.php');
                break;
                
    
