@@ -37,6 +37,8 @@ $this->menu=
 
 
 $(document).ready(function(){  
+    $(".containers").css('background', 'rgb(156,48,218');
+    $(".containers").css('background', 'linear-gradient(0deg, rgba(156,48,218,1) 0%, rgba(66,34,195,1) 62%, rgba(45,199,253,1) 100%)');
 
 
     $('#header').empty().append(<?php echo json_encode($menu) ; ?>);

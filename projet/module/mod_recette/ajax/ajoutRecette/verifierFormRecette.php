@@ -41,6 +41,12 @@
                 else if($error != 0 && $_FILES['file_photoRecette']['name']!=""){
                             echo json_encode("La photo ne peut pas etre pris en compte veuillez selectionner une notre photo");
                 }
+                else if(!isset($cat)){
+                    echo json_encode("Selectionner une catégorie");
+                }
+                else if(!isset($sousCat)){
+                    echo json_encode("Selectionner une sous-catégorie si aucune ne correspond selectionner 'Autre'");
+                }
                 else{ 
                     echo json_encode("bon");
                 }        

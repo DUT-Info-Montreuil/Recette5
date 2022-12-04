@@ -175,6 +175,11 @@ table, caption, th, td {
 	color: black;
 	text-decoration : none;
 }
+#page {
+	width: 100%;
+	margin-top: 5%;
+	padding-left : 45%;
+}
 
 
 /*------------------------PROFIL------------------------------*/

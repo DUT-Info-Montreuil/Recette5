@@ -8,7 +8,7 @@ class VueRecherche extends VueGenerique{
     public function afficherRecette($tabR){
 
       echo'<div width=100% align="center">
-      <a href="index.php?module=recherche&action=toute&vegan=1">
+      <a href="index.php?module=recherche&action=toute&vegan=1&page=1">
       <button class="btn btn-success" type="button" >Vegan</button></a>
       <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Selectionner categorie</button>
       <a href="index.php?module=recherche&action=toute">
@@ -72,12 +72,25 @@ class VueRecherche extends VueGenerique{
                    </div>
                  </div>
                </div>
-             </div> ';
+             </div> 
+            
+             
+             ';
              
             }
             
         }
     }
+
+    public function nbPage($nbPage, $url){
+    echo '<nav aria-label="Page navigation example">
+             <ul class="pagination" id="page">';
+             for($n=0 ;$n<$nbPage ; $n++){
+              echo '<li class="page-item"><a class="page-link" href="'.$url.'&page='.($n+1).'">'.($n+1).'</a></li>';
+             }
+            echo '</ul></nav>';
+
+            }
 }
 
 

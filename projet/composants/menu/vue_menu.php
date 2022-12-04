@@ -26,7 +26,7 @@ class VueMenu{
                 <div  class="collapse navbar-collapse" id="navbarsExampleXxl" align="center">
                     <ul class="navbar-nav me-auto mb-2 mb-xl-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php?module=recherche&action=toute">Recette</a>
+                        <a class="nav-link active" aria-current="page" href="index.php?module=recherche&action=toute&page=1">Recette</a>
                     </li>
                     <li class="nav-item">
                         <a  class="nav-link" href="index.php?module=recette&action=AfficherFormAjoutRecette">Ajouter Recette</a>
@@ -35,7 +35,7 @@ class VueMenu{
                         <a class="nav-link" href="index.php?module=recette&action=afficherLiker">Aimé</a>
                     </li>';
                     
-                    if($_SESSION['role']==1){
+                    if(isset($_SESSION['role']) && $_SESSION['role']==1){
                         $this->menu=$this->menu.'
                         <li class="nav-item">
                         <a class="nav-link" href="index.php?module=admin&action=acceuilAdmin">Espace Admin</a>
