@@ -19,7 +19,6 @@ class VueRecherche extends VueGenerique{
 
       <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
         <div class="offcanvas-header">
-          
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         
@@ -45,10 +44,10 @@ class VueRecherche extends VueGenerique{
                <div class="card shadow-sm">         
                   <img src="image/image_recette/'.$photo.'"  width="100%" height="225">         
                  <div class="card-body">
-                 <h1 class="card-text">'.substr($value['titre'], 0, 15);
+                 <h1 class="card-text">'.substr($value['titre'], 0, 15).'</h1>';
                  if(strlen($value['titre']) > 15)
                     echo '...';
-                 echo '</h1><p class="card-text">'.substr($value['description'],0,39);
+                 echo '<p class="card-text">'.substr($value['description'],0,39);
                    
                    if(strlen($value['description']) > 39)
                     echo '...';
