@@ -6,6 +6,11 @@ extract($_POST);
     $sth2=$bdd->prepare("DELETE FROM DonnerAvis WHERE idRecette = ?");
     $sth2->execute(array($idRecette));
 
+    $sth=$bdd->prepare("select photo FROM photo WHERE idRecette = ?");
+    $sth->execute(array($idRecette));
+    $row=$sth->fetch();
+    unlink('../../../../image/image_recette/'.$row['photo'].'');
+    
     $sth2=$bdd->prepare("DELETE FROM photo  WHERE idRecette = ?");
     $sth2->execute(array($idRecette));
 
