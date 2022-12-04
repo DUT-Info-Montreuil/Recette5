@@ -24,31 +24,31 @@
                 }    
 
                 if($titre=="")
-                    echo json_encode('La recette doit comporter un titre');
+                    echo json_encode('<div class="alert alert-danger" role="alert">La recette doit comporter un titre</div>');
 
                 else if($description=="")
-                    echo json_encode('La recette doit comporter une description');
+                    echo json_encode('<div class="alert alert-danger" role="alert">La recette doit comporter une description</div>');
 
                 else if( strlen($description) > 1000)
-                    echo json_encode('La taille de la description est trop grande seulement 1000 caratères sont autorisé');
+                    echo json_encode('<div class="alert alert-danger" role="alert">La taille de la description est trop grande seulement 1000 caratères sont autorisé</div>');
 
                 else if(!in_array($extension, $extensions) && $_FILES['file_photoRecette']['name']!=""){
-                            echo json_encode('mauvaise extension veuillez mettre une photo en .jpg .png .jpeg ');
+                            echo json_encode('<div class="alert alert-danger" role="alert">mauvaise extension veuillez mettre une photo en .jpg .png .jpeg </div>');
                 }
                 else if($size > $maxSize  && $_FILES['file_photoRecette']['name']!=""){
-                            echo json_encode("fichier trop grand");
+                            echo json_encode('<div class="alert alert-danger" role="alert">fichier trop grand</div>');
                 }
                 else if($error != 0 && $_FILES['file_photoRecette']['name']!=""){
-                            echo json_encode("La photo ne peut pas etre pris en compte veuillez selectionner une notre photo");
+                            echo json_encode('<div class="alert alert-danger" role="alert">La photo ne peut pas etre pris en compte veuillez selectionner une notre photo</div>');
                 }
                 else if(!isset($cat)){
-                    echo json_encode("Selectionner une catégorie");
+                    echo json_encode('<div class="alert alert-danger" role="alert">Selectionner une catégorie</div>');
                 }
                 else if(!isset($sousCat)){
-                    echo json_encode("Selectionner une sous-catégorie si aucune ne correspond selectionner 'Autre'");
+                    echo json_encode('<div class="alert alert-danger" role="alert">Selectionner une sous-catégorie si aucune ne correspond selectionner \'Autre\'</div>');
                 }
                 else{ 
-                    echo json_encode("bon");
+                    echo json_encode('<div class="alert alert-success" role="alert">bon</div>');
                 }        
         
 

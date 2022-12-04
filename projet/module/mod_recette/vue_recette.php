@@ -1,60 +1,57 @@
 <?php
-    require_once('vue_generique.php');
-  
-    class VueRecette extends VueGenerique{
-      
-        public   function __construct() {
-            parent::__construct();
-             
-         }
-         
-         /*------------afficher toutes les recettes-------------*/
-         public function afficherMesRecette($tabR){
-            
-            
-            if($tabR == NULL){
-               echo ' <div align="center"><p class="text-muted">Aucune recette</p></div> ';
-           }else{
+require_once ('vue_generique.php');
+class VueRecette extends VueGenerique
+{
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
-
-                        
-
-
-               foreach($tabR as $value){
-                 if($value['photo'] != NULL){
-                   $photo= $value['photo'];   
+    /*------------afficher toutes les recettes-------------*/
+    public function afficherMesRecette($tabR)
+    {
+        if ($tabR == NULL)
+        {
+            echo ' <div align="center"><p class="text-muted">Aucune recette</p></div> ';
+        }
+        else
+        {
+            foreach ($tabR as $value)
+            {
+                if ($value['photo'] != NULL)
+                {
+                    $photo = $value['photo'];
                 }
-                else{
-                   $photo = 'plat.png';
-      
+                else
+                {
+                    $photo = 'plat.png';
+
                 }
-                   echo'
+                echo '
                  <div class="col"> 
                   <div class="card shadow-sm">            
-                     <img src="image/image_recette/'.$photo.'"  width="100%" height="225">          
+                     <img src="image/image_recette/' . $photo . '"  width="100%" height="225">          
                     <div class="card-body">
-                    <h1 class="card-text">'.substr($value['titre'], 0, 15);
-                 if(strlen($value['titre']) > 15)
-                    echo '...';
-                 echo '</h1><p class="card-text">'.substr($value['description'], 0, 39);
-                   if(strlen($value['description']) > 39)
-                    echo '...';
-                   echo '</p>            
+                    <h1 class="card-text">' . substr($value['titre'], 0, 15);
+                if (strlen($value['titre']) > 15) echo '...';
+                echo '</h1><p class="card-text">' . substr($value['description'], 0, 39);
+                if (strlen($value['description']) > 39) echo '...';
+                echo '</p>            
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                         <a href="index.php?module=recette&action=afficherMaRecette&idRecette='.$value['idRecette'].'"><button type="button" class="btn btn-sm btn-outline-secondary">Détails</button></a>';
-                         if($value['vegan'] == 1){
-                           echo '<button type="button" class="btn btn-sm btn-success" disabled>Vegan</button>';
-                        }          
-                          echo '</div>
+                         <a href="index.php?module=recette&action=afficherMaRecette&idRecette=' . $value['idRecette'] . '"><button type="button" class="btn btn-sm btn-outline-secondary">Détails</button></a>';
+                if ($value['vegan'] == 1)
+                {
+                    echo '<button type="button" class="btn btn-sm btn-success" disabled>Vegan</button>';
+                }
+                echo '</div>
                         <div class="text-group" color="black">
                         <small class="text-muted">';
-                        if(floor((htmlspecialchars($value['tpsPreparration'])/60)) != 0)
-                        echo floor((htmlspecialchars($value['tpsPreparration'])/60)).'h';
-                      echo (htmlspecialchars($value['tpsPreparration'])%60).'min</small>
+                if (floor((htmlspecialchars($value['tpsPreparration']) / 60)) != 0) echo floor((htmlspecialchars($value['tpsPreparration']) / 60)) . 'h';
+                echo (htmlspecialchars($value['tpsPreparration']) % 60) . 'min</small>
                         
                         </div>
-                        <small class="text-muted">'.$value['datePublication'].'</small>
+                        <small class="text-muted">' . $value['datePublication'] . '</small>
                       </div>
                     </div>
                   </div>
@@ -63,22 +60,21 @@
                 
                 
                 ';
-               }       
-           }
-         }
+            }
+        }
+    }
 
-         /*-----------------------afficher les détails d'une recette-----------------------*/
-         public function afficherMaRecette($recette, $photo, $Ingredient,$commentaires,$categorie){
-        
-               
-               echo'
+    /*-----------------------afficher les détails d'une recette-----------------------*/
+    public function afficherMaRecette($recette, $photo, $Ingredient, $commentaires, $categorie)
+    {
+
+        echo '
          <section class="py-5">
          <div class="container px-4 px-lg-5 my-5">
          <div class="row gx-4 gx-lg-5 align-items-center">
              <div class="col-md-6">';
 
-               if( isset($_SESSION['id']) && $_SESSION['id']==$recette['idUtilisateur'] )
-               echo '<a href="index.php?module=recette&action=AffichermodifierMaRecette&idRecette='.htmlspecialchars($recette['idRecette']).'"><button type="button" id="suppIngredient" class="btn btn-outline-primary" />Modifier</button></a>
+        if (isset($_SESSION['id']) && $_SESSION['id'] == $recette['idUtilisateur']) echo '<a href="index.php?module=recette&action=AffichermodifierMaRecette&idRecette=' . htmlspecialchars($recette['idRecette']) . '"><button type="button" id="suppIngredient" class="btn btn-outline-primary" />Modifier</button></a>
                      <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#supprimer">Supprimer</button>
                     <div class="modal fade" id="supprimer" tabindex="-1" aria-labelledby="supprimer" aria-hidden="true">
                     <div class="modal-dialog modal-sm">
@@ -93,53 +89,47 @@
                         </div>
                     </div>
                     </div>';
-                 else
-               echo '<a href="index.php?module=profil&action=afficherProfilUtilisateur&idUtilisateur='.$recette['idUtilisateur'].'" ><button type="button" id="suppIngredient" class="btn btn-outline-success" />Profil créateur</button></a>';
-             if($photo['photo'] == NULL)
-             echo '<img class="card-img-top mb-5 mb-md-0" src="image/image_recette/plat.png" alt="photo de la recette">';
-                 
-             else
-             echo '<img class="card-img-top mb-5 mb-md-0" src="image/image_recette/'.$photo['photo'].'" alt="photo de la recette">';
-             echo '<p>date de publication : '.$recette['datePublication'].', catégories : ';
-             if(isset($categorie['nom']))
-               echo $categorie['nom'];
-             if(isset($categorie['nomSousCategorie']))
-               echo ', '.$categorie['nomSousCategorie'];
-             
-             
-             
-             echo '</p></div>
+        else echo '<a href="index.php?module=profil&action=afficherProfilUtilisateur&idUtilisateur=' . $recette['idUtilisateur'] . '" ><button type="button" id="suppIngredient" class="btn btn-outline-success" />Profil créateur</button></a>';
+        if ($photo['photo'] == NULL) echo '<img class="card-img-top mb-5 mb-md-0" src="image/image_recette/plat.png" alt="photo de la recette">';
+
+        else echo '<img class="card-img-top mb-5 mb-md-0" src="image/image_recette/' . $photo['photo'] . '" alt="photo de la recette">';
+        echo '<p>date de publication : ' . $recette['datePublication'] . ', catégories : ';
+        if (isset($categorie['nom'])) echo $categorie['nom'];
+        if (isset($categorie['nomSousCategorie'])) echo ', ' . $categorie['nomSousCategorie'];
+
+        echo '</p></div>
              <div class="col-md-6">
-                 <h1 class="display-5 fw-bolder">'.htmlspecialchars($recette['titre']).'</h1>
+                 <h1 class="display-5 fw-bolder">' . htmlspecialchars($recette['titre']) . '</h1>
                  <p class="lead">temps de préparation estimé : ';
-                 if(floor((htmlspecialchars($recette['tpsPreparration'])/60))!= 0 )
-                  echo floor((htmlspecialchars($recette['tpsPreparration'])/60)).'heure(s) et ';
-                 echo (htmlspecialchars($recette['tpsPreparration'])%60).' minute(s)</p>
+        if (floor((htmlspecialchars($recette['tpsPreparration']) / 60)) != 0) echo floor((htmlspecialchars($recette['tpsPreparration']) / 60)) . 'heure(s) et ';
+        echo (htmlspecialchars($recette['tpsPreparration']) % 60) . ' minute(s)</p>
                  <hr class="my-4">
                  <div class="fs-5 mb-2">';
-                 
-              
-                 echo '</div>
+
+        echo '</div>
                  <h3>description : </h3>
 
-                 <p class="lead" id="descriptionAffichage">'.htmlspecialchars($recette['description']).'</p>';
-                  if($recette['noteAnnexe'] != NULL){
-                 echo '
-                 <hr class="my-4"><h3>Annexe : </h3><p class="lead">'.htmlspecialchars($recette['noteAnnexe']).'</p>';
-                  }
-                 echo '<hr class="my-4"><h3>Liste des ingrédients</h3>';
-                 foreach( $Ingredient as $value ){
-                   
-                    echo '<br> '.htmlspecialchars($value['nomIngredient']).' : '.htmlspecialchars($value['Quantite']).' '.htmlspecialchars($value['unite']).'';
-                 }
-                  echo '
+                 <p class="lead" id="descriptionAffichage">' . htmlspecialchars($recette['description']) . '</p>';
+        if ($recette['noteAnnexe'] != NULL)
+        {
+            echo '
+                 <hr class="my-4"><h3>Annexe : </h3><p class="lead">' . htmlspecialchars($recette['noteAnnexe']) . '</p>';
+        }
+        echo '<hr class="my-4"><h3>Liste des ingrédients</h3>';
+        foreach ($Ingredient as $value)
+        {
+
+            echo '<br> ' . htmlspecialchars($value['nomIngredient']) . ' : ' . htmlspecialchars($value['Quantite']) . ' ' . htmlspecialchars($value['unite']) . '';
+        }
+        echo '
                   <hr class="my-4">
                  <div class="d-flex">';
-                 if(isset($_SESSION['login'])){
-                  echo'<div id="divBoutonDeLike">
+        if (isset($_SESSION['login']))
+        {
+            echo '<div id="divBoutonDeLike">
                       </div>';
-                 }
-                 echo '<div id="nbLike"></div>
+        }
+        echo '<div id="nbLike"></div>
                                     
                  </div>
                  
@@ -150,8 +140,9 @@
                 
       ';
 
-      if(isset($_SESSION['login'])){
-         echo'
+        if (isset($_SESSION['login']))
+        {
+            echo '
          
         
          <section class="content-item" >
@@ -176,48 +167,44 @@
                    </>
          
          <h2 class="media"> les commentaire :</h2>   
-         '
-      ;
-                
-         
-      }
-      echo'<section id="sectionCommentaireInserer">
+         ';
+
+        }
+        echo '<section id="sectionCommentaireInserer">
       
       </section>';
-      
-      foreach( $commentaires as $value ){
-         echo'
+
+        foreach ($commentaires as $value)
+        {
+            echo '
          
          
-         <div id="commentaire'.$value['idCommentaire'].'" class="media">
-                 <a class="pull-left" href="#"><img id="pp" width="100" class="media-object" src="image/image_utilisateur/'.$value['photo'].'" alt=""></a>
+         <div id="commentaire' . $value['idCommentaire'] . '" class="media">
+                 <a class="pull-left" href="#"><img id="pp" width="100" class="media-object" src="image/image_utilisateur/' . $value['photo'] . '" alt=""></a>
                  <div class="media-body">
-                     <h4 class="media-heading">'.$value['login'].' a écrit le '.$value['dateAjout'].' a '.$value['heureAjout'].' :';
-                     if(isset($_SESSION['login'])&&$_SESSION['id']==$value['idUtilisateur']){
-                        echo'<button type="button" name="remove" id="'.$value['idCommentaire'].'"  class="btn btn-danger btn_remove">X</button>';
-                     }
-                     echo' </p></h4>
-                     <p>'.$value['commentaire'].'</p>
+                     <h4 class="media-heading">' . $value['login'] . ' a écrit le ' . $value['dateAjout'] . ' a ' . $value['heureAjout'] . ' :';
+            if (isset($_SESSION['login']) && $_SESSION['id'] == $value['idUtilisateur'])
+            {
+                echo '<button type="button" name="remove" id="' . $value['idCommentaire'] . '"  class="btn btn-danger btn_remove">X</button>';
+            }
+            echo ' </p></h4>
+                     <p>' . $value['commentaire'] . '</p>
           
                  </div>
              </div>
          
          
          ';
-     
-      } 
 
-     
+        }
 
-   }  
-        
+    }
 
+    public function afficher_form_Recette($tabIngr)
+    {
 
-
-         public function afficher_form_Recette($tabIngr){   
-            
-            global $ListIngredient;
-            echo'
+        global $ListIngredient;
+        echo '
             
             
             <form action="#" method="post" onsubmit="return false" id="formAjoutRecette">
@@ -246,10 +233,11 @@
                <select class="form-select" id="heure" name="heure" required>
                  <option value="0">Choose...</option>
                  ';
-                 for($i=0 ; $i<10 ; $i++){
-                    echo'<option>'.$i.'</option>';
-                 };
-                 echo '
+        for ($i = 0;$i < 10;$i++)
+        {
+            echo '<option>' . $i . '</option>';
+        };
+        echo '
                </select>
              </div>
  
@@ -258,10 +246,11 @@
                <select class="form-select" id="state" name="min" required>
                  <option value="10">Choose...</option>
                  ';
-                 for($i=10 ; $i<60 ; $i=$i+10){
-                    echo'<option>'.$i.'</option>';
-                 };
-                 echo '
+        for ($i = 10;$i < 60;$i = $i + 10)
+        {
+            echo '<option>' . $i . '</option>';
+        };
+        echo '
                </select>
              </div>
 
@@ -285,10 +274,11 @@
                <div id=divIngredient1"> 
                
                   ingredient :<select name="ingredient1" id="ingredient1" form="formAjoutRecette">  ';
-                  foreach( $tabIngr as $value ){
-                           echo'  <option value="'.htmlspecialchars($value['idIngredient']).' ">'.htmlspecialchars($value['nomIngredient']).'</option>';
-                  }  
-                  echo' </select>
+        foreach ($tabIngr as $value)
+        {
+            echo '  <option value="' . htmlspecialchars($value['idIngredient']) . ' ">' . htmlspecialchars($value['nomIngredient']) . '</option>';
+        }
+        echo ' </select>
                quantite : <input type="text" name="quantite1">   
                <select name="unite1" form="formAjoutRecette">   
                            <option value="kg">kg</option>
@@ -321,30 +311,29 @@
                
                   </form>
 ';
-           
-            
-        }
 
-        public function afficherFormModifRecette($recette,$tabIngr,$ListIngredient){
+    }
 
-        
-         echo'
+    public function afficherFormModifRecette($recette, $tabIngr, $ListIngredient)
+    {
+
+        echo '
             
          <form action="#" method="post" onsubmit="return false" id="formModifRecette">
         
          <div class="container">
-         
-         <div id="errorRecette"></div>
-            <div id="validerAjout"></div>
+         <div class="alert alert-danger" role="alert" id="errorRecette">
+         </div>
+         <div class="alert alert-danger" role="alert" id="validerAjout"></div>
          <div id="formulaireRecette">
          <div class="col-md-7 col-lg-8">
-         <h4 class="mb-3">modifier la Recette : '.$recette['titre'].'</h4>
+         <h4 class="mb-3">modifier la Recette : ' . $recette['titre'] . '</h4>
          <hr class="my-4">
       
          <div class="row g-3">
                <div class="col-sm-6">
                   <label for="titre" class="form-label">Nom</label>
-                  <input type="text" class="form-control" value="'.$recette['titre'].'"id="titre" name="titre" required>
+                  <input type="text" class="form-control" value="' . $recette['titre'] . '"id="titre" name="titre" required>
                </div>
 
             <div class=" col-12">
@@ -357,10 +346,11 @@
             <select class="form-select" id="country" name="heure" required>
               <option value="0">Choose...</option>
               ';
-              for($i=0 ; $i<10 ; $i++){
-                 echo'<option>'.$i.'</option>';
-              };
-              echo '
+        for ($i = 0;$i < 10;$i++)
+        {
+            echo '<option>' . $i . '</option>';
+        };
+        echo '
             </select>
           </div>
 
@@ -369,35 +359,38 @@
             <select class="form-select" id="state" name="min" required>
               <option value="0">Choose...</option>
               ';
-              for($i=10 ; $i<60 ; $i=$i+10){
-                 echo'<option>'.$i.'</option>';
-              };
-              echo '
+        for ($i = 10;$i < 60;$i = $i + 10)
+        {
+            echo '<option>' . $i . '</option>';
+        };
+        echo '
             </select>
           </div>
 
 
           <div class="col-12 l-12">
             <label for="address2" class="form-label">Description<span class="text-muted"></span></label>
-            <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3">'.$recette['description'].'</textarea>
+            <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3">' . $recette['description'] . '</textarea>
          </div>
 
          <div class="col-12">
             <label for="email" class="form-label">Annexe <span class="text-muted">(Optional)</span></label>
-            <input type="text" value="'.$recette['noteAnnexe'].'" name="annexe" class="form-control" id="email" >
+            <input type="text" value="' . $recette['noteAnnexe'] . '" name="annexe" class="form-control" id="email" >
          </div>';
-         if($recette['vegan']==1){
-            echo'
+        if ($recette['vegan'] == 1)
+        {
+            echo '
             <div class="form-check form-switch">
             <input class="form-check-input" checked="cheked" type="checkbox" name="vegan" role="switch" id="flexSwitchCheckDefault">
             <label class="form-check-label" for="flexSwitchCheckDefault">Vegan</label>
          </div>
             
             ';
-         }
-         else{
+        }
+        else
+        {
 
-            echo'
+            echo '
             
             <div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" name="vegan" role="switch" id="flexSwitchCheckDefault">
@@ -407,27 +400,28 @@
             
             ';
 
-         }
-echo'
+        }
+        echo '
         
             </div>
             <hr class="my-4">';
-         foreach( $ListIngredient as $value ){
-            echo'<p id="boutonSupp'.$value['idIngredient'].'"> '.htmlspecialchars($value['nomIngredient']).' '.htmlspecialchars($value['Quantite']).' '.htmlspecialchars($value['unite']).' <button type="button" name="remove" id="'.$value['idIngredient'].'"  class="btn btn-danger btn_remove">X</button> </p>';
-      
-             
-            }  
-    echo'        
+        foreach ($ListIngredient as $value)
+        {
+            echo '<p id="boutonSupp' . $value['idIngredient'] . '"> ' . htmlspecialchars($value['nomIngredient']) . ' ' . htmlspecialchars($value['Quantite']) . ' ' . htmlspecialchars($value['unite']) . ' <button type="button" name="remove" id="' . $value['idIngredient'] . '"  class="btn btn-danger btn_remove">X</button> </p>';
+
+        }
+        echo '        
             <div id=divIngredient1"> 
             
 
 
                ingredient :<select name="ingredient1" id="ingredient1" form="formModifRecette">  ';
-               
-               foreach( $tabIngr as $value ){
-                        echo'  <option value="'.htmlspecialchars($value['idIngredient']).' ">'.htmlspecialchars($value['nomIngredient']).'</option>';
-               }  
-               echo' </select>
+
+        foreach ($tabIngr as $value)
+        {
+            echo '  <option value="' . htmlspecialchars($value['idIngredient']) . ' ">' . htmlspecialchars($value['nomIngredient']) . '</option>';
+        }
+        echo ' </select>
             quantite : <input type="text" name="quantite1">   
             <select name="unite1" form="formModifRecette">   
                         <option value="kg">kg</option>
@@ -452,17 +446,11 @@ echo'
             <button type="button" id="ajtIngredient" targetId="divContenantLesIngredient" class="w-10 btn btn-success btn-lg" value="ajouter ingr"/>ajt ingredient </button>
             <button type="button" id="suppIngredient" class="w-10 btn btn-danger btn-lg" />supprimer ingredient </button>
             <hr class="my-4">
-            <a href="index.php?module=recette&action=afficherMaRecette&idRecette='.$recette['idRecette'].'"><button class="w-20 btn btn-secondary btn-lg" type="button">Annuler</button></a>
+            <a href="index.php?module=recette&action=afficherMaRecette&idRecette=' . $recette['idRecette'] . '"><button class="w-20 btn btn-secondary btn-lg" type="button">Annuler</button></a>
             <button class="w-50 btn btn-primary btn-lg" type="submit" id="boutonvaliderAJout">Modifier la recette</button>
             <button class="w-50 btn btn-primary btn-lg" type="submit" id="boutonvaliderAJoutNonClickable" disabled>Modifier la recette</button>
-            </div></div>
-            
-         </div>    
-                 
-
-
-
-      ';
-            }
+            </div></div>           
+         </div>';
     }
+}
 ?>
