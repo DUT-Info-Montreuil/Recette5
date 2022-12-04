@@ -44,7 +44,7 @@ class VueRecherche extends VueGenerique{
                <div class="card shadow-sm">         
                   <img src="image/image_recette/'.$photo.'"  width="100%" height="225">         
                  <div class="card-body">
-                 <h1 class="card-text">'.substr($value['titre'], 0, 15).'</h1>';
+                 <h1 class="card-text">'.substr($value['titre'],0,15).'</h1>';
                  if(strlen($value['titre']) > 15)
                     echo '...';
                  echo '<p class="card-text">'.substr($value['description'],0,39);
