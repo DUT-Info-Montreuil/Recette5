@@ -46,7 +46,6 @@
                break;  
 
             case "AfficherFormAjoutRecette":
-                  
                    $this->afficher_form_Recette();
                    include('module/mod_recette/ajax/ajoutRecette/fonctionAjaxAjoutRecette.php') ;
                    include('module/mod_recette/ajax/ajouterCategorie/fonctionCategorie.php') ;

@@ -8,10 +8,9 @@
          }
     
         public function afficherAcceuilAdmin(){
-            echo'<h1>acceuil admin</h1>
-       
-                
-            ';
+            echo'<div align="center" id="bvn">
+            <h1 id="bienvenue">BIENVENUE ADMIN</h1>
+            </div> ';
         }
 
        public function afficherGererUtilisateur($listeUtilisateur){

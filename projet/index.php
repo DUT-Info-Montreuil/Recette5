@@ -39,7 +39,8 @@ switch ($module) {
         new ModAdmin();
         break;
      case "rien":
-      header("index.php?module=connexion&action=bienvenue");
+      new ModConnexion();
+        header("/index.php?module=connexion&action=bienvenue");
       break;
 }
 $_SESSION['login'] = isset($_SESSION['login']) ? $_SESSION['login'] : null;

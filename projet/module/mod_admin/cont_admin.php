@@ -71,7 +71,7 @@
             switch ($this->action) {
 
                case"acceuilAdmin":
-   
+                  
                   $this->acceuilAdmin();
                break;
                case"gererUtilisateur":

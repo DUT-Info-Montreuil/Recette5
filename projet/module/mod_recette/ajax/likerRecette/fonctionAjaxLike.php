@@ -83,8 +83,11 @@
                 
                 $.post("module/mod_recette/ajax/likerRecette/supprimerRecette.php",{idRecette:<?php echo$_GET['idRecette']?>},function(data){  
                     $('#supprimerRecette').empty().append("votre recette s'est bien supprimer");
-                    window.location.href = "index.php?module=recherche&action=toute";
+                    window.location.href = "index.php?module=recherche&action=toute&page=1";
                 });
+
+                unlink("image/image_recette/638cbd2423e7f9.38020996.jpg");
+                
             }
 
         );

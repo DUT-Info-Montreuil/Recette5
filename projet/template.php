@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
 		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
@@ -56,10 +55,10 @@
 
                 <ul class="nav col-md-4 justify-content-end" id="liste">
                 <li class="nav-item"><a href="index.php?module=connexion&action=bienvenue" class="nav-link px-2 text-muted">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted"></a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted"></a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted"></a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted"></a></li>
                 </ul>
             </footer>
         </div>

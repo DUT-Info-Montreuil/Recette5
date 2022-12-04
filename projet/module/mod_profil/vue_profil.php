@@ -175,7 +175,7 @@ class VueProfil extends VueGenerique{
         <form method="post" action="index.php?module=profil&action=afficherProfil" enctype="multipart/form-data">
             <div align="center">
                 votre profil à été modifié <br />
-                <input type="submit" value="retourner au profil">
+                <input class="btn btn-primary" type="submit" value="retourner au profil">
             </div>
         </form>';
     }
