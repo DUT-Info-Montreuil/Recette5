@@ -27,7 +27,7 @@
       $this->vue->afficherMesRecette($this->modele->afficherMesRecette());
    }
    public function afficherMaRecette(){
-      $this->vue->afficherMaRecette($this->modele->afficherMaRecette($_GET['idRecette']), $this->modele->afficherPhoto($_GET['idRecette']) , $this->modele->afficherIngredientDeMaRecette($_GET['idRecette']), $this->modele->recupererCommentaire($_GET['idRecette']));
+      $this->vue->afficherMaRecette($this->modele->afficherMaRecette($_GET['idRecette']), $this->modele->afficherPhoto($_GET['idRecette']) , $this->modele->afficherIngredientDeMaRecette($_GET['idRecette']), $this->modele->recupererCommentaire($_GET['idRecette']), $this->modele->afficherCategories($_GET['idRecette']) );
    }
 
    public function AffichermodifierMaRecette(){
@@ -49,6 +49,7 @@
                   
                    $this->afficher_form_Recette();
                    include('module/mod_recette/ajax/ajoutRecette/fonctionAjaxAjoutRecette.php') ;
+                   include('module/mod_recette/ajax/ajouterCategorie/fonctionCategorie.php') ;
             break;
 
            
@@ -79,6 +80,7 @@
             elseif($_SESSION['id']==$this->modele->recupererIdDuPropietaireDeLaRecette($_GET['idRecette'])){
               
                $this->AffichermodifierMaRecette();
+               include('module/mod_recette/ajax/ajouterCategorie/fonctionCategorie.php') ;
                include('module/mod_recette/ajax/modifierRecette/fonctionAjaxModifierRecette.php') ;
             }else{
                echo"cette recette ne vous appartient pas";

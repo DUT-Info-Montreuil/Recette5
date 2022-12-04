@@ -1,8 +1,8 @@
 /*------------------SITE--------------*/
 
 .containers{
-	background: rgb(18,0,130);
-	background: linear-gradient(0deg, rgba(18,0,130,1) 0%, rgba(0,85,136,1) 100%); 
+	background: rgb(195,34,129);
+background: linear-gradient(0deg, rgba(195,34,129,1) 0%, rgba(225,123,40,1) 52%, rgba(253,45,45,1) 100%);
 	width:100%;	
 	margin : auto;
 	color: azure;
@@ -150,6 +150,32 @@ table, caption, th, td {
 	color : black;
 }
 
+#lesCategories{
+	border-right: 1px solid white;
+	margin-left: 30px;
+	display: inline-block;
+	padding-right: 30px;
+
+}
+
+#lesSousCategories{
+	vertical-align: top;
+	margin-left: 30px;
+	display: inline-block;
+
+}
+
+.selCat{
+	display: inline-block;
+	text-align: center;
+	margin-left: 12%;
+
+}
+.selCat a{
+	color: black;
+	text-decoration : none;
+}
+
 
 /*------------------------PROFIL------------------------------*/
 .rond img {
@@ -210,3 +236,11 @@ table, caption, th, td {
 	border-bottom: 5px solid rgb(0, 0, 0);
 	padding-bottom: 20px;
 }
+
+
+/*----------------
+Version 1.0 - 2022/12/5
+GNU GPL Copyleft © 2022-2032 
+Initiated by Emilio & Priyank
+Web Site = <https://Recette5>
+------------------*/

@@ -75,6 +75,9 @@ $bdd=new PDO('mysql:host=database-etudiants.iut.univ-paris8.fr;dbname=dutinfopw2
             
          }
         }
+
+         $sth = $bdd->prepare("UPDATE Appartenir SET idCategorie=?, idSousCategorie=?  where idRecette=? ");
+         $sth->execute(array($cat,$sousCat,$idRecette));
       
             
     

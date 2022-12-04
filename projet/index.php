@@ -10,6 +10,7 @@ require_once('composants/menu/comp_menu.php');
 require_once('composants/logo/comp_logo.php');
 #connexion
 require_once('connexion.php');
+
 $compMenu = new CompMenu();
 $compLogo = new CompLogo();
 session_start();
@@ -38,6 +39,7 @@ switch ($module) {
         new ModAdmin();
         break;
      case "rien":
+      header("index.php?module=connexion&action=bienvenue");
       break;
 }
 $_SESSION['login'] = isset($_SESSION['login']) ? $_SESSION['login'] : null;
@@ -45,3 +47,9 @@ $_SESSION['login'] = isset($_SESSION['login']) ? $_SESSION['login'] : null;
 
 include_once('template.php');
 ?>
+<!----------------
+Version 1.0 - 2022/12/5
+GNU GPL Copyleft © 2022-2032 
+Initiated by Emilio & Priyank
+Web Site = <https://Recette5>
+------------------>

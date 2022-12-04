@@ -64,8 +64,9 @@
          }
 
          /*-----------------------afficher les détails d'une recette-----------------------*/
-         public function afficherMaRecette($recette, $photo, $Ingredient,$commentaires){
+         public function afficherMaRecette($recette, $photo, $Ingredient,$commentaires,$categorie){
         
+               
                echo'
          <section class="py-5">
          <div class="container px-4 px-lg-5 my-5">
@@ -95,7 +96,15 @@
                  
              else
              echo '<img class="card-img-top mb-5 mb-md-0" src="image/image_recette/'.$photo['photo'].'" alt="photo de la recette">';
-             echo 'date de publication : '.$recette['datePublication'].'</div>
+             echo '<p>date de publication : '.$recette['datePublication'].', catégories : ';
+             if(isset($categorie['nom']))
+               echo $categorie['nom'];
+             if(isset($categorie['nomSousCategorie']))
+               echo ', '.$categorie['nomSousCategorie'];
+             
+             
+             
+             echo '</p></div>
              <div class="col-md-6">
                  <h1 class="display-5 fw-bolder">'.htmlspecialchars($recette['titre']).'</h1>
                  <p class="lead">temps de préparation estimé : ';
@@ -289,41 +298,23 @@
                   
                   </div>
                <div id="divContenantLesIngredient"> 
-            
                </div>
                <hr class="my-4">
                
                <h6>Catégories : </h6>
-               
-               <!-- Modal -->
-               <div id="lesCategories"> 
-               <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#categorie">Ajouter une categorie</button>
+               <div class="categories">
+               <div id="lesCategories">     
                </div>
-               <div class="modal fade" id="categorie" tabindex="-1" aria-labelledby="categorie" aria-hidden="true">
-                    <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="categorie">Ajouter une categorie</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body" id="ajouterCategorie">
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-               <!-------fin du modal-------->
+               <div id="lesSousCategories"> 
+               </div></div>
                
-
                <hr class="my-4">
                <button type="button" id="ajtIngredient" targetId="divContenantLesIngredient" class="w-10 btn btn-success " value="ajouter ingr"/>ajt ingredient </button>
                <button type="button" id="suppIngredient" class="w-10 btn btn-danger " />supprimer ingredient </button>
                <hr class="my-4">
                <button class="w-100 btn btn-primary btn-lg" type="submit" id="boutonvaliderAJout">Ajouter la recette</button>
-               </div></div>
+               </div></div></div>
                
-            </div>    
-                    
-
                   </form>
 ';
            
@@ -445,7 +436,13 @@ echo'
                
                </div>
             <div id="divContenantLesIngredient"> 
-         
+            <hr class="my-4">
+            <div class="categories">
+            <div id="lesCategories">     
+            </div>
+            <div id="lesSousCategories" float="right"> 
+            </div
+            </div>
             </div>
             <hr class="my-4">
             <button type="button" id="ajtIngredient" targetId="divContenantLesIngredient" class="w-10 btn btn-success btn-lg" value="ajouter ingr"/>ajt ingredient </button>
