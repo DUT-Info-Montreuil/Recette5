@@ -28,7 +28,7 @@
 
 
     <?php include('module/mod_profil/ajax/fonctionAjouterAmis.php');
-   
+
     ?>
 
     <?php include('composants/menu/ajax/barreRecherche.php') ?>
