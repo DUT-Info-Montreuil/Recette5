@@ -48,7 +48,7 @@
                     echo json_encode('<div class="alert alert-danger" role="alert">Selectionner une sous-catégorie si aucune ne correspond selectionner \'Autre\'</div>');
                 }
                 else{ 
-                    echo json_encode('<div class="alert alert-success" role="alert">bon</div>');
+                    echo json_encode('bon');
                 }        
         
 
