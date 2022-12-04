@@ -108,7 +108,7 @@ public function exec(){
         case "validerProfil" :
             if(verifierToken($_POST['token'])){
                 $this->validerModification();
-                supprimerToken()
+                supprimerToken();
             }else{
                 echo"
                     <script> 
