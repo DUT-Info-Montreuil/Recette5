@@ -5,6 +5,16 @@
          
            
         }
+
+
+        private function mdp_correcte($mdp)
+    {
+        $containsLowerCaseLetter  = preg_match('/[a-z]/', $mdp);
+        $containsUpperCaseLetter  = preg_match('/[A-Z]/', $mdp);
+        $containsDigit   = preg_match('/\d/', $mdp);
+        $correctSize = strlen($mdp) >= 8;
+        return $containsLowerCaseLetter && $containsUpperCaseLetter && $containsDigit && $correctSize;
+    }
         public  function inscrire_dans_la_BD($login,$mdp,$mdp2,$email){
             if($mdp!=$mdp2){
                 echo "
@@ -14,6 +24,26 @@
                     icon: 'error',
                     title: 'Oops...',
                     text: 'Les mots de passes ne sont pas identiques',
+                    
+                  })
+                  setTimeout(
+                    function() 
+                    {
+                       window.location.href = 'index.php?module=connexion&action=AfficherFormulaireInscription';
+                    }, 1000);
+                
+                </script>
+                
+                
+                ";
+            }else if( !$this->mdp_correcte($mdp)){
+                echo "
+                <script> 
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Votre mot de passe doit être avoir au moins 8 charactères et doit contenir Une majuscule,Une minuscule,un Chiffre ',
                     
                   })
                   setTimeout(
@@ -37,7 +67,19 @@
                 if($row2["count(email)"] == "0"){
                     $sth = parent::$bdd->prepare("INSERT INTO Utilisateurs (login,mdp,email,idRole) VALUES (?,?,?,?)");
                     $sth->execute(array($login,password_hash($mdp,PASSWORD_ARGON2I),$email,NULL));
-                    echo 'Bienvenue sur notre site : '.$login;
+                    echo "
+                    <script> Swal.fire('Inscription réussite bienvenue')  
+                    setTimeout(
+                        function() 
+                        {
+                        window.location.href = 'index.php?module=connexion&action=bienvenue';
+                        }, 1000);
+                
+                    </script>
+                    
+                    
+                    
+                    ";
                 }else{
                     echo "
                     <script> 
