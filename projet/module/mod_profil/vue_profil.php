@@ -11,7 +11,7 @@ class VueProfil extends VueGenerique{
         if($profil['photo'] == NULL)
             $photo = 'image/profil.png';
         else
-            $photo = 'image/image_utilisateur/'.$profil['photo'];
+            $photo = 'image/image_utilisateur/'.htmlspecialchars($profil['photo']);
         
         
         $pro = '
@@ -37,11 +37,11 @@ class VueProfil extends VueGenerique{
                     <img align="center" alt="pp par defaut" src="'.$photo.'"></br>   
                 </div> 
                 <div align="center">          
-                    <h1>'.$profil['login'].'</h1>
-                    <p class="lead">'.$profil['email'].'</p>
+                    <h1>'.htmlspecialchars($profil['login']).'</h1>
+                    <p class="lead">'.htmlspecialchars($profil['email']).'</p>
                 </div>
                 <div class="description">
-                <p>'.$profil['description'].'</p>
+                <p>'.htmlspecialchars($profil['description']).'</p>
                 </div>            
         </div>
         <hr class="my-4"> ';
@@ -78,7 +78,7 @@ class VueProfil extends VueGenerique{
                 echo '</p>            
                    <div class="d-flex justify-content-between align-items-center">
                      <div class="btn-group">
-                      <a href="index.php?module=recette&action=afficherMaRecette&idRecette='.$value['idRecette'].'"><button type="button" class="btn btn-sm btn-outline-secondary">Détails</button></a>';
+                      <a href="index.php?module=recette&action=afficherMaRecette&idRecette='.htmlspecialchars($value['idRecette']).'"><button type="button" class="btn btn-sm btn-outline-secondary">Détails</button></a>';
                       if($value['vegan'] == 1){
                         echo '<button type="button" class="btn btn-sm btn-success" disabled>Vegan</button>';
                      }          
@@ -90,7 +90,7 @@ class VueProfil extends VueGenerique{
                    echo (htmlspecialchars($value['tpsPreparration'])%60).'min</small>
                      
                      </div>
-                     <small class="text-muted">'.$value['datePublication'].'</small>
+                     <small class="text-muted">'.htmlspecialchars($value['datePublication']).'</small>
                    </div>
                  </div>
                </div>

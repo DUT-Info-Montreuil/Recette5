@@ -32,27 +32,27 @@
             echo'
             
             <tr>
-                <td><a href="index.php?module=admin&action=afficherUtilisateur&idUtilisateur='.$utilisateur['idUtilisateur'].'">'.$utilisateur['login'].'</a></td>
-                <td>'.$utilisateur['idUtilisateur'].'</td>
-                <td>'.$utilisateur['email'].'</td>
+                <td><a href="index.php?module=admin&action=afficherUtilisateur&idUtilisateur='.htmlspecialchars($utilisateur['idUtilisateur']).'">'.htmlspecialchars($utilisateur['login']).'</a></td>
+                <td>'.htmlspecialchars($utilisateur['idUtilisateur']).'</td>
+                <td>'.htmlspecialchars($utilisateur['email']).'</td>
             ';
             if($utilisateur['photo']==null){
                 echo' <td><img src="image/profil.png"  width="50px" height="50px"> </td> ';
             }else{
-                echo'<td><img src="image/image_utilisateur/'.$utilisateur['photo'].'"  width="50px" height="50px"></td>';
+                echo'<td><img src="image/image_utilisateur/'.htmlspecialchars($utilisateur['photo']).'"  width="50px" height="50px"></td>';
             }
 
             echo'
-                    <td>'.$utilisateur['description'].'</td>
-                    <td>'.$utilisateur['COUNT(Recette.idRecette)'].'</td>
-                    <td>'.$utilisateur['COUNT(commentaire.idCommentaire)'].'</td>
+                    <td>'.htmlspecialchars($utilisateur['description']).'</td>
+                    <td>'.htmlspecialchars($utilisateur['COUNT(Recette.idRecette)']).'</td>
+                    <td>'.htmlspecialchars($utilisateur['COUNT(commentaire.idCommentaire)']).'</td>
                 ';
 
             if($utilisateur['banni']==0){
-                echo '    <td id="LesBoutonBan'.$utilisateur['idUtilisateur'].'"><button class="btn btn-danger" type="button" id="boutonBanUtilisateurs" value="'.$utilisateur['idUtilisateur'].'">bannir utilisateur</button></td>
+                echo '    <td id="LesBoutonBan'.htmlspecialchars($utilisateur['idUtilisateur']).'"><button class="btn btn-danger" type="button" id="boutonBanUtilisateurs" value="'.htmlspecialchars($utilisateur['idUtilisateur']).'">bannir utilisateur</button></td>
                 ';
             }else{
-                echo '    <td id="LesBoutonBan'.$utilisateur['idUtilisateur'].'"><button class="btn btn-success" type="button" id="boutonDeBanUtilisateurs" value="'.$utilisateur['idUtilisateur'].'">deban utilisateur</button></td>
+                echo '    <td id="LesBoutonBan'.htmlspecialchars($utilisateur['idUtilisateur']).'"><button class="btn btn-success" type="button" id="boutonDeBanUtilisateurs" value="'.htmlspecialchars($utilisateur['idUtilisateur']).'">deban utilisateur</button></td>
                 ';
             }
 
@@ -80,16 +80,16 @@
             echo'
          
          
-            <div id="commentaire'.$commentaire['idCommentaire'].'" class="media">
-                    <a class="pull-left" href="#"><img id="pp" width="100" class="media-object" src="image/image_utilisateur/'.$commentaire['photo'].'" alt=""></a>
+            <div id="commentaire'.htmlspecialchars($commentaire['idCommentaire']).'" class="media">
+                    <a class="pull-left" href="#"><img id="pp" width="100" class="media-object" src="image/image_utilisateur/'.htmlspecialchars($commentaire['photo']).'" alt=""></a>
                     <div class="media-body">
-                        <h4 class="media-heading">'.$commentaire['login'].' a écrit le '.$commentaire['dateAjout'].' a '.$commentaire['heureAjout'].' :
+                        <h4 class="media-heading">'.htmlspecialchars($commentaire['login']).' a écrit le '.htmlspecialchars($commentaire['dateAjout']).' a '.htmlspecialchars($commentaire['heureAjout']).' :
                      
-                            <button type="button"  id="BoutonSupprimerCommentaire" value="'.$commentaire['idCommentaire'].'" class="btn btn-danger btn_remove">supprimer commentaire</button>
+                            <button type="button"  id="BoutonSupprimerCommentaire" value="'.htmlspecialchars($commentaire['idCommentaire']).'" class="btn btn-danger btn_remove">supprimer commentaire</button>
                         
                        </p></h4>
-                       id commentaire :'.$commentaire['idCommentaire'].' 
-                        <p>texte :'.$commentaire['commentaire'].'</p>
+                       id commentaire :'.htmlspecialchars($commentaire['idCommentaire']).' 
+                        <p>texte :'.htmlspecialchars($commentaire['commentaire']).'</p>
              
                     </div>
                 </div>
@@ -101,23 +101,23 @@
        }
 
        public function afficherUtilisateur($utilisateur){
-        echo' <p>photo de profile :<img  width="100px" height="100px" class="media-object" src="image/image_utilisateur/'.$utilisateur['photo'].'" alt=""></p>
-              <p> id Utilisateur : '.$utilisateur['idUtilisateur'].'</p>
-              <p> login : '.$utilisateur['login'].'</p>
-              <p> email : '.$utilisateur['email'].'</p>
-              <p> description : '.$utilisateur['description'].'</p>
-              <div id="#LesBoutonBan'.$utilisateur['idUtilisateur'].'"> 
+        echo' <p>photo de profile :<img  width="100px" height="100px" class="media-object" src="image/image_utilisateur/'.htmlspecialchars($utilisateur['photo']).'" alt=""></p>
+              <p> id Utilisateur : '.htmlspecialchars($utilisateur['idUtilisateur']).'</p>
+              <p> login : '.htmlspecialchars($utilisateur['login']).'</p>
+              <p> email : '.htmlspecialchars($utilisateur['email']).'</p>
+              <p> description : '.htmlspecialchars($utilisateur['description']).'</p>
+              <div id="#LesBoutonBan'.htmlspecialchars($utilisateur['idUtilisateur']).'"> 
           ';
           if($utilisateur['banni']==1){
-            echo'<button  type="button" class="btn btn-success" id="boutonDeBanUtilisateurs" value="'.$utilisateur['idUtilisateur'].'">deban utilisateur</button>';
+            echo'<button  type="button" class="btn btn-success" id="boutonDeBanUtilisateurs" value="'.htmlspecialchars($utilisateur['idUtilisateur']).'">deban utilisateur</button>';
           
           }
           else{
-            echo'<button  type="button" class="btn btn-danger" id="boutonBanUtilisateurs" value="'.$utilisateur['idUtilisateur'].'">bannir utilisateur</button>';
+            echo'<button  type="button" class="btn btn-danger" id="boutonBanUtilisateurs" value="'.htmlspecialchars($utilisateur['idUtilisateur']).'">bannir utilisateur</button>';
           }
            
 
-          echo'<button  type="button" class="btn btn-danger" id="boutonSupprimerUtilisateur" value="'.$utilisateur['idUtilisateur'].'">supprimer utilisateur</button>          </div>';
+          echo'<button  type="button" class="btn btn-danger" id="boutonSupprimerUtilisateur" value="'.htmlspecialchars($utilisateur['idUtilisateur']).'">supprimer utilisateur</button>          </div>';
        }
 
        public function afficherTouteLesRecette($listeRecette){
@@ -137,15 +137,15 @@
                  else{
                     $photo = 'plat.png';
                  }
-                echo'<div class="recetteAdmin" id="recette'.$recette['idRecette'].'">
+                echo'<div class="recetteAdmin" id="recette'.htmlspecialchars($recette['idRecette']).'">
                 <img src="image/image_recette/'.$photo.'"  width="20%" >
-                <p>titre : '.$recette['titre'].'<p/>
-                <p>temps dePreparation : '.$recette['tpsPreparration'].'<p/>
-                <p>date de Publication : '.$recette['datePublication'].'<p/>
-                <p>note annexe : '.$recette['noteAnnexe'].'<p/>
-                <p> vegan : '.$recette['vegan'].'</p>
-                <p> createur :<a href="index.php?module=admin&action=afficherUtilisateur&idUtilisateur='.$recette['idUtilisateur'].'">'.$recette['idUtilisateur'].'</a></p>
-                <button type="button"  id="BoutonSupprimerRecette" value="'.$recette['idRecette'].'" class="btn btn-danger btn_remove">supprimer Recette</button>
+                <p>titre : '.htmlspecialchars($recette['titre']).'<p/>
+                <p>temps dePreparation : '.htmlspecialchars($recette['tpsPreparration']).'<p/>
+                <p>date de Publication : '.htmlspecialchars($recette['datePublication']).'<p/>
+                <p>note annexe : '.htmlspecialchars($recette['noteAnnexe']).'<p/>
+                <p> vegan : '.htmlspecialchars($recette['vegan']).'</p>
+                <p> createur :<a href="index.php?module=admin&action=afficherUtilisateur&idUtilisateur='.htmlspecialchars($recette['idUtilisateur']).'">'.htmlspecialchars($recette['idUtilisateur']).'</a></p>
+                <button type="button"  id="BoutonSupprimerRecette" value="'.htmlspecialchars($recette['idRecette']).'" class="btn btn-danger btn_remove">supprimer Recette</button>
                             
                 
                 

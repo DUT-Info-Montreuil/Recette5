@@ -55,7 +55,7 @@ class VueRecherche extends VueGenerique{
                    
                    <div class="d-flex justify-content-between align-items-center">
                      <div class="btn-group">
-                      <a href="index.php?module=recette&action=afficherMaRecette&idRecette='.$value['idRecette'].'"><button type="button" class="btn btn-sm btn-outline-secondary">Détails</button></a>';
+                      <a href="index.php?module=recette&action=afficherMaRecette&idRecette='.htmlspecialchars($value['idRecette']).'"><button type="button" class="btn btn-sm btn-outline-secondary">Détails</button></a>';
                       if($value['vegan'] == 1){
                         echo '<button type="button" class="btn btn-sm btn-success" disabled>Vegan</button>';
                      }   
@@ -68,7 +68,7 @@ class VueRecherche extends VueGenerique{
                       echo (htmlspecialchars($value['tpsPreparration'])%60).'min</small>
                       
                      </div>
-                     <small class="text-muted">'.$value['datePublication'].'</small>
+                     <small class="text-muted">'.htmlspecialchars($value['datePublication']).'</small>
                    </div>
                  </div>
                </div>
