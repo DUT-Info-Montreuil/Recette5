@@ -322,9 +322,9 @@ class VueRecette extends VueGenerique
          <form action="#" method="post" onsubmit="return false" id="formModifRecette">
         
          <div class="container">
-         <div class="alert alert-danger" role="alert" id="errorRecette">
+         <div  id="errorRecette">
          </div>
-         <div class="alert alert-danger" role="alert" id="validerAjout"></div>
+         <div  id="validerAjout"></div>
          <div id="formulaireRecette">
          <div class="col-md-7 col-lg-8">
          <h4 class="mb-3">modifier la Recette : ' . $recette['titre'] . '</h4>
