@@ -96,6 +96,12 @@ $(document).ready(function(){
                     }else{
                         $('#validerAjout').empty().append("recette ajoutée");
                         $("#formulaireRecette").hide();
+                        Swal.fire('recette ajoutée')  
+                     setTimeout(
+                        function() 
+                        {
+                        window.location.href = 'index.php?module=recette&action=afficherMesRecettes';
+                        }, 1000);
                     }
                 }
             })

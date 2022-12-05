@@ -1,5 +1,5 @@
 <?php
-
+   require_once('token.php');
    require_once('vue_connexion.php');
    require_once('modele_connexion.php');
       class ContConnexion{
@@ -33,23 +33,75 @@
       public function exec(){     
          switch ($this->action) {
             case "AfficherFormulaireInscription": 
+               creation_token();
                $this->afficher_form_inscription();
                break;
             case "inscription":
-               $login=isset($_POST['login']) ?$_POST['login']:"";
-               $mdp=isset($_POST['mdp']) ?$_POST['mdp']:"";
-               $mdp2=isset($_POST['mdp2']) ?$_POST['mdp2']:"";  
-               $email=isset($_POST['email']) ?$_POST['email']:"";
-               $this->ajouter_dans_inscription( htmlspecialchars($login),htmlspecialchars($mdp),htmlspecialchars($mdp2),htmlspecialchars($email));   
-               break;
+               if( verifierToken($_POST['token'])){
+                  $login=isset($_POST['login']) ?$_POST['login']:"";
+                  $mdp=isset($_POST['mdp']) ?$_POST['mdp']:"";
+                  $mdp2=isset($_POST['mdp2']) ?$_POST['mdp2']:"";  
+                  $email=isset($_POST['email']) ?$_POST['email']:"";
+                  $this->ajouter_dans_inscription( htmlspecialchars($login),htmlspecialchars($mdp),htmlspecialchars($mdp2),htmlspecialchars($email));   
+                  supprimerToken();
+               }else{
+                  echo"
+                  <script> 
+                  
+                  Swal.fire({
+                      icon: 'error',
+                      title: 'Oops...',
+                      text: 'Token invalide ou expiré',
+                      
+                    })
+                    setTimeout(
+                      function() 
+                      {
+                         window.location.href = 'index.php?index.php?module=connexion&action=bienvenue';
+                      }, 1000);
+                  
+                  
+                  </script>
+              
+              
+              ";
+               }
+              break;
             case "AfficherFormulaireConnexion": 
+               creation_token();
                $this->afficher_form_connexion();
-               break;
-            case "connexion":       
-               $login=isset($_POST['login']) ?$_POST['login']:"";
-               $mdp=isset($_POST['mdp']) ?$_POST['mdp']:"";      
-               $this->connexion_dans_inscription( htmlspecialchars($login),htmlspecialchars($mdp),);    
                
+               break;
+            case "connexion":  
+                 
+               if( verifierToken($_POST['token'])){
+                  $login=isset($_POST['login']) ?$_POST['login']:"";
+                  $mdp=isset($_POST['mdp']) ?$_POST['mdp']:"";      
+                  $this->connexion_dans_inscription( htmlspecialchars($login),htmlspecialchars($mdp));    
+                  supprimerToken();
+               }else{
+                  echo"
+                  <script> 
+                  
+                  Swal.fire({
+                      icon: 'error',
+                      title: 'Oops...',
+                      text: 'Token invalide ou expiré',
+                      
+                    })
+                    setTimeout(
+                      function() 
+                      {
+                         window.location.href = 'index.php?index.php?module=connexion&action=bienvenue';
+                      }, 1000);
+                  
+                  
+                  </script>
+              
+              
+              ";
+               }  
+              
                break;
             case "deconnexion":               
                unset($_SESSION['login'] );
@@ -77,4 +129,4 @@
          $affiche=$this->vue->getAffichage();   
    } 
 }
-?>
+?> 

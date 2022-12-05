@@ -11,7 +11,7 @@
             echo
             '
             <form method="post" action="index.php?module=connexion&action=inscription">
-                
+            <input type="hidden" name="token" value='.$_SESSION['token'].' >
                 <div class="form" align="center">
                 <h1>INSCRIVEZ-VOUS</h1>
                     <div class="mb-3" >
@@ -40,7 +40,12 @@
 
         public function afficher_form_connexion(){
             if($_SESSION['login']!=null){
-                echo"Vous êtes déjà connecté";
+                echo"<scirpt> Swal.fire('Vous êtes déja déconnecter')  
+                setTimeout(
+                   function() 
+                   {
+                   window.location.href = 'index.php?module=connexion&action=bienvenue';
+                   }, 1000); </script>";
             }else{  
                 echo
                 '
@@ -59,6 +64,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Connexion</button>
                     </div>
+                    <input type="hidden" name="token" value='.$_SESSION['token'].' >
                 </form>';
             }          
         }

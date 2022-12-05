@@ -28,7 +28,7 @@
 
 
 
-    <?php include('composants/menu/ajax/barreRecherche.php') ?>
+    <?php include('composants/menu/ajax/barreRecherche.php'); ?>
 </head>
 
 <body>
