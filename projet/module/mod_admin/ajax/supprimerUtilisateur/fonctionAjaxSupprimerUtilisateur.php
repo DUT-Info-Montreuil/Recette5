@@ -20,19 +20,29 @@ $(document).ready(function(){
                     if (result.isConfirmed) {
                      
                         $.post("module/mod_admin/ajax/supprimerUtilisateur/supprimerUtilisateur.php",{idUtilisateur:idUtilisateur},function(data){  
-                            Swal.fire('utilisateur supprimer')  
+                            if(data==5){
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'Vous n\'êtes pas autoriser a supprimer un Utilisateur',
+                                    
+                                })
+
+                            }else{
+                                Swal.fire('utilisateur supprimer')  
                                 setTimeout(
                                     function() 
                                     {
                                     window.location.href = 'index.php?module=admin&action=gererUtilisateur';
                                     }, 1000);
+                            }
                         });
                       
                     }
                 })
         }); 
-
-
+      
+                      
 
         
  });
