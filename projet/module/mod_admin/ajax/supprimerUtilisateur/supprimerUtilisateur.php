@@ -6,6 +6,15 @@ extract($_POST);
     $sth2=$bdd->prepare("DELETE FROM DonnerAvis WHERE idUtilisateur = ?");
     $sth2->execute(array($idUtilisateur));
 
+    $bdd=new PDO('mysql:host=database-etudiants.iut.univ-paris8.fr;dbname=dutinfopw201631','dutinfopw201631','mudepuna');
+    $sth=$bdd->prepare("SELECT photo FROM photo NATURAL join Recette WHERE idUtilisateur=?");
+    $sth->execute(array($idUtilisateur));
+    $row = $sth->fetchAll();
+
+    foreach($row as $value){
+        unlink('../../../../image/image_recette/'.$value['photo'].'');
+    }
+
     $sth2=$bdd->prepare("DELETE photo FROM photo NATURAL join Recette WHERE idUtilisateur=?");
     $sth2->execute(array($idUtilisateur));
 
