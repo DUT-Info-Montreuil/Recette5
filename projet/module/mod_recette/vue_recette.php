@@ -183,10 +183,10 @@ class VueRecette extends VueGenerique
          <div id="commentaire' . $value['idCommentaire'] . '" class="media">
                  <a class="pull-left" href="#"><img id="pp" width="100" class="media-object" src="image/image_utilisateur/' . $value['photo'] . '" alt=""></a>
                  <div class="media-body">
-                     <h4 class="media-heading">' . $value['login'] . ' a écrit le ' . $value['dateAjout'] . ' a ' . $value['heureAjout'] . ' :';
+                     <h4 class="media-heading">' .htmlspecialchars($value['login']). ' a écrit le ' . $value['dateAjout'] . ' a ' . $value['heureAjout'] . ' :';
             if (isset($_SESSION['login']) && $_SESSION['id'] == $value['idUtilisateur'])
             {
-                echo '<button type="button" name="remove" id="' . $value['idCommentaire'] . '"  class="btn btn-danger btn_remove">X</button>';
+                echo '<button type="button" name="remove" id="' .htmlspecialchars($value['idCommentaire']). '"  class="btn btn-danger btn_remove">X</button>';
             }
             echo ' </p></h4>
                      <p>' . $value['commentaire'] . '</p>
@@ -328,13 +328,13 @@ class VueRecette extends VueGenerique
          <div  id="validerAjout"></div>
          <div id="formulaireRecette">
          <div class="col-md-7 col-lg-8">
-         <h4 class="mb-3">modifier la Recette : ' . $recette['titre'] . '</h4>
+         <h4 class="mb-3">modifier la Recette : ' .htmlspecialchars($recette['titre']). '</h4>
          <hr class="my-4">
       
          <div class="row g-3">
                <div class="col-sm-6">
                   <label for="titre" class="form-label">Nom</label>
-                  <input type="text" class="form-control" value="' . $recette['titre'] . '"id="titre" name="titre" required>
+                  <input type="text" class="form-control" value="' .htmlspecialchars($recette['titre']). '"id="titre" name="titre" required>
                </div>
 
             <div class=" col-12">
@@ -371,12 +371,12 @@ class VueRecette extends VueGenerique
 
           <div class="col-12 l-12">
             <label for="address2" class="form-label">Description<span class="text-muted"></span></label>
-            <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3">' . $recette['description'] . '</textarea>
+            <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3">' .htmlspecialchars($recette['description']). '</textarea>
          </div>
 
          <div class="col-12">
             <label for="email" class="form-label">Annexe <span class="text-muted">(Optional)</span></label>
-            <input type="text" value="' . $recette['noteAnnexe'] . '" name="annexe" class="form-control" id="email" >
+            <input type="text" value="' .htmlspecialchars($recette['noteAnnexe']). '" name="annexe" class="form-control" id="email" >
          </div>';
         if ($recette['vegan'] == 1)
         {
