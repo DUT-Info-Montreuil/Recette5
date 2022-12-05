@@ -113,7 +113,7 @@
 
          public function recupererListeIngredient(){
             $bdd=parent::$bdd;
-            $sth = $bdd->prepare("SELECT * from Ingredient");
+            $sth = $bdd->prepare("SELECT * from Ingredient ORDER by nomIngredient ASC");
             $sth->execute();
             $rows = $sth->fetchAll();
 
