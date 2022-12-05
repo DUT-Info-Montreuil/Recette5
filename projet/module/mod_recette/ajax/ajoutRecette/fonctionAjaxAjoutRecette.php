@@ -80,24 +80,8 @@ $(document).ready(function(){
                 processData: false,
                 dataType: "json",
                 success: function (data) {
-                    if(data==5){
-                        Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Token invalide ou expiré',
-                        
-                      })
-                      setTimeout(
-                        function() 
-                        {
-                           window.location.href = 'index.php?index.php?module=connexion&action=bienvenue';
-                        }, 1000);
-                    
-                    }else{
-                        $('#validerAjout').empty().append("recette ajoutée");
-                        $("#formulaireRecette").hide();
-                    }
-                    
+                    $('#validerAjout').empty().append("recette ajoutée");
+                    $("#formulaireRecette").hide();
                 }
             })
 

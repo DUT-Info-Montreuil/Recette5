@@ -9,9 +9,9 @@ class VueMenu{
     public function menu(){
 
             if(!isset($_SESSION['photo']))
-                $photo = 'image/profil.png';
+                $photo = 'profil.png';
             else{
-                $photo = 'image/image_utilisateur/'.$_SESSION['photo'];
+                $photo = $_SESSION['photo'];
             } 
 
             if($_SESSION['login'] != null){
@@ -44,7 +44,7 @@ class VueMenu{
                     
                    $this->menu=$this->menu.'<li class="nav-item dropdown">
                         
-                        <a class="nav-link dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false"><img id="pp" alt="pp" src="'.$photo.'">'.$_SESSION['login'].'</a>
+                        <a class="nav-link dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false"><img id="pp" alt="pp" src="image/image_utilisateur/'.$photo.'">'.$_SESSION['login'].'</a>
                         <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="index.php?module=profil&action=afficherProfil">Profil</a></li>
                         <li><a class="dropdown-item" href="index.php?module=recette&action=afficherMesRecettes">Mes recettes</a></li>

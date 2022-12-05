@@ -1,7 +1,6 @@
 <?php
 require_once("vue_profil.php");
 require_once("modele_profil.php");
-include_once('token.php');
 class ContProfil{
     private $vue;
     private $modele;
@@ -102,36 +101,10 @@ public function exec(){
            
             break;
         case "modifierProfil" :
-            creation_token();
             $this->afficherFormModifierProfil();
             break;
         case "validerProfil" :
-            if(verifierToken($_POST['token'])){
-                $this->validerModification();
-                supprimerToken();
-            }else{
-                echo"
-                    <script> 
-                    
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Token invalide ou expiré',
-                        
-                      })
-                      setTimeout(
-                        function() 
-                        {
-                           window.location.href = 'index.php?index.php?module=connexion&action=bienvenue';
-                        }, 1000);
-                    
-                    
-                    </script>
-                
-                
-                ";
-            }
-            
+            $this->validerModification();
             break;
         case "afficherProfilUtilisateur" :
             $this->afficherProfilUtilisateur($_GET['idUtilisateur']);

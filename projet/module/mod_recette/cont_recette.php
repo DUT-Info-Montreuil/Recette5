@@ -2,7 +2,6 @@
 
    require_once('vue_recette.php');
    require_once('modele_recette.php');
-   include('token.php');
       class ContRecette{
          private $vue; 
          private $modele;
@@ -47,7 +46,6 @@
                break;  
 
             case "AfficherFormAjoutRecette":
-                   creation_token();
                    $this->afficher_form_Recette();
                    include('module/mod_recette/ajax/ajoutRecette/fonctionAjaxAjoutRecette.php') ;
                    include('module/mod_recette/ajax/ajouterCategorie/fonctionCategorie.php') ;
