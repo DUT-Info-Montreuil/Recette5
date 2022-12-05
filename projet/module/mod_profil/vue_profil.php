@@ -164,7 +164,8 @@ class VueProfil extends VueGenerique{
           <hr class="my-4">
           <a href="index.php?module=profil&action=afficherProfil"><button type="button" class="w-80 btn btn-secondary btn-lg" >Annuler</button></a>
           <button class="w-80 btn btn-primary btn-lg" type="submit">Valider</button>
-        </form>
+          <input type="hidden" name="token" value='.$_SESSION['token'].' >
+          </form>
       </div>
     </div>
 ';
