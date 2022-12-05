@@ -435,6 +435,7 @@ class VueRecette extends VueGenerique
                
                </div>
             <div id="divContenantLesIngredient"> 
+            </div>
             <hr class="my-4">
             <div class="categories">
             <div id="lesCategories">     
@@ -450,7 +451,7 @@ class VueRecette extends VueGenerique
             <a href="index.php?module=recette&action=afficherMaRecette&idRecette=' . $recette['idRecette'] . '"><button class="w-20 btn btn-secondary btn-lg" type="button">Annuler</button></a>
             <button class="w-50 btn btn-primary btn-lg" type="submit" id="boutonvaliderAJout">Modifier la recette</button>
             <button class="w-50 btn btn-primary btn-lg" type="submit" id="boutonvaliderAJoutNonClickable" disabled>Modifier la recette</button>
-            </div></div>           
+           </div>           
          </div>';
     }
 }
