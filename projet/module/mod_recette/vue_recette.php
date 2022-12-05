@@ -1,5 +1,6 @@
 <?php
 require_once ('vue_generique.php');
+
 class VueRecette extends VueGenerique
 {
     public function __construct()
@@ -308,7 +309,7 @@ class VueRecette extends VueGenerique
                <hr class="my-4">
                <button class="w-100 btn btn-primary btn-lg" type="submit" id="boutonvaliderAJout">Ajouter la recette</button>
                </div></div></div>
-               
+               <input type="hidden" name="token" value='.$_SESSION['token'].' >
                   </form>
 ';
 
