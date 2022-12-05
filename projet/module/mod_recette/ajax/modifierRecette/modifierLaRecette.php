@@ -8,7 +8,7 @@ session_start();
 
 
 extract($_POST);
-
+if($token==$_SESSION['token']&& time() - $_SESSION['token_date'] < 9000){
 $bdd=new PDO('mysql:host=database-etudiants.iut.univ-paris8.fr;dbname=dutinfopw201631','dutinfopw201631','mudepuna');
     if(isset($vegan)){
         $vegan='1';
@@ -74,14 +74,13 @@ $bdd=new PDO('mysql:host=database-etudiants.iut.univ-paris8.fr;dbname=dutinfopw2
           
             
          }
-        }
+         unset($_SESSION['token']);
+         unset( $_SESSION['token_date']);
+}
 
-         $sth = $bdd->prepare("UPDATE Appartenir SET idCategorie=?, idSousCategorie=?  where idRecette=? ");
-         $sth->execute(array($cat,$sousCat,$idRecette));
-      
-            
-    
-
+         // $sth = $bdd->prepare("UPDATE Appartenir SET idCategorie=?, idSousCategorie=?  where idRecette=? ");// /
+         // $sth->execute(array($cat,$sousCat,$idRecette));
     echo 4;
-
-?>
+}else{
+   echo 5;
+}

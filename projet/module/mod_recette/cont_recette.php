@@ -79,7 +79,7 @@
                echo"recette inexistante";
             }
             elseif($_SESSION['id']==$this->modele->recupererIdDuPropietaireDeLaRecette($_GET['idRecette'])){
-              
+               creation_token();
                $this->AffichermodifierMaRecette();
                include('module/mod_recette/ajax/ajouterCategorie/fonctionCategorie.php') ;
                include('module/mod_recette/ajax/modifierRecette/fonctionAjaxModifierRecette.php') ;

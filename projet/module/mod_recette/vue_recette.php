@@ -321,7 +321,7 @@ class VueRecette extends VueGenerique
         echo '
             
          <form action="#" method="post" onsubmit="return false" id="formModifRecette">
-        
+         <input type="hidden" name="token" value='.$_SESSION['token'].' >
          <div class="container">
          <div  id="errorRecette">
          </div>

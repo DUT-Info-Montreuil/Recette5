@@ -131,19 +131,32 @@ $(document).ready(function(){
                             processData: false,
                             dataType: "json",
                             success: function (data) {
-                             
-                                Swal.fire({
-                                  
-                                        title: 'Vos modification on été sauvegarder',
-                                        confirmButtonText: 'OK',
+                                if(data==5){
+                                        Swal.fire({
+                                        icon: 'error',
+                                        title: 'Oops...',
+                                        text: 'Token invalide ou expiré',
                                         
-                                        }).then((result) => {
-                                            
-                                            if (result.isConfirmed) {
-                                             window.location.href = 'index.php?module=recette&action=afficherMaRecette&idRecette='+idRecette+'';
-                                            } 
-                                        })                       
-                              
+                                    })
+                                    setTimeout(
+                                        function() 
+                                        {
+                                        window.location.href = 'index.php?index.php?module=connexion&action=bienvenue';
+                                        }, 1000);
+                                    
+                                    }else{
+                                        Swal.fire({
+                                        
+                                                title: 'Vos modification on été sauvegarder',
+                                                confirmButtonText: 'OK',
+                                                
+                                                }).then((result) => {
+                                                    
+                                                    if (result.isConfirmed) {
+                                                    window.location.href = 'index.php?module=recette&action=afficherMaRecette&idRecette='+idRecette+'';
+                                                    } 
+                                                })                       
+                                  }                              
                                 
                             }
                         })
