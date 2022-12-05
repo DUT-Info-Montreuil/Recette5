@@ -20,6 +20,16 @@ $(document).ready(function(){
                     if (result.isConfirmed) {
                      
                         $.post("module/mod_admin/ajax/bannirUtilisateur/bannir.php",{idUtilisateur:idUtilisateur},function(data){  
+                                             if(data==5){
+                                                Swal.fire({
+                                                    icon: 'error',
+                                                    title: 'Oops...',
+                                                    text: 'Vous n\'êtes pas autoriser a supprimer un Utilisateur',
+                                                    
+                                                })
+
+                                             }else{
+
                                              
                                                 Notif.fire({
                                                     icon: 'success',
@@ -29,7 +39,8 @@ $(document).ready(function(){
                                                 if(location.search=='?module=admin&action=afficherUtilisateur&idUtilisateur='+idUtilisateur+''){
                                                         location.reload();
                                                     }
-                                        });
+                                                }
+                        });
                       
                     }
                 })
@@ -53,7 +64,16 @@ $(document).ready(function(){
                     if (result.isConfirmed) {
                      
                         $.post("module/mod_admin/ajax/bannirUtilisateur/deBannir.php",{idUtilisateur:idUtilisateur},function(data){  
-                                             
+                                         if(data==5){
+                                                Swal.fire({
+                                                    icon: 'error',
+                                                    title: 'Oops...',
+                                                    text: 'Vous n\'êtes pas autoriser a supprimer un Utilisateur',
+                                                    
+                                                })
+
+                                             }else{
+
                                                 Notif.fire({
                                                     icon: 'success',
                                                     title: 'utilisateur Debanni'
@@ -63,6 +83,7 @@ $(document).ready(function(){
                                                     if(location.search=='?module=admin&action=afficherUtilisateur&idUtilisateur='+idUtilisateur+''){
                                                         location.reload();
                                                     }
+                                                }
                                             });
                       
                     }
