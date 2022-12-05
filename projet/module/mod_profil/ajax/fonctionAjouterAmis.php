@@ -5,7 +5,7 @@
             $('#amis').append('<button type="button" id="ajouter" class="btn btn-outline-light">SUIVRE</button>');
             $('#amis').append('<button type="button" id="supprimerAmis" class="btn btn-outline-danger">NE PAS SUIVRE</button>');
             $('#ajouter').hide();
-            $('#supprimer').hide();
+            $('#supprimerAmis').hide();
 
             $.post("module/mod_profil/ajax/amis.php",{idUtilisateur:<?php echo$_GET['idUtilisateur']?>, profil:<?php echo$_SESSION['id']?>}, function(data){
                 if(data==1){
