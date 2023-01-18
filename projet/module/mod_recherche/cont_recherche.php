@@ -26,7 +26,7 @@
                $this->afficherRecette();
                
 
-             include('module\mod_recette\ajax\ajouterCategorie\fonctionRechercherCategorie.php');
+            include('module/mod_recette/ajax/ajouterCategorie/fonctionRechercherCategorie.php');
              break;
         }      
         global $affiche; 
